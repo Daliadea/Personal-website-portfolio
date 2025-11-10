@@ -10,6 +10,15 @@ import {
   CardFooter,
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogTrigger,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+  DialogFooter,
+} from "@/components/ui/dialog";
 
 const projects = [
   {
@@ -20,6 +29,9 @@ const projects = [
     imageUrl: "/projects/ecommerce.jpg",
     demoUrl: "https://demo.example.com",
     repoUrl: "https://github.com/username/ecommerce",
+    problem: "Small businesses struggle with expensive, complex e-commerce platforms that require technical expertise to set up and maintain. Many existing solutions lack real-time inventory tracking, leading to overselling and customer dissatisfaction.",
+    solution: "Built a streamlined e-commerce platform using Next.js and Stripe for payments. Implemented real-time inventory management with WebSockets to prevent overselling. Created an intuitive admin dashboard that allows business owners to manage products, orders, and inventory without technical knowledge.",
+    techStack: ["Next.js", "TypeScript", "Stripe", "Prisma", "PostgreSQL", "TailwindCSS"]
   },
   {
     id: 2,
@@ -29,6 +41,9 @@ const projects = [
     imageUrl: "/projects/taskmanager.jpg",
     demoUrl: "https://demo.example.com",
     repoUrl: "https://github.com/username/taskmanager",
+    problem: "Remote teams need better tools to coordinate work and track project progress. Existing solutions are either too complex (like Jira) or too simple (like basic to-do lists), lacking the balance between power and usability.",
+    solution: "Developed a collaborative task management application with an intuitive drag-and-drop interface using React DnD. Integrated real-time updates via Socket.io so team members see changes instantly. Implemented role-based permissions and project workspaces for better organization.",
+    techStack: ["React", "Node.js", "Socket.io", "MongoDB", "React DnD", "Express"]
   },
   {
     id: 3,
@@ -38,6 +53,9 @@ const projects = [
     imageUrl: "/projects/weather.jpg",
     demoUrl: "https://demo.example.com",
     repoUrl: "https://github.com/username/weather",
+    problem: "Weather apps typically show basic forecasts but lack comprehensive historical data visualization and personalized severe weather alerts based on user preferences and location.",
+    solution: "Created an interactive weather dashboard that aggregates data from multiple weather APIs. Built custom data visualization charts using D3.js to display historical trends. Implemented geolocation-based alerts with customizable notification preferences for different weather events.",
+    techStack: ["React", "D3.js", "OpenWeather API", "Chart.js", "Node.js", "Redis"]
   },
   {
     id: 4,
@@ -47,6 +65,9 @@ const projects = [
     imageUrl: "/projects/analytics.jpg",
     demoUrl: "https://demo.example.com",
     repoUrl: "https://github.com/username/analytics",
+    problem: "Content creators and businesses struggle to track performance across multiple social media platforms, requiring them to log into each platform separately and manually compile data for analysis.",
+    solution: "Built a unified analytics dashboard that aggregates data from Twitter, Instagram, and LinkedIn APIs. Implemented automated daily reports and trend analysis using machine learning to identify optimal posting times. Created customizable widgets for monitoring key metrics in real-time.",
+    techStack: ["Next.js", "Python", "FastAPI", "PostgreSQL", "Twitter API", "Chart.js"]
   },
 ];
 
@@ -72,60 +93,125 @@ export default function Projects() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="text-center mb-12"
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.5 }}
         >
-          <h2 className="text-4xl sm:text-5xl font-bold mb-4">My Work</h2>
-          <p className="text-zinc-400 text-lg max-w-2xl mx-auto">
-            Here are some of my recent projects that showcase my skills and
-            experience in web development.
-          </p>
-        </motion.div>
+          <div className="text-center mb-12">
+            <h2 className="text-4xl sm:text-5xl font-bold mb-4">My Work</h2>
+            <p className="text-zinc-400 text-lg max-w-2xl mx-auto">
+              Here are some of my recent projects that showcase my skills and
+              experience in web development.
+            </p>
+          </div>
 
-        <motion.div
-          variants={container}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-6"
-        >
-          {projects.map((project) => (
-            <motion.div key={project.id} variants={item}>
-              <Card className="h-full flex flex-col bg-zinc-900 border-zinc-800 hover:border-zinc-700 transition-colors">
-                <CardHeader>
-                  <CardTitle>{project.title}</CardTitle>
-                  <CardDescription>{project.description}</CardDescription>
-                </CardHeader>
-                <CardContent className="flex-grow">
-                  <div className="w-full h-48 bg-zinc-800 rounded-md flex items-center justify-center">
-                    <span className="text-zinc-600 text-sm">
-                      Project Screenshot
-                    </span>
-                  </div>
-                </CardContent>
-                <CardFooter className="gap-4">
-                  <Button
-                    variant="default"
-                    className="flex-1"
-                    onClick={() => window.open(project.demoUrl, "_blank")}
+          <motion.div
+            variants={container}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+            className="grid grid-cols-1 md:grid-cols-2 gap-6"
+          >
+            {projects.map((project) => (
+              <motion.div key={project.id} variants={item}>
+                <Dialog>
+                  <Card 
+                    className="h-full flex flex-col bg-zinc-900 border-zinc-800 hover:border-zinc-700 transition-colors"
+                    whileHover={{ y: -5 }}
+                    transition={{ duration: 0.2 }}
                   >
-                    Live Demo
-                  </Button>
-                  <Button
-                    variant="outline"
-                    className="flex-1"
-                    onClick={() => window.open(project.repoUrl, "_blank")}
-                  >
-                    GitHub
-                  </Button>
-                </CardFooter>
-              </Card>
-            </motion.div>
-          ))}
+                    <DialogTrigger asChild>
+                      <div className="cursor-pointer flex-grow">
+                        <CardHeader>
+                          <CardTitle>{project.title}</CardTitle>
+                          <CardDescription>{project.description}</CardDescription>
+                        </CardHeader>
+                        <CardContent>
+                          <div className="w-full h-48 bg-zinc-800 rounded-md flex items-center justify-center hover:bg-zinc-750 transition-colors">
+                            <span className="text-zinc-600 text-sm">
+                              Click to learn more
+                            </span>
+                          </div>
+                        </CardContent>
+                      </div>
+                    </DialogTrigger>
+                    <CardFooter className="gap-4">
+                      <Button
+                        variant="default"
+                        className="flex-1"
+                        onClick={() => window.open(project.demoUrl, "_blank")}
+                      >
+                        Live Demo
+                      </Button>
+                      <Button
+                        variant="outline"
+                        className="flex-1"
+                        onClick={() => window.open(project.repoUrl, "_blank")}
+                      >
+                        GitHub
+                      </Button>
+                    </CardFooter>
+                  </Card>
+
+                  <DialogContent className="bg-zinc-900 border-zinc-800 text-white max-w-3xl">
+                    <DialogHeader>
+                      <DialogTitle className="text-2xl">{project.title}</DialogTitle>
+                    </DialogHeader>
+                    
+                    <div className="w-full h-64 bg-zinc-800 rounded-md my-4 flex items-center justify-center">
+                      <span className="text-zinc-600">Project Screenshot</span>
+                    </div>
+
+                    <DialogDescription className="text-zinc-300 space-y-4">
+                      <div>
+                        <h4 className="text-lg font-semibold text-white mb-2">The Problem</h4>
+                        <p className="text-zinc-400 leading-relaxed">
+                          {project.problem}
+                        </p>
+                      </div>
+
+                      <div>
+                        <h4 className="text-lg font-semibold text-white mb-2">My Solution</h4>
+                        <p className="text-zinc-400 leading-relaxed">
+                          {project.solution}
+                        </p>
+                      </div>
+
+                      <div>
+                        <h4 className="text-lg font-semibold text-white mb-2">Tech Stack</h4>
+                        <div className="flex flex-wrap gap-2">
+                          {project.techStack.map((tech, index) => (
+                            <span
+                              key={index}
+                              className="px-3 py-1 bg-zinc-800 text-zinc-300 rounded-full text-sm"
+                            >
+                              {tech}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    </DialogDescription>
+
+                    <DialogFooter className="gap-2 sm:gap-0">
+                      <Button
+                        variant="default"
+                        onClick={() => window.open(project.demoUrl, "_blank")}
+                      >
+                        Live Demo
+                      </Button>
+                      <Button
+                        variant="outline"
+                        onClick={() => window.open(project.repoUrl, "_blank")}
+                      >
+                        GitHub
+                      </Button>
+                    </DialogFooter>
+                  </DialogContent>
+                </Dialog>
+              </motion.div>
+            ))}
+          </motion.div>
         </motion.div>
       </div>
     </section>
   );
 }
-

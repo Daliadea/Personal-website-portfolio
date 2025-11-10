@@ -1,11 +1,18 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { BentoGrid, BentoGridItem } from "@/components/ui/bento-grid";
+import { 
+  Code2, 
+  Rocket, 
+  Github, 
+  BookOpen 
+} from "lucide-react";
 
 export default function About() {
   return (
     <section id="about" className="py-20 px-4 sm:px-6 lg:px-8">
-      <div className="container mx-auto max-w-4xl">
+      <div className="container mx-auto max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -19,34 +26,101 @@ export default function About() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          viewport={{ once: true }}
-          className="space-y-6 text-zinc-300 text-lg leading-relaxed"
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.5 }}
         >
-          <p>
-            I&apos;m a passionate computing student and software developer with a keen
-            interest in creating beautiful, functional, and user-friendly web
-            applications. My journey in software development started with a
-            curiosity about how things work on the web, and has evolved into a
-            deep passion for building digital experiences.
-          </p>
+          <BentoGrid className="max-w-6xl mx-auto">
+            <BentoGridItem
+              title="Who I Am"
+              description={
+                <div className="space-y-2">
+                  <p>
+                    I'm a passionate computing student and software developer with a keen
+                    interest in creating beautiful, functional, and user-friendly web
+                    applications.
+                  </p>
+                  <p>
+                    My journey in software development started with a
+                    curiosity about how things work on the web, and has evolved into a
+                    deep passion for building digital experiences that make a difference.
+                  </p>
+                </div>
+              }
+              header={
+                <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-lg bg-gradient-to-br from-violet-500 to-purple-500 items-center justify-center">
+                  <Rocket className="h-12 w-12 text-white" />
+                </div>
+              }
+              className="md:col-span-2"
+            />
 
-          <p>
-            Throughout my studies and personal projects, I&apos;ve gained extensive
-            experience with modern web technologies including React, Next.js,
-            TypeScript, and various backend frameworks. I love exploring new
-            technologies and finding innovative ways to solve complex problems.
-          </p>
+            <BentoGridItem
+              title="Core Skills"
+              description={
+                <div className="space-y-2">
+                  <div className="flex flex-wrap gap-2 mt-2">
+                    <span className="px-2 py-1 bg-zinc-800 rounded text-xs">React</span>
+                    <span className="px-2 py-1 bg-zinc-800 rounded text-xs">Next.js</span>
+                    <span className="px-2 py-1 bg-zinc-800 rounded text-xs">TypeScript</span>
+                    <span className="px-2 py-1 bg-zinc-800 rounded text-xs">Node.js</span>
+                    <span className="px-2 py-1 bg-zinc-800 rounded text-xs">TailwindCSS</span>
+                    <span className="px-2 py-1 bg-zinc-800 rounded text-xs">Python</span>
+                  </div>
+                </div>
+              }
+              header={
+                <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-lg bg-gradient-to-br from-blue-500 to-cyan-500 items-center justify-center">
+                  <Code2 className="h-12 w-12 text-white" />
+                </div>
+              }
+              className="md:col-span-1"
+            />
 
-          <p>
-            When I&apos;m not coding, you can find me contributing to open-source
-            projects, learning about the latest web development trends, or
-            working on side projects that challenge my skills and creativity. I
-            believe in continuous learning and always strive to improve my craft.
-          </p>
+            <BentoGridItem
+              title="Open Source Contributor"
+              description="I believe in giving back to the community. I actively contribute to open-source projects and maintain several repositories on GitHub. Check out my work and feel free to collaborate!"
+              header={
+                <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-lg bg-gradient-to-br from-gray-700 to-gray-900 items-center justify-center">
+                  <Github className="h-12 w-12 text-white" />
+                </div>
+              }
+              icon={
+                <a 
+                  href="https://github.com/yourusername" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-blue-500 hover:text-blue-400 text-xs underline mt-2 inline-block"
+                >
+                  Visit my GitHub →
+                </a>
+              }
+              className="md:col-span-1"
+            />
+
+            <BentoGridItem
+              title="Continuous Learner"
+              description={
+                <div className="space-y-2">
+                  <p>
+                    When I'm not coding, you can find me learning about the latest web
+                    development trends, exploring new technologies, or working on side
+                    projects that challenge my skills.
+                  </p>
+                  <p className="text-zinc-400 text-xs mt-2">
+                    Currently learning: AI/ML, Web3, and Advanced System Design
+                  </p>
+                </div>
+              }
+              header={
+                <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-lg bg-gradient-to-br from-orange-500 to-red-500 items-center justify-center">
+                  <BookOpen className="h-12 w-12 text-white" />
+                </div>
+              }
+              className="md:col-span-2"
+            />
+          </BentoGrid>
         </motion.div>
       </div>
     </section>
   );
 }
-
