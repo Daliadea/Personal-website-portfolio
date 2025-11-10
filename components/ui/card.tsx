@@ -1,25 +1,26 @@
 import * as React from "react";
-import { motion } from "framer-motion";
+import { motion, HTMLMotionProps } from "framer-motion";
 import { cn } from "@/lib/utils";
 
-const Card = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement> & {
-    whileHover?: any;
-    transition?: any;
-  }
->(({ className, whileHover, transition, ...props }, ref) => (
-  <motion.div
-    ref={ref}
-    className={cn(
-      "rounded-lg border bg-card text-card-foreground shadow-sm",
-      className
-    )}
-    whileHover={whileHover}
-    transition={transition}
-    {...props}
-  />
-));
+type CardProps = Omit<
+  HTMLMotionProps<"div">,
+  "onAnimationStart" | "onDrag" | "onDragEnd" | "onDragStart"
+>;
+
+const Card = React.forwardRef<HTMLDivElement, CardProps>(
+  ({ className, whileHover, transition, ...props }, ref) => (
+    <motion.div
+      ref={ref}
+      className={cn(
+        "rounded-lg border bg-card text-card-foreground shadow-sm",
+        className
+      )}
+      whileHover={whileHover}
+      transition={transition}
+      {...props}
+    />
+  )
+);
 Card.displayName = "Card";
 
 const CardHeader = React.forwardRef<
