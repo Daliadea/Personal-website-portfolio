@@ -35,7 +35,7 @@ export default function About() {
               description={
                 <div className="space-y-2">
                   <p>
-                    I'm a passionate computing student and software developer with a keen
+                    I&apos;m a passionate computing student and software developer with a keen
                     interest in creating beautiful, functional, and user-friendly web
                     applications.
                   </p>
@@ -102,7 +102,7 @@ export default function About() {
               description={
                 <div className="space-y-2">
                   <p>
-                    When I'm not coding, you can find me learning about the latest web
+                    When I&apos;m not coding, you can find me learning about the latest web
                     development trends, exploring new technologies, or working on side
                     projects that challenge my skills.
                   </p>
