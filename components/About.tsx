@@ -8,6 +8,9 @@ import {
   Github, 
   BookOpen 
 } from "lucide-react";
+import { Globe } from "@/components/ui/magic-globe";
+import { AnimatedGrid } from "@/components/ui/magic-grid";
+import { SparklesPreview } from "@/components/ui/aceternity-sparkles";
 
 export default function About() {
   return (
@@ -20,7 +23,7 @@ export default function About() {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <h2 className="text-4xl sm:text-5xl font-bold mb-4">About Me</h2>
+          <h2 className="text-4xl sm:text-5xl font-bold mb-4 text-primary">About Me</h2>
         </motion.div>
 
         <motion.div
@@ -68,28 +71,20 @@ export default function About() {
                   </div>
                 </div>
               }
-              header={
-                <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-lg bg-gradient-to-br from-blue-500 to-cyan-500 items-center justify-center">
-                  <Code2 className="h-12 w-12 text-white" />
-                </div>
-              }
+              header={<AnimatedGrid />}
               className="md:col-span-1"
             />
 
             <BentoGridItem
               title="Open Source Contributor"
               description="I believe in giving back to the community. I actively contribute to open-source projects and maintain several repositories on GitHub. Check out my work and feel free to collaborate!"
-              header={
-                <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-lg bg-gradient-to-br from-gray-700 to-gray-900 items-center justify-center">
-                  <Github className="h-12 w-12 text-white" />
-                </div>
-              }
+              header={<Globe />}
               icon={
                 <a 
                   href="https://github.com/yourusername" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="text-blue-500 hover:text-blue-400 text-xs underline mt-2 inline-block"
+                  className="text-primary hover:text-primary/80 text-xs underline mt-2 inline-block"
                 >
                   Visit my GitHub →
                 </a>
@@ -97,27 +92,31 @@ export default function About() {
               className="md:col-span-1"
             />
 
-            <BentoGridItem
-              title="Continuous Learner"
-              description={
-                <div className="space-y-2">
-                  <p>
-                    When I&apos;m not coding, you can find me learning about the latest web
-                    development trends, exploring new technologies, or working on side
-                    projects that challenge my skills.
-                  </p>
-                  <p className="text-zinc-400 text-xs mt-2">
-                    Currently learning: AI/ML, Web3, and Advanced System Design
-                  </p>
-                </div>
-              }
-              header={
-                <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-lg bg-gradient-to-br from-orange-500 to-red-500 items-center justify-center">
-                  <BookOpen className="h-12 w-12 text-white" />
-                </div>
-              }
-              className="md:col-span-2"
-            />
+            <div className="md:col-span-2">
+              <SparklesPreview>
+                <BentoGridItem
+                  title="Continuous Learner"
+                  description={
+                    <div className="space-y-2">
+                      <p>
+                        When I&apos;m not coding, you can find me learning about the latest web
+                        development trends, exploring new technologies, or working on side
+                        projects that challenge my skills.
+                      </p>
+                      <p className="text-zinc-400 text-xs mt-2">
+                        Currently learning: AI/ML, Web3, and Advanced System Design
+                      </p>
+                    </div>
+                  }
+                  header={
+                    <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-lg bg-transparent items-center justify-center">
+                      <BookOpen className="h-12 w-12 text-white" />
+                    </div>
+                  }
+                  className="bg-transparent border-none"
+                />
+              </SparklesPreview>
+            </div>
           </BentoGrid>
         </motion.div>
       </div>

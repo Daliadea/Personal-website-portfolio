@@ -19,6 +19,29 @@ import {
   DialogDescription,
   DialogFooter,
 } from "@/components/ui/dialog";
+import { Code2, Database, Cloud, Layers, Zap, Globe2 } from "lucide-react";
+
+const techIcons: Record<string, any> = {
+  "Next.js": Code2,
+  "React": Code2,
+  "TypeScript": Code2,
+  "Node.js": Layers,
+  "Python": Code2,
+  "PostgreSQL": Database,
+  "MongoDB": Database,
+  "Prisma": Database,
+  "Redis": Database,
+  "Express": Layers,
+  "FastAPI": Layers,
+  "Stripe": Cloud,
+  "Socket.io": Zap,
+  "TailwindCSS": Layers,
+  "D3.js": Globe2,
+  "Chart.js": Globe2,
+  "React DnD": Code2,
+  "OpenWeather API": Cloud,
+  "Twitter API": Cloud,
+};
 
 const projects = [
   {
@@ -97,7 +120,7 @@ export default function Projects() {
           transition={{ duration: 0.5 }}
         >
           <div className="text-center mb-12">
-            <h2 className="text-4xl sm:text-5xl font-bold mb-4">My Work</h2>
+            <h2 className="text-4xl sm:text-5xl font-bold mb-4 text-primary">My Work</h2>
             <p className="text-zinc-400 text-lg max-w-2xl mx-auto">
               Here are some of my recent projects that showcase my skills and
               experience in web development.
@@ -115,7 +138,7 @@ export default function Projects() {
               <motion.div key={project.id} variants={item}>
                 <Dialog>
                   <Card 
-                    className="h-full flex flex-col bg-zinc-900 border-zinc-800 hover:border-zinc-700 transition-colors"
+                    className="h-full flex flex-col bg-zinc-900 border-zinc-800 hover:border-zinc-700 transition-colors group"
                     whileHover={{ y: -5 }}
                     transition={{ duration: 0.2 }}
                   >
@@ -126,29 +149,52 @@ export default function Projects() {
                           <CardDescription>{project.description}</CardDescription>
                         </CardHeader>
                         <CardContent>
-                          <div className="w-full h-48 bg-zinc-800 rounded-md flex items-center justify-center hover:bg-zinc-750 transition-colors">
-                            <span className="text-zinc-600 text-sm">
-                              Click to learn more
-                            </span>
+                          <div className="w-full h-48 bg-zinc-800 rounded-md overflow-hidden">
+                            <img
+                              src={`https://placehold.co/600x400/27272a/3b82f6?text=${encodeURIComponent(project.title)}`}
+                              alt={project.title}
+                              className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                            />
                           </div>
                         </CardContent>
                       </div>
                     </DialogTrigger>
-                    <CardFooter className="gap-4">
-                      <Button
-                        variant="default"
-                        className="flex-1"
-                        onClick={() => window.open(project.demoUrl, "_blank")}
-                      >
-                        Live Demo
-                      </Button>
-                      <Button
-                        variant="outline"
-                        className="flex-1"
-                        onClick={() => window.open(project.repoUrl, "_blank")}
-                      >
-                        GitHub
-                      </Button>
+                    <CardFooter className="flex-col gap-4 items-start">
+                      <div className="flex flex-wrap gap-2 w-full">
+                        {project.techStack.slice(0, 3).map((tech, index) => {
+                          const Icon = techIcons[tech] || Code2;
+                          return (
+                            <div
+                              key={index}
+                              className="flex items-center gap-1 px-2 py-1 bg-zinc-800 rounded text-xs text-zinc-300"
+                            >
+                              <Icon className="h-3 w-3" />
+                              <span>{tech}</span>
+                            </div>
+                          );
+                        })}
+                        {project.techStack.length > 3 && (
+                          <span className="px-2 py-1 bg-zinc-800 rounded text-xs text-zinc-400">
+                            +{project.techStack.length - 3} more
+                          </span>
+                        )}
+                      </div>
+                      <div className="flex gap-2 w-full">
+                        <Button
+                          variant="default"
+                          className="flex-1"
+                          onClick={() => window.open(project.demoUrl, "_blank")}
+                        >
+                          Live Demo
+                        </Button>
+                        <Button
+                          variant="outline"
+                          className="flex-1"
+                          onClick={() => window.open(project.repoUrl, "_blank")}
+                        >
+                          GitHub
+                        </Button>
+                      </div>
                     </CardFooter>
                   </Card>
 

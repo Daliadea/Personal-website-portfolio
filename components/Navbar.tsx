@@ -53,7 +53,7 @@ export default function Navbar() {
                 <button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className="text-zinc-300 hover:text-white px-3 py-2 text-sm font-medium transition-colors"
+                  className="text-zinc-300 hover:text-primary px-3 py-2 text-sm font-medium transition-colors"
                 >
                   {item.name}
                 </button>
