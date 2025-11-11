@@ -30,7 +30,7 @@ export default function Hero() {
           className="space-y-8"
         >
           <motion.h1
-            className="text-5xl sm:text-6xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-white to-red-400 bg-clip-text text-transparent"
+            className="text-5xl sm:text-6xl md:text-7xl font-bold mb-6 text-white"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -78,8 +78,8 @@ export default function Hero() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, delay: 0.8 }}
           >
-            {/* Glowing gradient background - RED THEME */}
-            <div className="absolute inset-0 bg-gradient-to-r from-red-500/20 via-red-400/20 to-red-300/20 blur-3xl -z-10" />
+            {/* Glowing gradient background - White/Light Red */}
+            <div className="absolute inset-0 bg-gradient-to-r from-white/10 via-red-200/20 to-white/10 blur-3xl -z-10" />
             
             <div className="relative h-full w-full rounded-lg overflow-hidden">
               {/* TODO: Find a new Spline scene that matches a red/dark theme */}

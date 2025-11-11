@@ -27,36 +27,36 @@
     --radius: 0.5rem;
   }
 
-  /* This is our NEW default theme: Dark Red & White */
+  /* This is our NEW default theme: Rich Dark Red & White */
   .dark {
-    --background: 0 100% 4%;     /* Very dark red, almost black */
-    --foreground: 0 0% 98%;       /* White text (near-white) */
+    --background: 0 71% 35%;     /* Rich dark red (red-800: #991B1B) */
+    --foreground: 0 0% 100%;      /* Pure white text */
 
-    --muted: 0 100% 8%;       /* Dark red */
-    --muted-foreground: 0 0% 65%;   /* White text (dimmed) */
+    --muted: 0 73% 42%;       /* Slightly lighter red (red-700) */
+    --muted-foreground: 0 0% 90%;   /* Off-white text */
 
-    --popover: 0 100% 4%;       /* Very dark red */
-    --popover-foreground: 0 0% 98%; /* White text */
+    --popover: 0 71% 35%;       /* Rich dark red */
+    --popover-foreground: 0 0% 100%; /* White text */
 
-    --card: 0 100% 8%;         /* Dark red */
-    --card-foreground: 0 0% 98%; /* White text */
+    --card: 0 73% 42%;         /* Red-700 for cards */
+    --card-foreground: 0 0% 100%; /* Pure white text */
 
-    --border: 0 100% 12%;      /* Dark red (slightly lighter border) */
-    --input: 0 100% 12%;       /* Dark red */
+    --border: 0 0% 100%;      /* White borders */
+    --input: 0 73% 50%;       /* Lighter red for inputs */
 
-    --primary: 0 84% 60%;       /* Vibrant Red (the "accent") */
-    --primary-foreground: 0 0% 100%; /* White */
+    --primary: 0 0% 100%;       /* White for primary elements (headings) */
+    --primary-foreground: 0 71% 35%; /* Dark red text on white */
 
-    --secondary: 0 100% 12%;      /* Dark red */
-    --secondary-foreground: 0 0% 98%; /* White */
+    --secondary: 0 73% 50%;      /* Lighter red */
+    --secondary-foreground: 0 0% 100%; /* White */
 
-    --accent: 0 100% 12%;       /* Dark red */
-    --accent-foreground: 0 0% 98%; /* White */
+    --accent: 0 73% 50%;       /* Lighter red */
+    --accent-foreground: 0 0% 100%; /* White */
 
     --destructive: 0 63% 31%;
     --destructive-foreground: 0 0% 100%;
 
-    --ring: 0 84% 60%;          /* Vibrant Red */
+    --ring: 0 0% 100%;          /* White ring */
 
     --radius: 0.5rem;
   }
@@ -68,8 +68,8 @@
   }
   body {
     @apply bg-background text-foreground;
-    /* Add a subtle gradient from dark red to pure black for depth */
-    @apply bg-gradient-to-b from-background to-black;
+    /* Add a subtle gradient from rich dark red to deeper red for depth */
+    @apply bg-gradient-to-b from-background via-background to-red-900;
   }
 }
 

@@ -171,7 +171,7 @@ export default function Projects() {
                             return (
                               <div
                                 key={index}
-                                className="flex items-center gap-1 px-2 py-1 bg-muted rounded text-xs text-muted-foreground"
+                                className="flex items-center gap-1 px-2 py-1 bg-white/10 rounded text-xs text-white border border-white/20"
                               >
                                 <Icon className="h-3 w-3" />
                                 <span>{tech}</span>
@@ -179,7 +179,7 @@ export default function Projects() {
                             );
                           })}
                           {project.techStack.length > 3 && (
-                            <span className="px-2 py-1 bg-muted rounded text-xs text-muted-foreground">
+                            <span className="px-2 py-1 bg-white/10 rounded text-xs text-white border border-white/20">
                               +{project.techStack.length - 3} more
                             </span>
                           )}
@@ -215,26 +215,26 @@ export default function Projects() {
 
                     <DialogDescription className="text-foreground space-y-4">
                       <div>
-                        <h4 className="text-lg font-semibold text-primary mb-2">The Problem</h4>
-                        <p className="text-muted-foreground leading-relaxed">
+                        <h4 className="text-lg font-semibold text-white mb-2">The Problem</h4>
+                        <p className="text-white/80 leading-relaxed">
                           {project.problem}
                         </p>
                       </div>
 
                       <div>
-                        <h4 className="text-lg font-semibold text-primary mb-2">My Solution</h4>
-                        <p className="text-muted-foreground leading-relaxed">
+                        <h4 className="text-lg font-semibold text-white mb-2">My Solution</h4>
+                        <p className="text-white/80 leading-relaxed">
                           {project.solution}
                         </p>
                       </div>
 
                       <div>
-                        <h4 className="text-lg font-semibold text-primary mb-2">Tech Stack</h4>
+                        <h4 className="text-lg font-semibold text-white mb-2">Tech Stack</h4>
                         <div className="flex flex-wrap gap-2">
                           {project.techStack.map((tech, index) => (
                             <span
                               key={index}
-                              className="px-3 py-1 bg-muted text-muted-foreground rounded-full text-sm"
+                              className="px-3 py-1 bg-white/10 text-white rounded-full text-sm border border-white/20"
                             >
                               {tech}
                             </span>
