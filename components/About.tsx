@@ -50,8 +50,8 @@ export default function About() {
                 </div>
               }
               header={
-                <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-lg bg-gradient-to-br from-violet-500 to-purple-500 items-center justify-center">
-                  <Rocket className="h-12 w-12 text-white" />
+                <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-lg bg-gradient-to-br from-primary to-purple-600 items-center justify-center">
+                  <Rocket className="h-12 w-12 text-primary-foreground" />
                 </div>
               }
               className="md:col-span-2"
@@ -62,12 +62,12 @@ export default function About() {
               description={
                 <div className="space-y-2">
                   <div className="flex flex-wrap gap-2 mt-2">
-                    <span className="px-2 py-1 bg-zinc-800 rounded text-xs">React</span>
-                    <span className="px-2 py-1 bg-zinc-800 rounded text-xs">Next.js</span>
-                    <span className="px-2 py-1 bg-zinc-800 rounded text-xs">TypeScript</span>
-                    <span className="px-2 py-1 bg-zinc-800 rounded text-xs">Node.js</span>
-                    <span className="px-2 py-1 bg-zinc-800 rounded text-xs">TailwindCSS</span>
-                    <span className="px-2 py-1 bg-zinc-800 rounded text-xs">Python</span>
+                    <span className="px-2 py-1 bg-primary/10 text-primary rounded text-xs font-medium">React</span>
+                    <span className="px-2 py-1 bg-primary/10 text-primary rounded text-xs font-medium">Next.js</span>
+                    <span className="px-2 py-1 bg-primary/10 text-primary rounded text-xs font-medium">TypeScript</span>
+                    <span className="px-2 py-1 bg-primary/10 text-primary rounded text-xs font-medium">Node.js</span>
+                    <span className="px-2 py-1 bg-primary/10 text-primary rounded text-xs font-medium">TailwindCSS</span>
+                    <span className="px-2 py-1 bg-primary/10 text-primary rounded text-xs font-medium">Python</span>
                   </div>
                 </div>
               }
@@ -103,14 +103,14 @@ export default function About() {
                         development trends, exploring new technologies, or working on side
                         projects that challenge my skills.
                       </p>
-                      <p className="text-zinc-400 text-xs mt-2">
+                      <p className="text-muted-foreground text-xs mt-2">
                         Currently learning: AI/ML, Web3, and Advanced System Design
                       </p>
                     </div>
                   }
                   header={
                     <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-lg bg-transparent items-center justify-center">
-                      <BookOpen className="h-12 w-12 text-white" />
+                      <BookOpen className="h-12 w-12 text-primary" />
                     </div>
                   }
                   className="bg-transparent border-none"

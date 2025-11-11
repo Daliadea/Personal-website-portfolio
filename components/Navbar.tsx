@@ -27,8 +27,8 @@ export default function Navbar() {
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
         scrolled
-          ? "bg-zinc-950/80 backdrop-blur-md border-b border-zinc-800"
-          : "bg-transparent"
+          ? "bg-background/80 backdrop-blur-md border-b border-border"
+          : "bg-background/50 backdrop-blur-sm border-b border-border/50"
       )}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -36,7 +36,7 @@ export default function Navbar() {
           <div className="flex-shrink-0">
             <button
               onClick={() => scrollToSection("home")}
-              className="text-xl font-bold hover:text-zinc-300 transition-colors"
+              className="text-xl font-bold text-primary hover:text-primary/80 transition-colors"
             >
               Portfolio
             </button>
@@ -53,7 +53,7 @@ export default function Navbar() {
                 <button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className="text-zinc-300 hover:text-primary px-3 py-2 text-sm font-medium transition-colors"
+                  className="text-foreground hover:text-primary px-3 py-2 text-sm font-medium transition-colors"
                 >
                   {item.name}
                 </button>
@@ -63,7 +63,7 @@ export default function Navbar() {
 
           {/* Mobile menu button */}
           <div className="md:hidden">
-            <button className="text-zinc-300 hover:text-white p-2">
+            <button className="text-foreground hover:text-primary p-2">
               <svg
                 className="h-6 w-6"
                 fill="none"

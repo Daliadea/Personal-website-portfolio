@@ -30,7 +30,7 @@ export default function Hero() {
           className="space-y-8"
         >
           <motion.h1
-            className="text-5xl sm:text-6xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-white to-zinc-400 bg-clip-text text-transparent"
+            className="text-5xl sm:text-6xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -39,7 +39,7 @@ export default function Hero() {
           </motion.h1>
 
           <motion.p
-            className="text-xl sm:text-2xl text-zinc-400 mb-8 max-w-2xl mx-auto"
+            className="text-xl sm:text-2xl text-muted-foreground mb-8 max-w-2xl mx-auto"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
@@ -79,7 +79,7 @@ export default function Hero() {
             transition={{ duration: 1, delay: 0.8 }}
           >
             {/* Glowing gradient background */}
-            <div className="absolute inset-0 bg-gradient-to-r from-primary/20 via-blue-500/20 to-cyan-500/20 blur-3xl -z-10" />
+            <div className="absolute inset-0 bg-gradient-to-r from-purple-500/10 via-purple-400/10 to-purple-300/10 blur-3xl -z-10" />
             
             <div className="relative h-full w-full rounded-lg overflow-hidden">
               <Spline scene="https://prod.spline.design/4B0F-Lp7F8nW8n-Y/scene.splinecode" />

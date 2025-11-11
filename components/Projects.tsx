@@ -19,6 +19,7 @@ import {
   DialogDescription,
   DialogFooter,
 } from "@/components/ui/dialog";
+import { BackgroundGradient } from "@/components/ui/background-gradient";
 import { Code2, Database, Cloud, Layers, Zap, Globe2 } from "lucide-react";
 
 const techIcons: Record<string, any> = {
@@ -111,7 +112,7 @@ const item = {
 
 export default function Projects() {
   return (
-    <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8 bg-zinc-900/50">
+    <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/30">
       <div className="container mx-auto max-w-6xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -121,7 +122,7 @@ export default function Projects() {
         >
           <div className="text-center mb-12">
             <h2 className="text-4xl sm:text-5xl font-bold mb-4 text-primary">My Work</h2>
-            <p className="text-zinc-400 text-lg max-w-2xl mx-auto">
+            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
               Here are some of my recent projects that showcase my skills and
               experience in web development.
             </p>
@@ -137,98 +138,103 @@ export default function Projects() {
             {projects.map((project) => (
               <motion.div key={project.id} variants={item}>
                 <Dialog>
-                  <Card 
-                    className="h-full flex flex-col bg-zinc-900 border-zinc-800 hover:border-zinc-700 transition-colors group"
-                    whileHover={{ y: -5 }}
-                    transition={{ duration: 0.2 }}
+                  <BackgroundGradient
+                    className="rounded-[--radius] bg-card p-0.5"
+                    containerClassName="w-full h-full"
                   >
-                    <DialogTrigger asChild>
-                      <div className="cursor-pointer flex-grow">
-                        <CardHeader>
-                          <CardTitle>{project.title}</CardTitle>
-                          <CardDescription>{project.description}</CardDescription>
-                        </CardHeader>
-                        <CardContent>
-                          <div className="w-full h-48 bg-zinc-800 rounded-md overflow-hidden">
-                            <img
-                              src={`https://placehold.co/600x400/27272a/3b82f6?text=${encodeURIComponent(project.title)}`}
-                              alt={project.title}
-                              className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                            />
-                          </div>
-                        </CardContent>
-                      </div>
-                    </DialogTrigger>
-                    <CardFooter className="flex-col gap-4 items-start">
-                      <div className="flex flex-wrap gap-2 w-full">
-                        {project.techStack.slice(0, 3).map((tech, index) => {
-                          const Icon = techIcons[tech] || Code2;
-                          return (
-                            <div
-                              key={index}
-                              className="flex items-center gap-1 px-2 py-1 bg-zinc-800 rounded text-xs text-zinc-300"
-                            >
-                              <Icon className="h-3 w-3" />
-                              <span>{tech}</span>
+                    <Card 
+                      className="h-full flex flex-col bg-card border-none hover:shadow-lg transition-shadow group"
+                      whileHover={{ y: -5 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <DialogTrigger asChild>
+                        <div className="cursor-pointer flex-grow">
+                          <CardHeader>
+                            <CardTitle>{project.title}</CardTitle>
+                            <CardDescription>{project.description}</CardDescription>
+                          </CardHeader>
+                          <CardContent>
+                            <div className="w-full h-48 bg-muted rounded-md overflow-hidden">
+                              <img
+                                src={`https://placehold.co/600x400/e9d5ff/9333ea?text=${encodeURIComponent(project.title)}`}
+                                alt={project.title}
+                                className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                              />
                             </div>
-                          );
-                        })}
-                        {project.techStack.length > 3 && (
-                          <span className="px-2 py-1 bg-zinc-800 rounded text-xs text-zinc-400">
-                            +{project.techStack.length - 3} more
-                          </span>
-                        )}
-                      </div>
-                      <div className="flex gap-2 w-full">
-                        <Button
-                          variant="default"
-                          className="flex-1"
-                          onClick={() => window.open(project.demoUrl, "_blank")}
-                        >
-                          Live Demo
-                        </Button>
-                        <Button
-                          variant="outline"
-                          className="flex-1"
-                          onClick={() => window.open(project.repoUrl, "_blank")}
-                        >
-                          GitHub
-                        </Button>
-                      </div>
-                    </CardFooter>
-                  </Card>
+                          </CardContent>
+                        </div>
+                      </DialogTrigger>
+                      <CardFooter className="flex-col gap-4 items-start">
+                        <div className="flex flex-wrap gap-2 w-full">
+                          {project.techStack.slice(0, 3).map((tech, index) => {
+                            const Icon = techIcons[tech] || Code2;
+                            return (
+                              <div
+                                key={index}
+                                className="flex items-center gap-1 px-2 py-1 bg-muted rounded text-xs text-muted-foreground"
+                              >
+                                <Icon className="h-3 w-3" />
+                                <span>{tech}</span>
+                              </div>
+                            );
+                          })}
+                          {project.techStack.length > 3 && (
+                            <span className="px-2 py-1 bg-muted rounded text-xs text-muted-foreground">
+                              +{project.techStack.length - 3} more
+                            </span>
+                          )}
+                        </div>
+                        <div className="flex gap-2 w-full">
+                          <Button
+                            variant="default"
+                            className="flex-1"
+                            onClick={() => window.open(project.demoUrl, "_blank")}
+                          >
+                            Live Demo
+                          </Button>
+                          <Button
+                            variant="outline"
+                            className="flex-1"
+                            onClick={() => window.open(project.repoUrl, "_blank")}
+                          >
+                            GitHub
+                          </Button>
+                        </div>
+                      </CardFooter>
+                    </Card>
+                  </BackgroundGradient>
 
-                  <DialogContent className="bg-zinc-900 border-zinc-800 text-white max-w-3xl">
+                  <DialogContent className="bg-card border-border text-foreground max-w-3xl">
                     <DialogHeader>
                       <DialogTitle className="text-2xl">{project.title}</DialogTitle>
                     </DialogHeader>
                     
-                    <div className="w-full h-64 bg-zinc-800 rounded-md my-4 flex items-center justify-center">
-                      <span className="text-zinc-600">Project Screenshot</span>
+                    <div className="w-full h-64 bg-muted rounded-md my-4 flex items-center justify-center">
+                      <span className="text-muted-foreground">Project Screenshot</span>
                     </div>
 
-                    <DialogDescription className="text-zinc-300 space-y-4">
+                    <DialogDescription className="text-foreground space-y-4">
                       <div>
-                        <h4 className="text-lg font-semibold text-white mb-2">The Problem</h4>
-                        <p className="text-zinc-400 leading-relaxed">
+                        <h4 className="text-lg font-semibold text-primary mb-2">The Problem</h4>
+                        <p className="text-muted-foreground leading-relaxed">
                           {project.problem}
                         </p>
                       </div>
 
                       <div>
-                        <h4 className="text-lg font-semibold text-white mb-2">My Solution</h4>
-                        <p className="text-zinc-400 leading-relaxed">
+                        <h4 className="text-lg font-semibold text-primary mb-2">My Solution</h4>
+                        <p className="text-muted-foreground leading-relaxed">
                           {project.solution}
                         </p>
                       </div>
 
                       <div>
-                        <h4 className="text-lg font-semibold text-white mb-2">Tech Stack</h4>
+                        <h4 className="text-lg font-semibold text-primary mb-2">Tech Stack</h4>
                         <div className="flex flex-wrap gap-2">
                           {project.techStack.map((tech, index) => (
                             <span
                               key={index}
-                              className="px-3 py-1 bg-zinc-800 text-zinc-300 rounded-full text-sm"
+                              className="px-3 py-1 bg-muted text-muted-foreground rounded-full text-sm"
                             >
                               {tech}
                             </span>

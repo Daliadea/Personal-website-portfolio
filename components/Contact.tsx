@@ -3,10 +3,11 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { BackgroundGradient } from "@/components/ui/background-gradient";
 
 export default function Contact() {
   return (
-    <section id="contact" className="py-20 px-4 sm:px-6 lg:px-8 bg-zinc-900/50">
+    <section id="contact" className="py-20 px-4 sm:px-6 lg:px-8">
       <div className="container mx-auto max-w-4xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -15,8 +16,8 @@ export default function Contact() {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <h2 className="text-4xl sm:text-5xl font-bold mb-4">Get in Touch</h2>
-          <p className="text-zinc-400 text-lg max-w-2xl mx-auto">
+          <h2 className="text-4xl sm:text-5xl font-bold mb-4 text-primary">Get in Touch</h2>
+          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
             I&apos;m always open to new opportunities, collaborations, and
             conversations. Whether you have a project in mind or just want to
             connect, feel free to reach out!
@@ -29,13 +30,14 @@ export default function Contact() {
           transition={{ duration: 0.6, delay: 0.2 }}
           viewport={{ once: true }}
         >
-          <Card className="bg-zinc-900 border-zinc-800">
-            <CardContent className="p-8">
-              <div className="space-y-6">
-                <div className="text-center space-y-4">
-                  <p className="text-zinc-300 text-lg">
-                    Let&apos;s connect and discuss how we can work together!
-                  </p>
+          <BackgroundGradient className="rounded-[--radius]">
+            <Card className="bg-card border-none">
+              <CardContent className="p-8">
+                <div className="space-y-6">
+                  <div className="text-center space-y-4">
+                    <p className="text-foreground text-lg">
+                      Let&apos;s connect and discuss how we can work together!
+                    </p>
                   <div className="flex flex-col sm:flex-row gap-4 justify-center">
                     <Button
                       size="lg"
@@ -101,6 +103,7 @@ export default function Contact() {
               </div>
             </CardContent>
           </Card>
+          </BackgroundGradient>
         </motion.div>
 
         <motion.div
@@ -108,7 +111,7 @@ export default function Contact() {
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.4 }}
           viewport={{ once: true }}
-          className="text-center mt-12 text-zinc-500"
+          className="text-center mt-12 text-muted-foreground"
         >
           <p>&copy; 2024 Your Name. All rights reserved.</p>
         </motion.div>
