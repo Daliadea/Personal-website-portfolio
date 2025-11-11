@@ -50,7 +50,7 @@ export default function About() {
                 </div>
               }
               header={
-                <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-lg bg-gradient-to-br from-primary to-purple-600 items-center justify-center">
+                <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-lg bg-gradient-to-br from-primary to-red-700 items-center justify-center">
                   <Rocket className="h-12 w-12 text-primary-foreground" />
                 </div>
               }

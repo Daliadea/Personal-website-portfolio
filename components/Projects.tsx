@@ -112,7 +112,7 @@ const item = {
 
 export default function Projects() {
   return (
-    <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/30">
+    <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8">
       <div className="container mx-auto max-w-6xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -156,7 +156,7 @@ export default function Projects() {
                           <CardContent>
                             <div className="w-full h-48 bg-muted rounded-md overflow-hidden">
                               <img
-                                src={`https://placehold.co/600x400/e9d5ff/9333ea?text=${encodeURIComponent(project.title)}`}
+                                src={`https://placehold.co/600x400/1a0000/ef4444?text=${encodeURIComponent(project.title)}`}
                                 alt={project.title}
                                 className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                               />

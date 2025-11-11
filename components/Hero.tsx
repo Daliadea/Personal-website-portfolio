@@ -30,7 +30,7 @@ export default function Hero() {
           className="space-y-8"
         >
           <motion.h1
-            className="text-5xl sm:text-6xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent"
+            className="text-5xl sm:text-6xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-white to-red-400 bg-clip-text text-transparent"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -78,11 +78,12 @@ export default function Hero() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, delay: 0.8 }}
           >
-            {/* Glowing gradient background */}
-            <div className="absolute inset-0 bg-gradient-to-r from-purple-500/10 via-purple-400/10 to-purple-300/10 blur-3xl -z-10" />
+            {/* Glowing gradient background - RED THEME */}
+            <div className="absolute inset-0 bg-gradient-to-r from-red-500/20 via-red-400/20 to-red-300/20 blur-3xl -z-10" />
             
             <div className="relative h-full w-full rounded-lg overflow-hidden">
-              <Spline scene="https://prod.spline.design/4B0F-Lp7F8nW8n-Y/scene.splinecode" />
+              {/* TODO: Find a new Spline scene that matches a red/dark theme */}
+              <Spline scene="https://prod.spline.design/gS-dE-zS-r-E1w-F/scene.splinecode" />
             </div>
           </motion.div>
         </motion.div>

@@ -3,60 +3,62 @@
 @tailwind utilities;
 
 @layer base {
+  /* Fallback light mode, just in case */
   :root {
-    --background: 240 5% 96%; /* slate-100 */
-    --foreground: 222 47% 11%; /* slate-900 */
-
-    --muted: 240 5% 90%; /* slate-200 */
-    --muted-foreground: 222 10% 40%; /* slate-600 */
-
-    --popover: 240 10% 100%; /* white */
-    --popover-foreground: 222 47% 11%; /* slate-900 */
-
-    --card: 240 10% 100%; /* white */
-    --card-foreground: 222 47% 11%; /* slate-900 */
-
-    --border: 240 6% 90%; /* slate-200 */
-    --input: 240 6% 90%; /* slate-200 */
-
-    --primary: 262 82% 56%; /* Vibrant Purple */
-    --primary-foreground: 262 82% 96%; /* Light Purple */
-
-    --secondary: 240 5% 90%; /* slate-200 */
-    --secondary-foreground: 222 47% 11%; /* slate-900 */
-
-    --accent: 240 5% 90%; /* slate-200 */
-    --accent-foreground: 222 47% 11%; /* slate-900 */
-
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
+    --primary: 0 72% 51%;
+    --primary-foreground: 0 86% 97%;
+    --secondary: 0 0% 96.1%;
+    --secondary-foreground: 0 0% 9%;
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+    --accent: 0 0% 96.1%;
+    --accent-foreground: 0 0% 9%;
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
-
-    --ring: 262 82% 56%; /* Vibrant Purple */
-
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 0 72% 51%;
     --radius: 0.5rem;
   }
 
+  /* This is our NEW default theme: Dark Red & White */
   .dark {
-    /* This dark mode is a bonus, but we're light-first now */
-    --background: 222 47% 11%; /* slate-900 */
-    --foreground: 240 5% 90%; /* slate-200 */
-    --muted: 222 47% 15%; /* slate-800 */
-    --muted-foreground: 240 5% 65%; /* slate-400 */
-    --popover: 222 47% 11%; /* slate-900 */
-    --popover-foreground: 240 5% 90%; /* slate-200 */
-    --card: 222 47% 11%; /* slate-900 */
-    --card-foreground: 240 5% 90%; /* slate-200 */
-    --border: 222 47% 15%; /* slate-800 */
-    --input: 222 47% 15%; /* slate-800 */
-    --primary: 262 82% 56%; /* Vibrant Purple */
-    --primary-foreground: 262 82% 96%; /* Light Purple */
-    --secondary: 222 47% 15%; /* slate-800 */
-    --secondary-foreground: 240 5% 90%; /* slate-200 */
-    --accent: 222 47% 15%; /* slate-800 */
-    --accent-foreground: 240 5% 90%; /* slate-200 */
+    --background: 0 100% 4%;     /* Very dark red, almost black */
+    --foreground: 0 0% 98%;       /* White text (near-white) */
+
+    --muted: 0 100% 8%;       /* Dark red */
+    --muted-foreground: 0 0% 65%;   /* White text (dimmed) */
+
+    --popover: 0 100% 4%;       /* Very dark red */
+    --popover-foreground: 0 0% 98%; /* White text */
+
+    --card: 0 100% 8%;         /* Dark red */
+    --card-foreground: 0 0% 98%; /* White text */
+
+    --border: 0 100% 12%;      /* Dark red (slightly lighter border) */
+    --input: 0 100% 12%;       /* Dark red */
+
+    --primary: 0 84% 60%;       /* Vibrant Red (the "accent") */
+    --primary-foreground: 0 0% 100%; /* White */
+
+    --secondary: 0 100% 12%;      /* Dark red */
+    --secondary-foreground: 0 0% 98%; /* White */
+
+    --accent: 0 100% 12%;       /* Dark red */
+    --accent-foreground: 0 0% 98%; /* White */
+
     --destructive: 0 63% 31%;
     --destructive-foreground: 0 0% 100%;
-    --ring: 262 82% 56%; /* Vibrant Purple */
+
+    --ring: 0 84% 60%;          /* Vibrant Red */
+
+    --radius: 0.5rem;
   }
 }
 
@@ -66,6 +68,8 @@
   }
   body {
     @apply bg-background text-foreground;
+    /* Add a subtle gradient from dark red to pure black for depth */
+    @apply bg-gradient-to-b from-background to-black;
   }
 }
 
