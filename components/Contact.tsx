@@ -16,7 +16,7 @@ export default function Contact() {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <h2 className="text-4xl sm:text-5xl font-bold mb-4 text-primary">Get in Touch</h2>
+          <h2 className="text-4xl sm:text-5xl font-bold mb-4 text-foreground font-serif">Get in Touch</h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
             I&apos;m always open to new opportunities, collaborations, and
             conversations. Whether you have a project in mind or just want to
@@ -31,7 +31,7 @@ export default function Contact() {
           viewport={{ once: true }}
         >
           <BackgroundGradient className="rounded-[--radius]">
-            <Card className="bg-card border-none">
+            <Card className="bg-card/50 backdrop-blur-sm border-border/20">
               <CardContent className="p-8">
                 <div className="space-y-6">
                   <div className="text-center space-y-4">

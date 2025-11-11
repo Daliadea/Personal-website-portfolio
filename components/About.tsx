@@ -23,7 +23,7 @@ export default function About() {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <h2 className="text-4xl sm:text-5xl font-bold mb-4 text-primary">About Me</h2>
+          <h2 className="text-4xl sm:text-5xl font-bold mb-4 text-foreground font-serif">About Me</h2>
         </motion.div>
 
         <motion.div
@@ -50,8 +50,8 @@ export default function About() {
                 </div>
               }
               header={
-                <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-lg bg-gradient-to-br from-white/20 to-red-400/30 items-center justify-center border border-white/30">
-                  <Rocket className="h-12 w-12 text-white" />
+                <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-lg bg-gradient-to-br from-primary/20 to-primary/30 items-center justify-center border border-primary/30">
+                  <Rocket className="h-12 w-12 text-foreground" />
                 </div>
               }
               className="md:col-span-2"
@@ -62,12 +62,12 @@ export default function About() {
               description={
                 <div className="space-y-2">
                   <div className="flex flex-wrap gap-2 mt-2">
-                    <span className="px-2 py-1 bg-white/20 text-white rounded text-xs font-medium border border-white/30">React</span>
-                    <span className="px-2 py-1 bg-white/20 text-white rounded text-xs font-medium border border-white/30">Next.js</span>
-                    <span className="px-2 py-1 bg-white/20 text-white rounded text-xs font-medium border border-white/30">TypeScript</span>
-                    <span className="px-2 py-1 bg-white/20 text-white rounded text-xs font-medium border border-white/30">Node.js</span>
-                    <span className="px-2 py-1 bg-white/20 text-white rounded text-xs font-medium border border-white/30">TailwindCSS</span>
-                    <span className="px-2 py-1 bg-white/20 text-white rounded text-xs font-medium border border-white/30">Python</span>
+                    <span className="px-2 py-1 bg-primary/10 text-foreground rounded text-xs font-medium border border-primary/30">React</span>
+                    <span className="px-2 py-1 bg-primary/10 text-foreground rounded text-xs font-medium border border-primary/30">Next.js</span>
+                    <span className="px-2 py-1 bg-primary/10 text-foreground rounded text-xs font-medium border border-primary/30">TypeScript</span>
+                    <span className="px-2 py-1 bg-primary/10 text-foreground rounded text-xs font-medium border border-primary/30">Node.js</span>
+                    <span className="px-2 py-1 bg-primary/10 text-foreground rounded text-xs font-medium border border-primary/30">TailwindCSS</span>
+                    <span className="px-2 py-1 bg-primary/10 text-foreground rounded text-xs font-medium border border-primary/30">Python</span>
                   </div>
                 </div>
               }
@@ -110,7 +110,7 @@ export default function About() {
                   }
                   header={
                     <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-lg bg-transparent items-center justify-center">
-                      <BookOpen className="h-12 w-12 text-white" />
+                      <BookOpen className="h-12 w-12 text-foreground" />
                     </div>
                   }
                   className="bg-transparent border-none"

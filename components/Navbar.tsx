@@ -36,7 +36,7 @@ export default function Navbar() {
           <div className="flex-shrink-0">
             <button
               onClick={() => scrollToSection("home")}
-              className="text-xl font-bold text-white hover:text-white/80 transition-colors"
+              className="text-xl font-bold text-foreground font-serif hover:text-foreground/80 transition-colors"
             >
               Portfolio
             </button>
@@ -53,7 +53,7 @@ export default function Navbar() {
                 <button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className="text-white/90 hover:text-white px-3 py-2 text-sm font-medium transition-colors"
+                  className="text-foreground/80 hover:text-foreground px-3 py-2 text-sm font-medium transition-colors"
                 >
                   {item.name}
                 </button>
@@ -63,7 +63,7 @@ export default function Navbar() {
 
           {/* Mobile menu button */}
           <div className="md:hidden">
-            <button className="text-white hover:text-white/80 p-2">
+            <button className="text-foreground hover:text-foreground/80 p-2">
               <svg
                 className="h-6 w-6"
                 fill="none"

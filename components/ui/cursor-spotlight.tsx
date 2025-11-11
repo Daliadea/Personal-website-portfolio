@@ -20,7 +20,7 @@ export function CursorSpotlight() {
       style={{
         background: `radial-gradient(
           600px at ${mousePosition.x}px ${mousePosition.y}px,
-          rgba(255, 255, 255, 0.08), 
+          rgba(76, 175, 80, 0.06), 
           transparent 80%
         )`,
       }}

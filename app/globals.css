@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 @layer base {
-  /* Fallback light mode, just in case */
+  /* Fallback light mode (not used) */
   :root {
     --background: 0 0% 100%;
     --foreground: 0 0% 3.9%;
@@ -11,8 +11,8 @@
     --card-foreground: 0 0% 3.9%;
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 3.9%;
-    --primary: 0 72% 51%;
-    --primary-foreground: 0 86% 97%;
+    --primary: 142 76% 36%;
+    --primary-foreground: 0 0% 100%;
     --secondary: 0 0% 96.1%;
     --secondary-foreground: 0 0% 9%;
     --muted: 0 0% 96.1%;
@@ -23,40 +23,42 @@
     --destructive-foreground: 0 0% 100%;
     --border: 0 0% 89.8%;
     --input: 0 0% 89.8%;
-    --ring: 0 72% 51%;
+    --ring: 142 76% 36%;
     --radius: 0.5rem;
   }
 
-  /* This is our NEW default theme: Rich Dark Red & White */
+  /* This is our NEW default theme: Elegant Dark Green */
   .dark {
-    --background: 0 71% 35%;     /* Rich dark red (red-800: #991B1B) */
-    --foreground: 0 0% 100%;      /* Pure white text */
+    --background: 140 30% 8%;       /* Very Dark Muted Green */
+    --foreground: 40 20% 95%;        /* Off-white / Light Beige */
 
-    --muted: 0 73% 42%;       /* Slightly lighter red (red-700) */
-    --muted-foreground: 0 0% 90%;   /* Off-white text */
+    --muted: 140 30% 12%;      /* Dark Green (slightly lighter) */
+    --muted-foreground: 40 20% 75%;   /* Dimmed white */
 
-    --popover: 0 71% 35%;       /* Rich dark red */
-    --popover-foreground: 0 0% 100%; /* White text */
+    --popover: 140 30% 6%;       /* Very Dark Muted Green */
+    --popover-foreground: 40 20% 95%; /* Off-white */
 
-    --card: 0 73% 42%;         /* Red-700 for cards */
-    --card-foreground: 0 0% 100%; /* Pure white text */
+    /* Cards will be slightly darker than the bg */
+    --card: 140 30% 6%;         /* Very Dark Muted Green (darker) */
+    --card-foreground: 40 20% 95%; /* Off-white */
 
-    --border: 0 0% 100%;      /* White borders */
-    --input: 0 73% 50%;       /* Lighter red for inputs */
+    --border: 140 30% 15%;      /* Muted green border */
+    --input: 140 30% 15%;       /* Muted green */
 
-    --primary: 0 0% 100%;       /* White for primary elements (headings) */
-    --primary-foreground: 0 71% 35%; /* Dark red text on white */
+    /* Primary is now a "heritage" green for subtle highlights */
+    --primary: 140 40% 30%;       /* A muted, mid-green */
+    --primary-foreground: 40 20% 95%; /* Off-white */
 
-    --secondary: 0 73% 50%;      /* Lighter red */
-    --secondary-foreground: 0 0% 100%; /* White */
+    --secondary: 140 30% 15%;     /* Muted green */
+    --secondary-foreground: 40 20% 95%; /* Off-white */
 
-    --accent: 0 73% 50%;       /* Lighter red */
-    --accent-foreground: 0 0% 100%; /* White */
+    --accent: 140 30% 15%;        /* Muted green */
+    --accent-foreground: 40 20% 95%; /* Off-white */
 
     --destructive: 0 63% 31%;
     --destructive-foreground: 0 0% 100%;
 
-    --ring: 0 0% 100%;          /* White ring */
+    --ring: 140 40% 30%;          /* Muted, mid-green */
 
     --radius: 0.5rem;
   }
@@ -68,8 +70,12 @@
   }
   body {
     @apply bg-background text-foreground;
-    /* Add a subtle gradient from rich dark red to deeper red for depth */
-    @apply bg-gradient-to-b from-background via-background to-red-900;
+    /* This creates the subtle, elegant vignette/smoky effect */
+    background-image: radial-gradient(
+      circle at 50% 50%, 
+      hsl(var(--background)) 0%, 
+      hsl(140, 30%, 6%) 100% 
+    );
   }
 }
 

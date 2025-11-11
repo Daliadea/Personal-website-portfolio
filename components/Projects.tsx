@@ -121,7 +121,7 @@ export default function Projects() {
           transition={{ duration: 0.5 }}
         >
           <div className="text-center mb-12">
-            <h2 className="text-4xl sm:text-5xl font-bold mb-4 text-primary">My Work</h2>
+            <h2 className="text-4xl sm:text-5xl font-bold mb-4 text-foreground font-serif">My Work</h2>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
               Here are some of my recent projects that showcase my skills and
               experience in web development.
@@ -143,7 +143,7 @@ export default function Projects() {
                     containerClassName="w-full h-full"
                   >
                     <Card 
-                      className="h-full flex flex-col bg-card border-none hover:shadow-lg transition-shadow group"
+                      className="h-full flex flex-col bg-card/50 backdrop-blur-sm border-border/20 hover:shadow-lg transition-shadow group"
                       whileHover={{ y: -5 }}
                       transition={{ duration: 0.2 }}
                     >
@@ -171,7 +171,7 @@ export default function Projects() {
                             return (
                               <div
                                 key={index}
-                                className="flex items-center gap-1 px-2 py-1 bg-white/10 rounded text-xs text-white border border-white/20"
+                                className="flex items-center gap-1 px-2 py-1 bg-primary/10 rounded text-xs text-foreground border border-primary/30"
                               >
                                 <Icon className="h-3 w-3" />
                                 <span>{tech}</span>
@@ -179,7 +179,7 @@ export default function Projects() {
                             );
                           })}
                           {project.techStack.length > 3 && (
-                            <span className="px-2 py-1 bg-white/10 rounded text-xs text-white border border-white/20">
+                            <span className="px-2 py-1 bg-primary/10 rounded text-xs text-foreground border border-primary/30">
                               +{project.techStack.length - 3} more
                             </span>
                           )}
@@ -204,7 +204,7 @@ export default function Projects() {
                     </Card>
                   </BackgroundGradient>
 
-                  <DialogContent className="bg-card border-border text-foreground max-w-3xl">
+                  <DialogContent className="bg-card/50 backdrop-blur-sm border-border/20 text-foreground max-w-3xl">
                     <DialogHeader>
                       <DialogTitle className="text-2xl">{project.title}</DialogTitle>
                     </DialogHeader>
@@ -215,26 +215,26 @@ export default function Projects() {
 
                     <DialogDescription className="text-foreground space-y-4">
                       <div>
-                        <h4 className="text-lg font-semibold text-white mb-2">The Problem</h4>
-                        <p className="text-white/80 leading-relaxed">
+                        <h4 className="text-lg font-semibold text-foreground mb-2">The Problem</h4>
+                        <p className="text-muted-foreground leading-relaxed">
                           {project.problem}
                         </p>
                       </div>
 
                       <div>
-                        <h4 className="text-lg font-semibold text-white mb-2">My Solution</h4>
-                        <p className="text-white/80 leading-relaxed">
+                        <h4 className="text-lg font-semibold text-foreground mb-2">My Solution</h4>
+                        <p className="text-muted-foreground leading-relaxed">
                           {project.solution}
                         </p>
                       </div>
 
                       <div>
-                        <h4 className="text-lg font-semibold text-white mb-2">Tech Stack</h4>
+                        <h4 className="text-lg font-semibold text-foreground mb-2">Tech Stack</h4>
                         <div className="flex flex-wrap gap-2">
                           {project.techStack.map((tech, index) => (
                             <span
                               key={index}
-                              className="px-3 py-1 bg-white/10 text-white rounded-full text-sm border border-white/20"
+                              className="px-3 py-1 bg-primary/10 text-foreground rounded-full text-sm border border-primary/30"
                             >
                               {tech}
                             </span>
