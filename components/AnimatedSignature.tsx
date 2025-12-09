@@ -37,7 +37,7 @@ export default function AnimatedSignature() {
       initial={{ opacity: 0, y: -10 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
-      className="mb-4"
+      className="mb-4 opacity-70"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -50,7 +50,7 @@ export default function AnimatedSignature() {
             key={index}
             d={segment}
             stroke="white"
-            strokeWidth="0.8"
+            strokeWidth="0.6"
             strokeLinecap="round"
             strokeLinejoin="round"
             fill="none"
