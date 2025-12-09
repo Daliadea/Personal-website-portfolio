@@ -3,7 +3,6 @@
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { ReactNode } from "react";
-import { BackgroundGradient } from "./background-gradient";
 
 export const BentoGrid = ({
   className,
@@ -38,30 +37,25 @@ export const BentoGridItem = ({
   icon?: ReactNode;
 }) => {
   return (
-    <BackgroundGradient
-      className="rounded-[--radius] h-full"
-      containerClassName="h-full"
+    <motion.div
+      className={cn(
+        "row-span-1 rounded-[calc(var(--radius)-0.25rem)] group/bento hover:shadow-xl transition-all duration-300 shadow-input p-4 bg-black/20 backdrop-blur-md border border-white/10 hover:bg-black/30 justify-between flex flex-col space-y-4 h-full",
+        className
+      )}
+      whileHover={{ scale: 1.03 }}
+      transition={{ duration: 0.2 }}
     >
-      <motion.div
-        className={cn(
-          "row-span-1 rounded-[calc(var(--radius)-0.25rem)] group/bento hover:shadow-xl transition duration-200 shadow-input p-4 bg-card/50 backdrop-blur-sm border-border/20 justify-between flex flex-col space-y-4 h-full",
-          className
-        )}
-        whileHover={{ scale: 1.03 }}
-        transition={{ duration: 0.2 }}
-      >
-        {header}
-        <div className="group-hover/bento:translate-x-2 transition duration-200">
-          {icon}
-          <div className="font-sans font-bold text-foreground mb-2 mt-2">
-            {title}
-          </div>
-          <div className="font-sans font-normal text-muted-foreground text-xs">
-            {description}
-          </div>
+      {header}
+      <div className="group-hover/bento:translate-x-2 transition duration-200">
+        {icon}
+        <div className="font-serif font-bold text-foreground mb-2 mt-2">
+          {title}
         </div>
-      </motion.div>
-    </BackgroundGradient>
+        <div className="font-sans font-normal text-muted-foreground text-xs">
+          {description}
+        </div>
+      </div>
+    </motion.div>
   );
 };
 

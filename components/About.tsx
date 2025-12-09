@@ -50,7 +50,7 @@ export default function About() {
                 </div>
               }
               header={
-                <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-lg bg-gradient-to-br from-primary/20 to-primary/30 items-center justify-center border border-primary/30">
+                <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-lg bg-[#0F1C15]/40 items-center justify-center border border-white/5">
                   <Rocket className="h-12 w-12 text-foreground" />
                 </div>
               }
@@ -62,12 +62,12 @@ export default function About() {
               description={
                 <div className="space-y-2">
                   <div className="flex flex-wrap gap-2 mt-2">
-                    <span className="px-2 py-1 bg-primary/10 text-foreground rounded text-xs font-medium border border-primary/30">React</span>
-                    <span className="px-2 py-1 bg-primary/10 text-foreground rounded text-xs font-medium border border-primary/30">Next.js</span>
-                    <span className="px-2 py-1 bg-primary/10 text-foreground rounded text-xs font-medium border border-primary/30">TypeScript</span>
-                    <span className="px-2 py-1 bg-primary/10 text-foreground rounded text-xs font-medium border border-primary/30">Node.js</span>
-                    <span className="px-2 py-1 bg-primary/10 text-foreground rounded text-xs font-medium border border-primary/30">TailwindCSS</span>
-                    <span className="px-2 py-1 bg-primary/10 text-foreground rounded text-xs font-medium border border-primary/30">Python</span>
+                    <span className="px-2 py-1 bg-[#0F1C15]/60 text-foreground rounded text-xs font-medium border border-white/10">React</span>
+                    <span className="px-2 py-1 bg-[#0F1C15]/60 text-foreground rounded text-xs font-medium border border-white/10">Next.js</span>
+                    <span className="px-2 py-1 bg-[#0F1C15]/60 text-foreground rounded text-xs font-medium border border-white/10">TypeScript</span>
+                    <span className="px-2 py-1 bg-[#0F1C15]/60 text-foreground rounded text-xs font-medium border border-white/10">Node.js</span>
+                    <span className="px-2 py-1 bg-[#0F1C15]/60 text-foreground rounded text-xs font-medium border border-white/10">TailwindCSS</span>
+                    <span className="px-2 py-1 bg-[#0F1C15]/60 text-foreground rounded text-xs font-medium border border-white/10">Python</span>
                   </div>
                 </div>
               }
@@ -84,7 +84,7 @@ export default function About() {
                   href="https://github.com/yourusername" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="text-primary hover:text-primary/80 text-xs underline mt-2 inline-block"
+                  className="text-foreground hover:text-muted-foreground text-xs underline mt-2 inline-block"
                 >
                   Visit my GitHub →
                 </a>
