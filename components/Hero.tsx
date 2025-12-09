@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import MagneticButton from "@/components/ui/magnetic-button";
+import AnimatedSignature from "@/components/AnimatedSignature";
 
 export default function Hero() {
   const scrollToSection = (id: string) => {
@@ -29,6 +30,9 @@ export default function Hero() {
             transition={{ duration: 0.8 }}
             className="space-y-8 text-left"
           >
+            {/* Animated Signature */}
+            <AnimatedSignature />
+            
             <motion.h1
               className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-bold text-foreground font-serif leading-tight"
               initial={{ opacity: 0, y: 20 }}

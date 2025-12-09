@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import MagneticButton from "@/components/ui/magnetic-button";
+import LiveStatus from "@/components/LiveStatus";
 
 export default function Contact() {
   return (
@@ -110,9 +111,13 @@ export default function Contact() {
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.4 }}
           viewport={{ once: true }}
-          className="text-center mt-12 text-muted-foreground"
+          className="mt-12 text-muted-foreground"
         >
-          <p>&copy; 2025 Aiken Lim Wenen. All rights reserved.</p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
+            <p className="text-center">&copy; 2025 Aiken Lim Wenen. All rights reserved.</p>
+            <span className="hidden sm:inline text-muted-foreground/60">•</span>
+            <LiveStatus />
+          </div>
         </motion.div>
       </div>
     </section>
