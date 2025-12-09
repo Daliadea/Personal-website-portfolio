@@ -98,8 +98,8 @@ export default function Hero() {
               <motion.img
                 src="https://placehold.co/600x600/1a1a1a/ffffff?text=Your+Photo"
                 alt="Profile"
-                className="relative w-56 h-56 sm:w-64 sm:h-64 lg:w-72 lg:h-72 rounded-2xl object-cover shadow-2xl rotate-3 hover:rotate-0 grayscale hover:grayscale-0 transition-all duration-500 backdrop-blur-sm"
-                whileHover={{ scale: 1.05, rotate: 0 }}
+                className="relative w-56 h-56 sm:w-64 sm:h-64 lg:w-72 lg:h-72 rounded-xl object-cover grayscale hover:grayscale-0 transition-all duration-500"
+                whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.4 }}
               />
               {/* Decorative corner accent */}
