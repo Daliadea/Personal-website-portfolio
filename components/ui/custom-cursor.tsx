@@ -1,17 +1,27 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, useSpring, useMotionValue } from 'framer-motion';
 
 export default function CustomCursor() {
-  const [position, setPosition] = useState({ x: 0, y: 0 });
   const [isHovering, setIsHovering] = useState(false);
-  const [isVisible, setIsVisible] = useState(false);
+  
+  // Use MotionValues for better performance
+  const cursorX = useMotionValue(-100);
+  const cursorY = useMotionValue(-100);
+  
+  // Very snappy spring physics to remove "lag" feel
+  const springConfig = { damping: 25, stiffness: 700 };
+  const cursorXSpring = useSpring(cursorX, springConfig);
+  const cursorYSpring = useSpring(cursorY, springConfig);
 
   useEffect(() => {
-    const updatePosition = (e: MouseEvent) => {
-      setPosition({ x: e.clientX, y: e.clientY });
-      setIsVisible(true);
+    // Hide default cursor
+    document.body.style.cursor = 'none';
+    
+    const moveCursor = (e: MouseEvent) => {
+      cursorX.set(e.clientX - 16); // Center the 32px cursor
+      cursorY.set(e.clientY - 16);
     };
 
     const handleMouseOver = (e: MouseEvent) => {
@@ -29,61 +39,29 @@ export default function CustomCursor() {
       }
     };
 
-    const handleMouseLeave = () => {
-      setIsVisible(false);
-    };
-
-    window.addEventListener('mousemove', updatePosition);
+    window.addEventListener('mousemove', moveCursor);
     window.addEventListener('mouseover', handleMouseOver);
-    document.body.addEventListener('mouseleave', handleMouseLeave);
-    document.body.addEventListener('mouseenter', () => setIsVisible(true));
 
     return () => {
-      window.removeEventListener('mousemove', updatePosition);
+      document.body.style.cursor = 'auto';
+      window.removeEventListener('mousemove', moveCursor);
       window.removeEventListener('mouseover', handleMouseOver);
-      document.body.removeEventListener('mouseleave', handleMouseLeave);
-      document.body.removeEventListener('mouseenter', () => setIsVisible(true));
     };
-  }, []);
-
-  if (!isVisible) return null;
+  }, [cursorX, cursorY]);
 
   return (
-    <>
-      {/* Main cursor ring */}
-      <motion.div
-        className="fixed top-0 left-0 w-8 h-8 border-2 border-white rounded-full pointer-events-none z-[9999] mix-blend-difference"
-        animate={{
-          x: position.x - 16,
-          y: position.y - 16,
-          scale: isHovering ? 2.5 : 1,
-          opacity: isVisible ? 1 : 0,
-        }}
-        transition={{ 
-          type: 'spring', 
-          stiffness: 150, 
-          damping: 15, 
-          mass: 0.1 
-        }}
-      />
-      
-      {/* Inner dot */}
-      <motion.div
-        className="fixed top-0 left-0 w-2 h-2 bg-white rounded-full pointer-events-none z-[9999] mix-blend-difference"
-        animate={{
-          x: position.x - 4,
-          y: position.y - 4,
-          scale: isHovering ? 0 : 1,
-          opacity: isVisible ? 1 : 0,
-        }}
-        transition={{ 
-          type: 'spring', 
-          stiffness: 250, 
-          damping: 20, 
-          mass: 0.05 
-        }}
-      />
-    </>
+    <motion.div
+      className="fixed top-0 left-0 w-8 h-8 rounded-full pointer-events-none z-[9999] mix-blend-difference bg-white"
+      style={{
+        x: cursorXSpring,
+        y: cursorYSpring,
+      }}
+      animate={{
+        scale: isHovering ? 2.5 : 0.3, // Tiny dot normally, big circle on hover
+        opacity: 1,
+      }}
+      transition={{ duration: 0.15 }} // Fast transition for scale
+    />
   );
 }
 

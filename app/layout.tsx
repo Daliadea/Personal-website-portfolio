@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Playfair_Display, Inter } from "next/font/google";
 import "./globals.css";
-import { CursorSpotlight } from "@/components/ui/cursor-spotlight";
+import Spotlight from "@/components/ui/spotlight";
 import CustomCursor from "@/components/ui/custom-cursor";
 import { cn } from "@/lib/utils";
 
@@ -29,11 +29,11 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${playfair.variable} ${inter.variable} dark`} suppressHydrationWarning>
       <body className={cn("font-sans antialiased", inter.variable)}>
-        <CustomCursor />
-        <CursorSpotlight />
+        <Spotlight />
         <main className="relative z-10">
           {children}
         </main>
+        <CustomCursor />
       </body>
     </html>
   );
