@@ -39,7 +39,7 @@ export default function Navbar() {
               onClick={() => scrollToSection("home")}
               className="text-xl font-bold text-foreground font-serif hover:text-foreground/80 transition-colors"
             >
-              Portfolio
+              Aiken Lim
             </button>
           </div>
 

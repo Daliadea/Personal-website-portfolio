@@ -42,7 +42,7 @@ export default function Contact() {
                 variant="outline"
                 onClick={() =>
                   window.open(
-                    "https://www.linkedin.com/in/yourprofile",
+                    "https://www.linkedin.com/in/aiken-lim-931799231/",
                     "_blank"
                   )
                 }
@@ -63,7 +63,7 @@ export default function Contact() {
                 size="lg"
                 variant="outline"
                 onClick={() =>
-                  window.open("mailto:your.email@example.com")
+                  window.open("mailto:aikenmhw@gmail.com")
                 }
                 className="w-full border-white/20 hover:bg-white/10 text-white hover:text-white transition-all duration-300"
               >
@@ -88,7 +88,7 @@ export default function Contact() {
                 size="lg"
                 variant="outline"
                 onClick={() =>
-                  window.open("https://github.com/yourusername", "_blank")
+                  window.open("https://github.com/Daliadea", "_blank")
                 }
                 className="w-full border-white/20 hover:bg-white/10 text-white hover:text-white transition-all duration-300"
               >
@@ -112,7 +112,7 @@ export default function Contact() {
           viewport={{ once: true }}
           className="text-center mt-12 text-muted-foreground"
         >
-          <p>&copy; 2024 Your Name. All rights reserved.</p>
+          <p>&copy; 2025 Aiken Lim Wenen. All rights reserved.</p>
         </motion.div>
       </div>
     </section>
