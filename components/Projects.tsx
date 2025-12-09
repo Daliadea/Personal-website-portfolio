@@ -145,7 +145,7 @@ export default function Projects() {
                       containerClassName="w-full h-full"
                     >
                       <Card 
-                        className="h-full flex flex-col bg-card/50 backdrop-blur-sm border-border/20 hover:shadow-lg transition-shadow group"
+                        className="h-full flex flex-col bg-[#0F1C15]/50 backdrop-blur-sm border border-white/10 hover:shadow-lg transition-shadow group"
                         whileHover={{ y: -5 }}
                         transition={{ duration: 0.2 }}
                       >
@@ -158,7 +158,7 @@ export default function Projects() {
                           <CardContent>
                             <div className="w-full h-48 bg-muted rounded-md overflow-hidden">
                               <img
-                                src={`https://placehold.co/600x400/1a0000/ef4444?text=${encodeURIComponent(project.title)}`}
+                                src={`https://placehold.co/600x400/0F1C15/ffffff?text=${encodeURIComponent(project.title)}`}
                                 alt={project.title}
                                 className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                               />
@@ -188,15 +188,15 @@ export default function Projects() {
                         </div>
                         <div className="flex gap-2 w-full">
                           <Button
-                            variant="default"
-                            className="flex-1"
+                            variant="outline"
+                            className="flex-1 border-white/20"
                             onClick={() => window.open(project.demoUrl, "_blank")}
                           >
                             Live Demo
                           </Button>
                           <Button
                             variant="outline"
-                            className="flex-1"
+                            className="flex-1 border-white/20"
                             onClick={() => window.open(project.repoUrl, "_blank")}
                           >
                             GitHub
@@ -207,7 +207,7 @@ export default function Projects() {
                     </BackgroundGradient>
                   </TiltCard>
 
-                  <DialogContent className="bg-card/50 backdrop-blur-sm border-border/20 text-foreground max-w-3xl">
+                  <DialogContent className="bg-[#0F1C15]/50 backdrop-blur-sm border border-white/10 text-foreground max-w-3xl">
                     <DialogHeader>
                       <DialogTitle className="text-2xl">{project.title}</DialogTitle>
                     </DialogHeader>
@@ -248,13 +248,15 @@ export default function Projects() {
 
                     <DialogFooter className="gap-2 sm:gap-0">
                       <Button
-                        variant="default"
+                        variant="outline"
+                        className="border-white/20"
                         onClick={() => window.open(project.demoUrl, "_blank")}
                       >
                         Live Demo
                       </Button>
                       <Button
                         variant="outline"
+                        className="border-white/20"
                         onClick={() => window.open(project.repoUrl, "_blank")}
                       >
                         GitHub
