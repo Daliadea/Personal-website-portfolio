@@ -2,118 +2,100 @@
 
 import { useEffect, useRef } from 'react';
 
-interface Particle {
-  x: number;
-  y: number;
-  vx: number;
-  vy: number;
-  radius: number;
-  opacity: number;
-}
-
 export default function Particles() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const particlesRef = useRef<Particle[]>([]);
-  const mouseRef = useRef({ x: 0, y: 0 });
 
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
-
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    // Set canvas size
-    const setCanvasSize = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    };
-    setCanvasSize();
-    window.addEventListener('resize', setCanvasSize);
+    let particles: any[] = [];
+    const particleCount = 150; // More fireflies
 
-    // Initialize particles
-    const initParticles = () => {
-      particlesRef.current = [];
-      const particleCount = 50;
+    const resizeCanvas = () => {
+      // Set to full scrollable height (or min window height)
+      canvas.width = window.innerWidth;
+      canvas.height = Math.max(document.documentElement.scrollHeight, window.innerHeight);
+    };
+
+    class Particle {
+      x: number;
+      y: number;
+      size: number;
+      speedX: number;
+      speedY: number;
+      opacity: number;
+
+      constructor() {
+        this.x = Math.random() * canvas!.width;
+        this.y = Math.random() * canvas!.height;
+        this.size = Math.random() * 2 + 0.5; // Varied sizes
+        this.speedX = Math.random() * 0.5 - 0.25; // Slow drift
+        this.speedY = Math.random() * 0.5 - 0.25;
+        this.opacity = Math.random() * 0.5 + 0.1;
+      }
+
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+
+        // Wrap around logic (for the whole page)
+        if (this.x > canvas!.width) this.x = 0;
+        if (this.x < 0) this.x = canvas!.width;
+        if (this.y > canvas!.height) this.y = 0;
+        if (this.y < 0) this.y = canvas!.height;
+      }
+
+      draw() {
+        if (!ctx) return;
+        ctx.fillStyle = `rgba(180, 255, 180, ${this.opacity})`; // Slight firefly tint
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+
+    const init = () => {
+      resizeCanvas();
+      particles = [];
       for (let i = 0; i < particleCount; i++) {
-        particlesRef.current.push({
-          x: Math.random() * canvas.width,
-          y: Math.random() * canvas.height,
-          vx: (Math.random() - 0.5) * 0.5,
-          vy: (Math.random() - 0.5) * 0.5,
-          radius: Math.random() * 2 + 1,
-          opacity: Math.random() * 0.2 + 0.1,
-        });
+        particles.push(new Particle());
       }
     };
-    initParticles();
 
-    // Track mouse
-    const handleMouseMove = (e: MouseEvent) => {
-      mouseRef.current = { x: e.clientX, y: e.clientY };
-    };
-    window.addEventListener('mousemove', handleMouseMove);
-
-    // Animation loop
-    let animationFrameId: number;
     const animate = () => {
+      if (!ctx || !canvas) return;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-      particlesRef.current.forEach((particle) => {
-        // Calculate distance from mouse
-        const dx = mouseRef.current.x - particle.x;
-        const dy = mouseRef.current.y - particle.y;
-        const distance = Math.sqrt(dx * dx + dy * dy);
-        const maxDistance = 150;
-
-        // Move away from mouse if close
-        if (distance < maxDistance) {
-          const force = (maxDistance - distance) / maxDistance;
-          particle.vx -= (dx / distance) * force * 0.1;
-          particle.vy -= (dy / distance) * force * 0.1;
-          particle.opacity = Math.min(0.5, particle.opacity + force * 0.1);
-        } else {
-          // Fade back to normal
-          particle.opacity = Math.max(0.1, particle.opacity - 0.01);
-        }
-
-        // Update position
-        particle.x += particle.vx;
-        particle.y += particle.vy;
-
-        // Damping
-        particle.vx *= 0.99;
-        particle.vy *= 0.99;
-
-        // Wrap edges
-        if (particle.x < 0) particle.x = canvas.width;
-        if (particle.x > canvas.width) particle.x = 0;
-        if (particle.y < 0) particle.y = canvas.height;
-        if (particle.y > canvas.height) particle.y = 0;
-
-        // Draw particle
-        ctx.beginPath();
-        ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(255, 255, 255, ${particle.opacity})`;
-        ctx.fill();
+      particles.forEach((p) => {
+        p.update();
+        p.draw();
       });
-
-      animationFrameId = requestAnimationFrame(animate);
+      requestAnimationFrame(animate);
     };
+
+    init();
     animate();
 
+    window.addEventListener('resize', init);
+    // Re-calc height on scroll to handle dynamic content expansion
+    const handleScroll = () => { 
+      if(Math.abs(canvas.height - document.documentElement.scrollHeight) > 50) resizeCanvas();
+    };
+    window.addEventListener('scroll', handleScroll);
+
     return () => {
-      window.removeEventListener('resize', setCanvasSize);
-      window.removeEventListener('mousemove', handleMouseMove);
-      cancelAnimationFrame(animationFrameId);
+      window.removeEventListener('resize', init);
+      window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
   return (
     <canvas
       ref={canvasRef}
-      className="fixed inset-0 pointer-events-none z-0"
-      style={{ background: 'transparent' }}
+      className="absolute top-0 left-0 w-full pointer-events-none z-0"
+      style={{ height: '100%' }} // Ensure it takes full container height
     />
   );
 }

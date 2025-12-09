@@ -6,31 +6,29 @@ import { motion, useSpring, useMotionValue } from 'framer-motion';
 export default function CustomCursor() {
   const [isHovering, setIsHovering] = useState(false);
   
-  // Motion values for the follower
-  const cursorX = useMotionValue(-100);
-  const cursorY = useMotionValue(-100);
-  
-  // Smooth, elegant spring physics (no jitter)
-  const springConfig = { damping: 25, stiffness: 120 };
-  const cursorXSpring = useSpring(cursorX, springConfig);
-  const cursorYSpring = useSpring(cursorY, springConfig);
+  // 1. Instant Mouse Position (The Diamond Pointer)
+  const mouseX = useMotionValue(-100);
+  const mouseY = useMotionValue(-100);
+
+  // 2. Smooth Spring Position (The Ring Follower)
+  const springConfig = { damping: 25, stiffness: 150 };
+  const ringX = useSpring(mouseX, springConfig);
+  const ringY = useSpring(mouseY, springConfig);
 
   useEffect(() => {
+    // Global Cursor Hide
+    const style = document.createElement('style');
+    style.innerHTML = '* { cursor: none !important; }';
+    document.head.appendChild(style);
+
     const moveCursor = (e: MouseEvent) => {
-      // Center the follower (assuming 32px width)
-      cursorX.set(e.clientX - 16); 
-      cursorY.set(e.clientY - 16);
+      mouseX.set(e.clientX);
+      mouseY.set(e.clientY);
     };
 
     const handleMouseOver = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
-      if (
-        target.tagName === 'BUTTON' || 
-        target.tagName === 'A' || 
-        target.closest('button') || 
-        target.closest('a') ||
-        target.classList.contains('interactive')
-      ) {
+      if (target.tagName === 'BUTTON' || target.tagName === 'A' || target.closest('button') || target.closest('a')) {
         setIsHovering(true);
       } else {
         setIsHovering(false);
@@ -41,24 +39,40 @@ export default function CustomCursor() {
     window.addEventListener('mouseover', handleMouseOver);
 
     return () => {
+      document.head.removeChild(style);
       window.removeEventListener('mousemove', moveCursor);
       window.removeEventListener('mouseover', handleMouseOver);
     };
-  }, [cursorX, cursorY]);
+  }, [mouseX, mouseY]);
 
   return (
-    <motion.div
-      className="fixed top-0 left-0 w-8 h-8 rounded-full border border-white pointer-events-none z-[9999] mix-blend-difference"
-      style={{
-        x: cursorXSpring,
-        y: cursorYSpring,
-      }}
-      animate={{
-        scale: isHovering ? 2 : 1, // Expand when hovering a link
-        borderWidth: isHovering ? '2px' : '1px',
-        backgroundColor: isHovering ? 'rgba(255,255,255,0.1)' : 'transparent',
-      }}
-      transition={{ duration: 0.2 }}
-    />
+    <>
+      {/* The Instant Diamond Pointer */}
+      <motion.div
+        className="fixed top-0 left-0 w-2.5 h-2.5 bg-white pointer-events-none z-[9999] mix-blend-difference"
+        style={{ 
+          x: mouseX, 
+          y: mouseY, 
+          translateX: '-50%', 
+          translateY: '-50%',
+          rotate: 45 // Diamond shape
+        }}
+        animate={{
+          scale: isHovering ? 0.8 : 1, // Subtle shrink on hover
+        }}
+      />
+      
+      {/* The Fluid Ring Follower */}
+      <motion.div
+        className="fixed top-0 left-0 w-8 h-8 border border-white rounded-full pointer-events-none z-[9998] mix-blend-difference"
+        style={{ x: ringX, y: ringY, translateX: '-50%', translateY: '-50%' }}
+        animate={{
+          scale: isHovering ? 2.5 : 1,
+          opacity: isHovering ? 0.3 : 0.6,
+          borderWidth: isHovering ? '1px' : '1.5px',
+        }}
+        transition={{ duration: 0.2 }}
+      />
+    </>
   );
 }
