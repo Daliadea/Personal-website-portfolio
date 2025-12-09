@@ -4,6 +4,7 @@ import { useEffect, useRef } from 'react';
 
 export default function Particles() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const mouseRef = useRef({ x: 0, y: 0 });
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -27,6 +28,7 @@ export default function Particles() {
       speedX: number;
       speedY: number;
       opacity: number;
+      baseOpacity: number;
 
       constructor() {
         this.x = Math.random() * canvas!.width;
@@ -34,12 +36,35 @@ export default function Particles() {
         this.size = Math.random() * 2 + 0.5; // Varied sizes
         this.speedX = Math.random() * 0.5 - 0.25; // Slow drift
         this.speedY = Math.random() * 0.5 - 0.25;
-        this.opacity = Math.random() * 0.5 + 0.1;
+        this.baseOpacity = Math.random() * 0.5 + 0.1;
+        this.opacity = this.baseOpacity;
       }
 
-      update() {
+      update(mouseX: number, mouseY: number, scrollY: number) {
+        // Calculate distance from mouse (accounting for scroll position)
+        const dx = mouseX - this.x;
+        const dy = (mouseY + scrollY) - this.y;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+        const maxDistance = 150;
+
+        // Move away from mouse if close
+        if (distance < maxDistance) {
+          const force = (maxDistance - distance) / maxDistance;
+          this.speedX -= (dx / distance) * force * 0.15;
+          this.speedY -= (dy / distance) * force * 0.15;
+          this.opacity = Math.min(0.8, this.opacity + force * 0.2);
+        } else {
+          // Fade back to base opacity
+          this.opacity = Math.max(this.baseOpacity, this.opacity - 0.01);
+        }
+
+        // Update position with drift
         this.x += this.speedX;
         this.y += this.speedY;
+
+        // Damping to slow down over time
+        this.speedX *= 0.98;
+        this.speedY *= 0.98;
 
         // Wrap around logic (for the whole page)
         if (this.x > canvas!.width) this.x = 0;
@@ -65,11 +90,20 @@ export default function Particles() {
       }
     };
 
+    // Track mouse movement
+    const handleMouseMove = (e: MouseEvent) => {
+      mouseRef.current = { x: e.clientX, y: e.clientY };
+    };
+    window.addEventListener('mousemove', handleMouseMove);
+
     const animate = () => {
       if (!ctx || !canvas) return;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
+      
+      const scrollY = window.scrollY || window.pageYOffset;
+      
       particles.forEach((p) => {
-        p.update();
+        p.update(mouseRef.current.x, mouseRef.current.y, scrollY);
         p.draw();
       });
       requestAnimationFrame(animate);
@@ -88,6 +122,7 @@ export default function Particles() {
     return () => {
       window.removeEventListener('resize', init);
       window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('mousemove', handleMouseMove);
     };
   }, []);
 
