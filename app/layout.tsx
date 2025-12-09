@@ -3,6 +3,7 @@ import { Playfair_Display, Inter } from "next/font/google";
 import "./globals.css";
 import Spotlight from "@/components/ui/spotlight";
 import CustomCursor from "@/components/ui/custom-cursor";
+import Particles from "@/components/ui/particles";
 import { cn } from "@/lib/utils";
 
 const playfair = Playfair_Display({
@@ -29,6 +30,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${playfair.variable} ${inter.variable} dark`} suppressHydrationWarning>
       <body className={cn("font-sans antialiased", inter.variable)}>
+        <Particles />
         <Spotlight />
         <main className="relative z-10">
           {children}

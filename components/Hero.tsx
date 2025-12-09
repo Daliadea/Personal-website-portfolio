@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import MagneticButton from "@/components/ui/magnetic-button";
 
 export default function Hero() {
   const scrollToSection = (id: string) => {
@@ -55,22 +56,26 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
             >
-              <Button
-                size="lg"
-                variant="default"
-                onClick={() => scrollToSection("projects")}
-                className="w-full sm:w-auto text-base"
-              >
-                View My Work
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                onClick={() => scrollToSection("contact")}
-                className="w-full sm:w-auto text-base"
-              >
-                Contact Me
-              </Button>
+              <MagneticButton className="w-full sm:w-auto">
+                <Button
+                  size="lg"
+                  variant="default"
+                  onClick={() => scrollToSection("projects")}
+                  className="w-full text-base"
+                >
+                  View My Work
+                </Button>
+              </MagneticButton>
+              <MagneticButton className="w-full sm:w-auto">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  onClick={() => scrollToSection("contact")}
+                  className="w-full text-base"
+                >
+                  Contact Me
+                </Button>
+              </MagneticButton>
             </motion.div>
           </motion.div>
 

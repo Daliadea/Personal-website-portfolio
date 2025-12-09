@@ -21,6 +21,7 @@ import {
 } from "@/components/ui/dialog";
 import { BackgroundGradient } from "@/components/ui/background-gradient";
 import { Code2, Database, Cloud, Layers, Zap, Globe2 } from "lucide-react";
+import { TiltCard } from "@/components/ui/tilt-card";
 
 const techIcons: Record<string, any> = {
   "Next.js": Code2,
@@ -138,15 +139,16 @@ export default function Projects() {
             {projects.map((project) => (
               <motion.div key={project.id} variants={item}>
                 <Dialog>
-                  <BackgroundGradient
-                    className="rounded-[--radius] bg-card p-0.5"
-                    containerClassName="w-full h-full"
-                  >
-                    <Card 
-                      className="h-full flex flex-col bg-card/50 backdrop-blur-sm border-border/20 hover:shadow-lg transition-shadow group"
-                      whileHover={{ y: -5 }}
-                      transition={{ duration: 0.2 }}
+                  <TiltCard>
+                    <BackgroundGradient
+                      className="rounded-[--radius] bg-card p-0.5"
+                      containerClassName="w-full h-full"
                     >
+                      <Card 
+                        className="h-full flex flex-col bg-card/50 backdrop-blur-sm border-border/20 hover:shadow-lg transition-shadow group"
+                        whileHover={{ y: -5 }}
+                        transition={{ duration: 0.2 }}
+                      >
                       <DialogTrigger asChild>
                         <div className="cursor-pointer flex-grow">
                           <CardHeader>
@@ -201,8 +203,9 @@ export default function Projects() {
                           </Button>
                         </div>
                       </CardFooter>
-                    </Card>
-                  </BackgroundGradient>
+                      </Card>
+                    </BackgroundGradient>
+                  </TiltCard>
 
                   <DialogContent className="bg-card/50 backdrop-blur-sm border-border/20 text-foreground max-w-3xl">
                     <DialogHeader>

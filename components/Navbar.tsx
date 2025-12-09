@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
+import MagneticButton from "@/components/ui/magnetic-button";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -50,13 +51,14 @@ export default function Navbar() {
                 { name: "About", id: "about" },
                 { name: "Contact", id: "contact" },
               ].map((item) => (
-                <button
-                  key={item.id}
-                  onClick={() => scrollToSection(item.id)}
-                  className="text-foreground/80 hover:text-foreground px-3 py-2 text-sm font-medium transition-colors"
-                >
-                  {item.name}
-                </button>
+                <MagneticButton key={item.id}>
+                  <button
+                    onClick={() => scrollToSection(item.id)}
+                    className="text-foreground/80 hover:text-foreground px-3 py-2 text-sm font-medium transition-colors"
+                  >
+                    {item.name}
+                  </button>
+                </MagneticButton>
               ))}
             </div>
           </div>
