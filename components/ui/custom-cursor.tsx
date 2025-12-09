@@ -6,21 +6,19 @@ import { motion, useSpring, useMotionValue } from 'framer-motion';
 export default function CustomCursor() {
   const [isHovering, setIsHovering] = useState(false);
   
-  // Use MotionValues for better performance
+  // Motion values for the follower
   const cursorX = useMotionValue(-100);
   const cursorY = useMotionValue(-100);
   
-  // Very snappy spring physics to remove "lag" feel
-  const springConfig = { damping: 25, stiffness: 700 };
+  // Smooth, elegant spring physics (no jitter)
+  const springConfig = { damping: 25, stiffness: 120 };
   const cursorXSpring = useSpring(cursorX, springConfig);
   const cursorYSpring = useSpring(cursorY, springConfig);
 
   useEffect(() => {
-    // Hide default cursor
-    document.body.style.cursor = 'none';
-    
     const moveCursor = (e: MouseEvent) => {
-      cursorX.set(e.clientX - 16); // Center the 32px cursor
+      // Center the follower (assuming 32px width)
+      cursorX.set(e.clientX - 16); 
       cursorY.set(e.clientY - 16);
     };
 
@@ -43,7 +41,6 @@ export default function CustomCursor() {
     window.addEventListener('mouseover', handleMouseOver);
 
     return () => {
-      document.body.style.cursor = 'auto';
       window.removeEventListener('mousemove', moveCursor);
       window.removeEventListener('mouseover', handleMouseOver);
     };
@@ -51,17 +48,17 @@ export default function CustomCursor() {
 
   return (
     <motion.div
-      className="fixed top-0 left-0 w-8 h-8 rounded-full pointer-events-none z-[9999] mix-blend-difference bg-white"
+      className="fixed top-0 left-0 w-8 h-8 rounded-full border border-white pointer-events-none z-[9999] mix-blend-difference"
       style={{
         x: cursorXSpring,
         y: cursorYSpring,
       }}
       animate={{
-        scale: isHovering ? 2.5 : 0.3, // Tiny dot normally, big circle on hover
-        opacity: 1,
+        scale: isHovering ? 2 : 1, // Expand when hovering a link
+        borderWidth: isHovering ? '2px' : '1px',
+        backgroundColor: isHovering ? 'rgba(255,255,255,0.1)' : 'transparent',
       }}
-      transition={{ duration: 0.15 }} // Fast transition for scale
+      transition={{ duration: 0.2 }}
     />
   );
 }
-
