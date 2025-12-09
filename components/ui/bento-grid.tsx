@@ -39,7 +39,7 @@ export const BentoGridItem = ({
   return (
     <motion.div
       className={cn(
-        "row-span-1 rounded-[calc(var(--radius)-0.25rem)] group/bento hover:shadow-xl transition-all duration-300 shadow-input p-4 bg-black/20 backdrop-blur-md border border-white/10 hover:bg-black/30 justify-between flex flex-col space-y-4 h-full",
+        "row-span-1 rounded-[calc(var(--radius)-0.25rem)] group/bento hover:shadow-xl transition-all duration-300 shadow-input p-4 bg-[#0F1C15]/60 backdrop-blur-md border border-white/10 hover:bg-[#0F1C15]/80 justify-between flex flex-col space-y-4 h-full",
         className
       )}
       whileHover={{ scale: 1.03 }}
