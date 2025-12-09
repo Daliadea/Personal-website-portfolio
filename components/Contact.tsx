@@ -29,7 +29,7 @@ export default function Contact() {
           transition={{ duration: 0.6, delay: 0.2 }}
           viewport={{ once: true }}
           whileHover={{ scale: 1.02 }}
-          className="relative overflow-hidden bg-[#0F1C15]/60 backdrop-blur-md border border-white/10 rounded-2xl p-8 md:p-12 shadow-2xl max-w-3xl mx-auto text-center flex flex-col items-center gap-6 hover:shadow-3xl transition-all duration-300"
+          className="relative overflow-hidden bg-[#0a120d]/60 backdrop-blur-md border border-[#ffffff]/10 hover:border-[#ffffff]/20 rounded-2xl p-8 md:p-12 shadow-2xl max-w-3xl mx-auto text-center flex flex-col items-center gap-6 transition-all duration-300"
         >
           <div className="absolute inset-0 opacity-10 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] pointer-events-none" />
           <p className="text-muted-foreground text-lg relative z-10">

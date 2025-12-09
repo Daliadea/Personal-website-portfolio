@@ -145,14 +145,14 @@ export default function Projects() {
                       containerClassName="w-full h-full"
                     >
                       <Card 
-                        className="h-full flex flex-col bg-[#0F1C15]/50 backdrop-blur-sm border border-white/10 hover:shadow-lg transition-shadow group"
+                        className="h-full flex flex-col bg-[#0a120d]/60 backdrop-blur-md border border-[#ffffff]/10 hover:border-[#ffffff]/20 transition-all duration-300 shadow-2xl group"
                         whileHover={{ y: -5 }}
                         transition={{ duration: 0.2 }}
                       >
                       <DialogTrigger asChild>
                         <div className="cursor-pointer flex-grow">
                           <CardHeader>
-                            <CardTitle>{project.title}</CardTitle>
+                            <CardTitle className="font-serif text-2xl text-[#f2f0e4]">{project.title}</CardTitle>
                             <CardDescription>{project.description}</CardDescription>
                           </CardHeader>
                           <CardContent>
@@ -173,7 +173,7 @@ export default function Projects() {
                             return (
                               <div
                                 key={index}
-                                className="flex items-center gap-1 px-2 py-1 bg-primary/10 rounded text-xs text-foreground border border-primary/30"
+                                className="flex items-center gap-1 px-2 py-1 bg-white/5 text-white/80 border border-white/10 rounded text-xs"
                               >
                                 <Icon className="h-3 w-3" />
                                 <span>{tech}</span>
@@ -181,7 +181,7 @@ export default function Projects() {
                             );
                           })}
                           {project.techStack.length > 3 && (
-                            <span className="px-2 py-1 bg-primary/10 rounded text-xs text-foreground border border-primary/30">
+                            <span className="px-2 py-1 bg-white/5 text-white/80 border border-white/10 rounded text-xs">
                               +{project.techStack.length - 3} more
                             </span>
                           )}
@@ -189,14 +189,14 @@ export default function Projects() {
                         <div className="flex gap-2 w-full">
                           <Button
                             variant="outline"
-                            className="flex-1 border-white/20"
+                            className="flex-1 border-white/20 text-[#f2f0e4] hover:bg-white/5"
                             onClick={() => window.open(project.demoUrl, "_blank")}
                           >
                             Live Demo
                           </Button>
                           <Button
                             variant="outline"
-                            className="flex-1 border-white/20"
+                            className="flex-1 border-white/20 text-[#f2f0e4] hover:bg-white/5"
                             onClick={() => window.open(project.repoUrl, "_blank")}
                           >
                             GitHub
@@ -207,9 +207,9 @@ export default function Projects() {
                     </BackgroundGradient>
                   </TiltCard>
 
-                  <DialogContent className="bg-[#0F1C15]/50 backdrop-blur-sm border border-white/10 text-foreground max-w-3xl">
+                  <DialogContent className="bg-[#0a120d]/60 backdrop-blur-md border border-[#ffffff]/10 hover:border-[#ffffff]/20 transition-all duration-300 shadow-2xl text-foreground max-w-3xl">
                     <DialogHeader>
-                      <DialogTitle className="text-2xl">{project.title}</DialogTitle>
+                      <DialogTitle className="font-serif text-2xl text-[#f2f0e4]">{project.title}</DialogTitle>
                     </DialogHeader>
                     
                     <div className="w-full h-64 bg-muted rounded-md my-4 flex items-center justify-center">
@@ -237,7 +237,7 @@ export default function Projects() {
                           {project.techStack.map((tech, index) => (
                             <span
                               key={index}
-                              className="px-3 py-1 bg-primary/10 text-foreground rounded-full text-sm border border-primary/30"
+                              className="px-3 py-1 bg-white/5 text-white/80 border border-white/10 rounded-full text-sm"
                             >
                               {tech}
                             </span>
@@ -249,14 +249,14 @@ export default function Projects() {
                     <DialogFooter className="gap-2 sm:gap-0">
                       <Button
                         variant="outline"
-                        className="border-white/20"
+                        className="border-white/20 text-[#f2f0e4] hover:bg-white/5"
                         onClick={() => window.open(project.demoUrl, "_blank")}
                       >
                         Live Demo
                       </Button>
                       <Button
                         variant="outline"
-                        className="border-white/20"
+                        className="border-white/20 text-[#f2f0e4] hover:bg-white/5"
                         onClick={() => window.open(project.repoUrl, "_blank")}
                       >
                         GitHub

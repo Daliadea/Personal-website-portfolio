@@ -30,6 +30,10 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${playfair.variable} ${inter.variable} dark`} suppressHydrationWarning>
       <body className={cn("font-sans antialiased relative", inter.variable)}>
+        <div 
+          className="fixed inset-0 z-50 pointer-events-none opacity-[0.03] mix-blend-overlay"
+          style={{ backgroundImage: 'url("https://grainy-gradients.vercel.app/noise.svg")' }}
+        />
         <Particles />
         <Spotlight />
         <main className="relative z-10">

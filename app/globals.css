@@ -83,3 +83,13 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Typography Polish - Luxury Aesthetic */
+h1, h2, h3, h4, h5, h6 {
+  letter-spacing: -0.02em; /* Tighter, more modern tracking */
+  color: #f2f0e4; /* Ensure all headings are Cream, not pure white */
+}
+
+p, span, div {
+  color: #a1a1aa; /* Muted grey/green for body text */
+}
+
