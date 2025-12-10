@@ -111,9 +111,9 @@ export default function Hero() {
               transition={{ duration: 0.3 }}
             >
               <motion.img
-                src="https://placehold.co/600x600/1a1a1a/ffffff?text=Your+Photo"
-                alt="Profile"
-                className="relative w-56 h-56 sm:w-64 sm:h-64 lg:w-72 lg:h-72 rounded-xl object-cover grayscale hover:grayscale-0 transition-all duration-500"
+                src="/profile.jpg"
+                alt="Aiken Lim Wenen"
+                className="relative w-56 h-56 sm:w-64 sm:h-64 lg:w-72 lg:h-72 rounded-xl object-cover hover:scale-105 transition-all duration-500"
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.4 }}
               />
