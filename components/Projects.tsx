@@ -20,9 +20,7 @@ import {
   DialogDescription,
   DialogFooter,
 } from "@/components/ui/dialog";
-import { BackgroundGradient } from "@/components/ui/background-gradient";
 import { Code2, Database, Cloud, Layers, Zap, Globe2, ChevronDown } from "lucide-react";
-import { TiltCard } from "@/components/ui/tilt-card";
 
 const techIcons: Record<string, any> = {
   "Next.js": Code2,
@@ -83,155 +81,140 @@ function ProjectCard({ project }: { project: typeof projects[0] }) {
   const [showAllTech, setShowAllTech] = useState(false);
   const [dialogOpen, setDialogOpen] = useState(false);
 
-  return (
-    <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
-      <TiltCard>
-        <BackgroundGradient
-          className="rounded-[--radius] bg-card p-0.5"
-          containerClassName="w-full h-full"
-        >
-          <Card 
-            className="h-full flex flex-col bg-[#0a120d]/60 backdrop-blur-md border border-[#ffffff]/10 hover:border-[#ffffff]/20 transition-all duration-300 shadow-2xl group"
-          >
-            <div 
-              className="flex-grow cursor-pointer"
-              onClick={() => setDialogOpen(true)}
-            >
-              <CardHeader>
-                <CardTitle className="font-serif text-2xl text-[#f2f0e4]">{project.title}</CardTitle>
-                <CardDescription>{project.description}</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="w-full h-48 bg-muted rounded-md overflow-hidden">
-                  <img
-                    src={`https://placehold.co/600x400/0F1C15/ffffff?text=${encodeURIComponent(project.title)}`}
-                    alt={project.title}
-                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                  />
-                </div>
-              </CardContent>
-            </div>
-            <CardFooter 
-              className="flex-col gap-4 items-start"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <div className="flex flex-wrap gap-2 w-full">
-                {(showAllTech ? project.techStack : project.techStack.slice(0, 3)).map((tech, index) => {
-                  const Icon = techIcons[tech] || Code2;
-                  return (
-                    <div
-                      key={index}
-                      className="flex items-center gap-1 px-2 py-1 bg-white/5 text-white/80 border border-white/10 rounded text-xs"
-                    >
-                      <Icon className="h-3 w-3" />
-                      <span>{tech}</span>
-                    </div>
-                  );
-                })}
-                {project.techStack.length > 3 && !showAllTech && (
-                  <button
-                    type="button"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      setShowAllTech(true);
-                    }}
-                    className="px-2 py-1 bg-white/5 text-white/80 border border-white/10 rounded text-xs hover:bg-white/10 hover:border-white/20 transition-all cursor-pointer"
-                  >
-                    +{project.techStack.length - 3} more
-                  </button>
-                )}
-                {showAllTech && project.techStack.length > 3 && (
-                  <button
-                    type="button"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      setShowAllTech(false);
-                    }}
-                    className="px-2 py-1 bg-white/5 text-white/80 border border-white/10 rounded text-xs hover:bg-white/10 hover:border-white/20 transition-all cursor-pointer"
-                  >
-                    Show less
-                  </button>
-                )}
-              </div>
-              <div className="flex gap-2 w-full">
-                <Button
-                  type="button"
-                  variant="outline"
-                  className="flex-1 border-white/20 text-[#f2f0e4] hover:bg-white/5"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    window.open(project.demoUrl || project.repoUrl, "_blank");
-                  }}
-                >
-                  View Project
-                </Button>
-                <Button
-                  type="button"
-                  variant="outline"
-                  className="flex-1 border-white/20 text-[#f2f0e4] hover:bg-white/5"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    window.open(project.repoUrl, "_blank");
-                  }}
-                >
-                  GitHub
-                </Button>
-              </div>
-            </CardFooter>
-          </Card>
-        </BackgroundGradient>
-      </TiltCard>
+  const handleTechToggle = () => {
+    setShowAllTech(!showAllTech);
+  };
 
-      <DialogContent className="bg-[#0a120d]/60 backdrop-blur-md border border-[#ffffff]/10 hover:border-[#ffffff]/20 transition-all duration-300 shadow-2xl text-foreground max-w-3xl">
-        <DialogHeader>
-          <DialogTitle className="font-serif text-2xl text-[#f2f0e4]">{project.title}</DialogTitle>
-        </DialogHeader>
-        
-        <div className="w-full h-64 bg-muted rounded-md my-4 flex items-center justify-center">
-          <span className="text-muted-foreground">Project Screenshot</span>
+  const handleViewProject = () => {
+    window.open(project.demoUrl || project.repoUrl, "_blank");
+  };
+
+  const handleViewGitHub = () => {
+    window.open(project.repoUrl, "_blank");
+  };
+
+  return (
+    <>
+      <Card className="h-full flex flex-col bg-[#0a120d]/60 backdrop-blur-md border border-[#ffffff]/10 hover:border-[#ffffff]/20 transition-all duration-300 shadow-2xl">
+        {/* Card Header - Clickable to open dialog */}
+        <div 
+          className="cursor-pointer"
+          onClick={() => setDialogOpen(true)}
+        >
+          <CardHeader>
+            <CardTitle className="font-serif text-2xl text-[#f2f0e4]">{project.title}</CardTitle>
+            <CardDescription>{project.description}</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="w-full h-48 bg-muted rounded-md overflow-hidden">
+              <img
+                src={`https://placehold.co/600x400/0F1C15/ffffff?text=${encodeURIComponent(project.title)}`}
+                alt={project.title}
+                className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+              />
+            </div>
+          </CardContent>
         </div>
 
-        <DialogDescription className="text-foreground space-y-4">
-          <div>
-            <h4 className="text-lg font-semibold text-foreground mb-2">The Problem</h4>
-            <p className="text-muted-foreground leading-relaxed">
-              {project.problem}
-            </p>
-          </div>
-
-          <div>
-            <h4 className="text-lg font-semibold text-foreground mb-2">My Solution</h4>
-            <p className="text-muted-foreground leading-relaxed">
-              {project.solution}
-            </p>
-          </div>
-
-          <div>
-            <h4 className="text-lg font-semibold text-foreground mb-2">Tech Stack</h4>
-            <div className="flex flex-wrap gap-2">
-              {project.techStack.map((tech, index) => (
-                <span
+        {/* Card Footer - NOT clickable for dialog */}
+        <CardFooter className="flex-col gap-4 items-start mt-auto">
+          {/* Tech Stack */}
+          <div className="flex flex-wrap gap-2 w-full">
+            {(showAllTech ? project.techStack : project.techStack.slice(0, 3)).map((tech, index) => {
+              const Icon = techIcons[tech] || Code2;
+              return (
+                <div
                   key={index}
-                  className="px-3 py-1 bg-white/5 text-white/80 border border-white/10 rounded-full text-sm"
+                  className="flex items-center gap-1 px-2 py-1 bg-white/5 text-white/80 border border-white/10 rounded text-xs"
                 >
-                  {tech}
-                </span>
-              ))}
-            </div>
+                  <Icon className="h-3 w-3" />
+                  <span>{tech}</span>
+                </div>
+              );
+            })}
+            {project.techStack.length > 3 && (
+              <button
+                onClick={handleTechToggle}
+                className="px-2 py-1 bg-white/5 text-white/80 border border-white/10 rounded text-xs hover:bg-white/10 hover:border-white/20 transition-all cursor-pointer"
+              >
+                {showAllTech ? 'Show less' : `+${project.techStack.length - 3} more`}
+              </button>
+            )}
           </div>
-        </DialogDescription>
 
-        <DialogFooter className="gap-2 sm:gap-0">
-          <Button
-            variant="outline"
-            className="border-white/20 text-[#f2f0e4] hover:bg-white/5"
-            onClick={() => window.open(project.repoUrl, "_blank")}
-          >
-            View on GitHub
-          </Button>
-        </DialogFooter>
-      </DialogContent>
-    </Dialog>
+          {/* Action Buttons */}
+          <div className="flex gap-2 w-full">
+            <Button
+              variant="outline"
+              className="flex-1 border-white/20 text-[#f2f0e4] hover:bg-white/5"
+              onClick={handleViewProject}
+            >
+              View Project
+            </Button>
+            <Button
+              variant="outline"
+              className="flex-1 border-white/20 text-[#f2f0e4] hover:bg-white/5"
+              onClick={handleViewGitHub}
+            >
+              GitHub
+            </Button>
+          </div>
+        </CardFooter>
+      </Card>
+
+      {/* Dialog for project details */}
+      <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
+        <DialogContent className="bg-[#0a120d]/60 backdrop-blur-md border border-[#ffffff]/10 hover:border-[#ffffff]/20 transition-all duration-300 shadow-2xl text-foreground max-w-3xl">
+          <DialogHeader>
+            <DialogTitle className="font-serif text-2xl text-[#f2f0e4]">{project.title}</DialogTitle>
+          </DialogHeader>
+          
+          <div className="w-full h-64 bg-muted rounded-md my-4 flex items-center justify-center">
+            <span className="text-muted-foreground">Project Screenshot</span>
+          </div>
+
+          <DialogDescription className="text-foreground space-y-4">
+            <div>
+              <h4 className="text-lg font-semibold text-foreground mb-2">The Problem</h4>
+              <p className="text-muted-foreground leading-relaxed">
+                {project.problem}
+              </p>
+            </div>
+
+            <div>
+              <h4 className="text-lg font-semibold text-foreground mb-2">My Solution</h4>
+              <p className="text-muted-foreground leading-relaxed">
+                {project.solution}
+              </p>
+            </div>
+
+            <div>
+              <h4 className="text-lg font-semibold text-foreground mb-2">Tech Stack</h4>
+              <div className="flex flex-wrap gap-2">
+                {project.techStack.map((tech, index) => (
+                  <span
+                    key={index}
+                    className="px-3 py-1 bg-white/5 text-white/80 border border-white/10 rounded-full text-sm"
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </DialogDescription>
+
+          <DialogFooter className="gap-2 sm:gap-0">
+            <Button
+              variant="outline"
+              className="border-white/20 text-[#f2f0e4] hover:bg-white/5"
+              onClick={handleViewGitHub}
+            >
+              View on GitHub
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+    </>
   );
 }
 
