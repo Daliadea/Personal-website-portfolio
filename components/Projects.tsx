@@ -121,28 +121,45 @@ function ProjectCard({ project }: { project: typeof projects[0] }) {
           {/* Card Footer - NOT clickable for dialog */}
           <CardFooter className="flex-col gap-4 items-start mt-auto">
             {/* Tech Stack */}
-            <div className="flex flex-wrap gap-2 w-full">
-              {(showAllTech ? project.techStack : project.techStack.slice(0, 3)).map((tech, index) => {
-                const Icon = techIcons[tech] || Code2;
-                return (
-                  <div
-                    key={index}
-                    className="flex items-center gap-1 px-2 py-1 bg-white/5 text-white/80 border border-white/10 rounded text-xs"
-                  >
-                    <Icon className="h-3 w-3" />
-                    <span>{tech}</span>
-                  </div>
-                );
-              })}
+            <motion.div 
+              layout
+              className="flex flex-wrap gap-2 w-full"
+            >
+              <AnimatePresence mode="popLayout">
+                {(showAllTech ? project.techStack : project.techStack.slice(0, 3)).map((tech, index) => {
+                  const Icon = techIcons[tech] || Code2;
+                  return (
+                    <motion.div
+                      key={tech}
+                      layout
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 0.8 }}
+                      transition={{ 
+                        duration: 0.3,
+                        delay: index * 0.05,
+                        ease: "easeOut"
+                      }}
+                      className="flex items-center gap-1 px-2 py-1 bg-white/5 text-white/80 border border-white/10 rounded text-xs"
+                    >
+                      <Icon className="h-3 w-3" />
+                      <span>{tech}</span>
+                    </motion.div>
+                  );
+                })}
+              </AnimatePresence>
               {project.techStack.length > 3 && (
-                <button
+                <motion.button
+                  layout
                   onClick={handleTechToggle}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
                   className="px-2 py-1 bg-white/5 text-white/80 border border-white/10 rounded text-xs hover:bg-white/10 hover:border-white/20 transition-all cursor-pointer"
                 >
                   {showAllTech ? 'Show less' : `+${project.techStack.length - 3} more`}
-                </button>
+                </motion.button>
               )}
-            </div>
+            </motion.div>
 
             {/* Action Buttons */}
             <div className="flex gap-2 w-full">
