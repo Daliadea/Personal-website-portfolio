@@ -83,29 +83,22 @@ function ProjectCard({ project }: { project: typeof projects[0] }) {
   const [showAllTech, setShowAllTech] = useState(false);
   const [dialogOpen, setDialogOpen] = useState(false);
 
-  const handleLinkClick = (url: string) => {
-    window.open(url, "_blank", "noopener,noreferrer");
-  };
-
   const handleExpandTech = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    e.nativeEvent.stopImmediatePropagation();
     setShowAllTech(true);
   };
 
   const handleCollapseTech = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    e.nativeEvent.stopImmediatePropagation();
     setShowAllTech(false);
   };
 
   const handleButtonClick = (e: React.MouseEvent, url: string) => {
     e.preventDefault();
     e.stopPropagation();
-    e.nativeEvent.stopImmediatePropagation();
-    handleLinkClick(url);
+    window.open(url, "_blank", "noopener,noreferrer");
   };
 
   return (
@@ -136,28 +129,8 @@ function ProjectCard({ project }: { project: typeof projects[0] }) {
                 </div>
               </CardContent>
             </div>
-            <CardFooter 
-              className="flex-col gap-4 items-start relative z-50 pointer-events-auto"
-              onClick={(e) => {
-                e.stopPropagation();
-                e.nativeEvent.stopImmediatePropagation();
-              }}
-              onMouseDown={(e) => {
-                e.stopPropagation();
-                e.nativeEvent.stopImmediatePropagation();
-              }}
-            >
-              <div 
-                className="flex flex-wrap gap-2 w-full pointer-events-auto" 
-                onClick={(e) => {
-                  e.stopPropagation();
-                  e.nativeEvent.stopImmediatePropagation();
-                }}
-                onMouseDown={(e) => {
-                  e.stopPropagation();
-                  e.nativeEvent.stopImmediatePropagation();
-                }}
-              >
+            <CardFooter className="flex-col gap-4 items-start">
+              <div className="flex flex-wrap gap-2 w-full">
                 {(showAllTech ? project.techStack : project.techStack.slice(0, 3)).map((tech, index) => {
                   const Icon = techIcons[tech] || Code2;
                   return (
@@ -174,12 +147,7 @@ function ProjectCard({ project }: { project: typeof projects[0] }) {
                   <button
                     type="button"
                     onClick={handleExpandTech}
-                    onMouseDown={(e) => {
-                      e.preventDefault();
-                      e.stopPropagation();
-                      e.nativeEvent.stopImmediatePropagation();
-                    }}
-                    className="px-2 py-1 bg-white/5 text-white/80 border border-white/10 rounded text-xs hover:bg-white/10 hover:border-white/20 transition-all cursor-pointer relative z-[100] pointer-events-auto"
+                    className="px-2 py-1 bg-white/5 text-white/80 border border-white/10 rounded text-xs hover:bg-white/10 hover:border-white/20 transition-all cursor-pointer"
                   >
                     +{project.techStack.length - 3} more
                   </button>
@@ -188,51 +156,26 @@ function ProjectCard({ project }: { project: typeof projects[0] }) {
                   <button
                     type="button"
                     onClick={handleCollapseTech}
-                    onMouseDown={(e) => {
-                      e.preventDefault();
-                      e.stopPropagation();
-                      e.nativeEvent.stopImmediatePropagation();
-                    }}
-                    className="px-2 py-1 bg-white/5 text-white/80 border border-white/10 rounded text-xs hover:bg-white/10 hover:border-white/20 transition-all cursor-pointer relative z-[100] pointer-events-auto"
+                    className="px-2 py-1 bg-white/5 text-white/80 border border-white/10 rounded text-xs hover:bg-white/10 hover:border-white/20 transition-all cursor-pointer"
                   >
                     Show less
                   </button>
                 )}
               </div>
-              <div 
-                className="flex gap-2 w-full relative z-[100] pointer-events-auto" 
-                onClick={(e) => {
-                  e.stopPropagation();
-                  e.nativeEvent.stopImmediatePropagation();
-                }}
-                onMouseDown={(e) => {
-                  e.stopPropagation();
-                  e.nativeEvent.stopImmediatePropagation();
-                }}
-              >
+              <div className="flex gap-2 w-full">
                 <Button
                   type="button"
                   variant="outline"
-                  className="flex-1 border-white/20 text-[#f2f0e4] hover:bg-white/5 relative z-[100] pointer-events-auto"
+                  className="flex-1 border-white/20 text-[#f2f0e4] hover:bg-white/5"
                   onClick={(e) => handleButtonClick(e, project.demoUrl || project.repoUrl)}
-                  onMouseDown={(e) => {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    e.nativeEvent.stopImmediatePropagation();
-                  }}
                 >
                   View Project
                 </Button>
                 <Button
                   type="button"
                   variant="outline"
-                  className="flex-1 border-white/20 text-[#f2f0e4] hover:bg-white/5 relative z-[100] pointer-events-auto"
+                  className="flex-1 border-white/20 text-[#f2f0e4] hover:bg-white/5"
                   onClick={(e) => handleButtonClick(e, project.repoUrl)}
-                  onMouseDown={(e) => {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    e.nativeEvent.stopImmediatePropagation();
-                  }}
                 >
                   GitHub
                 </Button>
