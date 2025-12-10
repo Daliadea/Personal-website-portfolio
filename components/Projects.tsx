@@ -20,11 +20,16 @@ import {
   DialogDescription,
   DialogFooter,
 } from "@/components/ui/dialog";
-import { Code2, Database, Cloud, Layers, Zap, Globe2, ChevronDown, Github, ExternalLink } from "lucide-react";
+import { Code2, Database, Cloud, Layers, Zap, Globe2, ChevronDown, Github, ExternalLink, FileText } from "lucide-react";
 import { TiltCard } from "@/components/ui/tilt-card";
 
 // Helper function to parse date strings and extract end date for sorting
 const parseDate = (dateString: string): Date => {
+  // Handle "Present" dates - sort them to the top (use future date)
+  if (dateString.includes("Present")) {
+    return new Date(9999, 11, 31); // Far future date to sort to top
+  }
+  
   // Extract the end date from formats like "Feb 2024 - Jun 2024" or "Jun 2024"
   const parts = dateString.split('-').map(part => part.trim());
   const endDate = parts.length > 1 ? parts[1] : parts[0];
@@ -70,6 +75,8 @@ const techIcons: Record<string, any> = {
   "AI Systems": Zap,
   "Game Development": Layers,
   "3D Graphics": Globe2,
+  "Telegram API": Cloud,
+  "Workflow Automation": Zap,
 };
 
 const projects = [
@@ -118,6 +125,22 @@ const projects = [
     techStack: ["Unity", "C#", "ShaderLab", "HLSL", "NavMesh", "AI Systems", "Game Development", "3D Graphics"],
     category: "Game Development"
   },
+  {
+    id: 4,
+    title: "NUH Radiology Chatbot",
+    description:
+      "Developed a chatbot prototype for the Department of Diagnostic Radiology to streamline workflow processes. Received official commendation for technical expertise and innovation.",
+    imageUrl: "/projects/nuh-radiology-chatbot.jpg",
+    imageCaption: "Chatbot interface for NUH Radiology Department workflow automation",
+    demoUrl: "#",
+    repoUrl: "",
+    pdfUrl: "/assets/NUH_Letter.pdf",
+    date: "Feb 2025 - Present",
+    problem: "Healthcare departments face significant challenges in managing workflow processes efficiently, especially in diagnostic radiology where timely communication and task management are critical. Manual processes can lead to delays, miscommunication, and increased administrative burden on staff. There is a need for automated solutions that can streamline workflows while maintaining accuracy and compliance with healthcare standards.",
+    solution: "Developed a chatbot prototype for the Department of Diagnostic Radiology at NUH to automate and streamline workflow processes. Built using Python with Telegram API integration to create an intuitive interface for staff interactions. Implemented workflow automation features that reduce manual tasks and improve response times. The solution received official commendation for technical expertise and innovation, demonstrating the ability to create practical, impactful solutions for healthcare environments. The chatbot successfully addresses real-world workflow challenges while maintaining the reliability and security standards required in medical settings.",
+    techStack: ["Python", "Telegram API", "Workflow Automation"],
+    category: "Full Stack"
+  },
 ];
 
 const container = {
@@ -150,7 +173,13 @@ function ProjectCard({ project }: { project: typeof projects[0] }) {
   };
 
   const handleViewGitHub = () => {
-    window.open(project.repoUrl, "_blank");
+    if (project.repoUrl) {
+      window.open(project.repoUrl, "_blank");
+    }
+  };
+
+  const handleViewPDF = () => {
+    window.open(project.pdfUrl, "_blank");
   };
 
   return (
@@ -227,15 +256,27 @@ function ProjectCard({ project }: { project: typeof projects[0] }) {
 
             {/* Action Buttons - Bottom Right */}
             <div className="flex gap-2 w-full justify-end">
-              <motion.button
-                onClick={handleViewGitHub}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="p-2 bg-white/5 text-white/80 border border-white/10 rounded hover:bg-white/10 hover:border-white/20 transition-all"
-                aria-label="View on GitHub"
-              >
-                <Github className="h-4 w-4" />
-              </motion.button>
+              {project.pdfUrl ? (
+                <motion.button
+                  onClick={handleViewPDF}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="p-2 bg-white/5 text-white/80 border border-white/10 rounded hover:bg-white/10 hover:border-white/20 transition-all"
+                  aria-label="View PDF"
+                >
+                  <FileText className="h-4 w-4" />
+                </motion.button>
+              ) : (
+                <motion.button
+                  onClick={handleViewGitHub}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="p-2 bg-white/5 text-white/80 border border-white/10 rounded hover:bg-white/10 hover:border-white/20 transition-all"
+                  aria-label="View on GitHub"
+                >
+                  <Github className="h-4 w-4" />
+                </motion.button>
+              )}
               <motion.button
                 onClick={handleViewProject}
                 whileHover={{ scale: 1.05 }}
@@ -304,13 +345,23 @@ function ProjectCard({ project }: { project: typeof projects[0] }) {
           </DialogDescription>
 
           <DialogFooter className="gap-2 sm:gap-0">
-            <Button
-              variant="outline"
-              className="border-white/20 text-[#f2f0e4] hover:bg-white/5"
-              onClick={handleViewGitHub}
-            >
-              View on GitHub
-            </Button>
+            {project.pdfUrl ? (
+              <Button
+                variant="outline"
+                className="border-white/20 text-[#f2f0e4] hover:bg-white/5"
+                onClick={handleViewPDF}
+              >
+                View PDF
+              </Button>
+            ) : (
+              <Button
+                variant="outline"
+                className="border-white/20 text-[#f2f0e4] hover:bg-white/5"
+                onClick={handleViewGitHub}
+              >
+                View on GitHub
+              </Button>
+            )}
           </DialogFooter>
         </DialogContent>
       </Dialog>
