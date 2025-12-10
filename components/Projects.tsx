@@ -86,7 +86,7 @@ function ProjectCard({ project }: { project: typeof projects[0] }) {
   const handleTechToggle = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    setShowAllTech(!showAllTech);
+    setShowAllTech((prev) => !prev);
   };
 
   const handleLinkClick = (e: React.MouseEvent, url: string) => {
@@ -142,16 +142,7 @@ function ProjectCard({ project }: { project: typeof projects[0] }) {
                 {project.techStack.length > 3 && !showAllTech && (
                   <button
                     type="button"
-                    onMouseDown={(e) => {
-                      e.preventDefault();
-                      e.stopPropagation();
-                      setShowAllTech(true);
-                    }}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      e.stopPropagation();
-                      setShowAllTech(true);
-                    }}
+                    onClick={handleTechToggle}
                     className="px-2 py-1 bg-white/5 text-white/80 border border-white/10 rounded text-xs hover:bg-white/10 hover:border-white/20 transition-all cursor-pointer relative z-[100]"
                   >
                     +{project.techStack.length - 3} more
@@ -160,16 +151,7 @@ function ProjectCard({ project }: { project: typeof projects[0] }) {
                 {showAllTech && project.techStack.length > 3 && (
                   <button
                     type="button"
-                    onMouseDown={(e) => {
-                      e.preventDefault();
-                      e.stopPropagation();
-                      setShowAllTech(false);
-                    }}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      e.stopPropagation();
-                      setShowAllTech(false);
-                    }}
+                    onClick={handleTechToggle}
                     className="px-2 py-1 bg-white/5 text-white/80 border border-white/10 rounded text-xs hover:bg-white/10 hover:border-white/20 transition-all cursor-pointer relative z-[100]"
                   >
                     Show less
@@ -184,12 +166,10 @@ function ProjectCard({ project }: { project: typeof projects[0] }) {
                   onMouseDown={(e) => {
                     e.preventDefault();
                     e.stopPropagation();
-                    handleLinkClick(e, project.repoUrl);
+                    handleLinkClick(e, project.demoUrl || project.repoUrl);
                   }}
                   onClick={(e) => {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    handleLinkClick(e, project.repoUrl);
+                    handleLinkClick(e, project.demoUrl || project.repoUrl);
                   }}
                 >
                   View Project
