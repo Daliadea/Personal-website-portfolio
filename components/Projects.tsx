@@ -79,6 +79,155 @@ const item = {
 
 const categories = ["All", "Full Stack", "Frontend", "Backend"];
 
+function ProjectCard({ project }: { project: typeof projects[0] }) {
+  const [showAllTech, setShowAllTech] = useState(false);
+
+  return (
+    <Dialog>
+      <TiltCard>
+        <BackgroundGradient
+          className="rounded-[--radius] bg-card p-0.5"
+          containerClassName="w-full h-full"
+        >
+          <Card 
+            className="h-full flex flex-col bg-[#0a120d]/60 backdrop-blur-md border border-[#ffffff]/10 hover:border-[#ffffff]/20 transition-all duration-300 shadow-2xl group"
+            whileHover={{ y: -5 }}
+            transition={{ duration: 0.2 }}
+          >
+            <DialogTrigger asChild>
+              <div className="cursor-pointer flex-grow">
+                <CardHeader>
+                  <CardTitle className="font-serif text-2xl text-[#f2f0e4]">{project.title}</CardTitle>
+                  <CardDescription>{project.description}</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="w-full h-48 bg-muted rounded-md overflow-hidden">
+                    <img
+                      src={`https://placehold.co/600x400/0F1C15/ffffff?text=${encodeURIComponent(project.title)}`}
+                      alt={project.title}
+                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                    />
+                  </div>
+                </CardContent>
+              </div>
+            </DialogTrigger>
+            <CardFooter className="flex-col gap-4 items-start">
+              <div className="flex flex-wrap gap-2 w-full">
+                {(showAllTech ? project.techStack : project.techStack.slice(0, 3)).map((tech, index) => {
+                  const Icon = techIcons[tech] || Code2;
+                  return (
+                    <div
+                      key={index}
+                      className="flex items-center gap-1 px-2 py-1 bg-white/5 text-white/80 border border-white/10 rounded text-xs"
+                    >
+                      <Icon className="h-3 w-3" />
+                      <span>{tech}</span>
+                    </div>
+                  );
+                })}
+                {project.techStack.length > 3 && !showAllTech && (
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setShowAllTech(true);
+                    }}
+                    className="px-2 py-1 bg-white/5 text-white/80 border border-white/10 rounded text-xs hover:bg-white/10 hover:border-white/20 transition-all cursor-pointer"
+                  >
+                    +{project.techStack.length - 3} more
+                  </button>
+                )}
+                {showAllTech && project.techStack.length > 3 && (
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setShowAllTech(false);
+                    }}
+                    className="px-2 py-1 bg-white/5 text-white/80 border border-white/10 rounded text-xs hover:bg-white/10 hover:border-white/20 transition-all cursor-pointer"
+                  >
+                    Show less
+                  </button>
+                )}
+              </div>
+              <div className="flex gap-2 w-full">
+                <Button
+                  variant="outline"
+                  className="flex-1 border-white/20 text-[#f2f0e4] hover:bg-white/5"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    window.open(project.repoUrl, "_blank");
+                  }}
+                >
+                  View Project
+                </Button>
+                <Button
+                  variant="outline"
+                  className="flex-1 border-white/20 text-[#f2f0e4] hover:bg-white/5"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    window.open(project.repoUrl, "_blank");
+                  }}
+                >
+                  GitHub
+                </Button>
+              </div>
+            </CardFooter>
+          </Card>
+        </BackgroundGradient>
+      </TiltCard>
+
+      <DialogContent className="bg-[#0a120d]/60 backdrop-blur-md border border-[#ffffff]/10 hover:border-[#ffffff]/20 transition-all duration-300 shadow-2xl text-foreground max-w-3xl">
+        <DialogHeader>
+          <DialogTitle className="font-serif text-2xl text-[#f2f0e4]">{project.title}</DialogTitle>
+        </DialogHeader>
+        
+        <div className="w-full h-64 bg-muted rounded-md my-4 flex items-center justify-center">
+          <span className="text-muted-foreground">Project Screenshot</span>
+        </div>
+
+        <DialogDescription className="text-foreground space-y-4">
+          <div>
+            <h4 className="text-lg font-semibold text-foreground mb-2">The Problem</h4>
+            <p className="text-muted-foreground leading-relaxed">
+              {project.problem}
+            </p>
+          </div>
+
+          <div>
+            <h4 className="text-lg font-semibold text-foreground mb-2">My Solution</h4>
+            <p className="text-muted-foreground leading-relaxed">
+              {project.solution}
+            </p>
+          </div>
+
+          <div>
+            <h4 className="text-lg font-semibold text-foreground mb-2">Tech Stack</h4>
+            <div className="flex flex-wrap gap-2">
+              {project.techStack.map((tech, index) => (
+                <span
+                  key={index}
+                  className="px-3 py-1 bg-white/5 text-white/80 border border-white/10 rounded-full text-sm"
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
+          </div>
+        </DialogDescription>
+
+        <DialogFooter className="gap-2 sm:gap-0">
+          <Button
+            variant="outline"
+            className="border-white/20 text-[#f2f0e4] hover:bg-white/5"
+            onClick={() => window.open(project.repoUrl, "_blank")}
+          >
+            View on GitHub
+          </Button>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
+  );
+}
+
 export default function Projects() {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [visibleCount, setVisibleCount] = useState(4);
@@ -148,134 +297,9 @@ export default function Projects() {
                   exit={{ opacity: 0, scale: 0.95 }}
                   transition={{ duration: 0.4 }}
                 >
-                <Dialog>
-                  <TiltCard>
-                    <BackgroundGradient
-                      className="rounded-[--radius] bg-card p-0.5"
-                      containerClassName="w-full h-full"
-                    >
-                      <Card 
-                        className="h-full flex flex-col bg-[#0a120d]/60 backdrop-blur-md border border-[#ffffff]/10 hover:border-[#ffffff]/20 transition-all duration-300 shadow-2xl group"
-                        whileHover={{ y: -5 }}
-                        transition={{ duration: 0.2 }}
-                      >
-                      <DialogTrigger asChild>
-                        <div className="cursor-pointer flex-grow">
-                          <CardHeader>
-                            <CardTitle className="font-serif text-2xl text-[#f2f0e4]">{project.title}</CardTitle>
-                            <CardDescription>{project.description}</CardDescription>
-                          </CardHeader>
-                          <CardContent>
-                            <div className="w-full h-48 bg-muted rounded-md overflow-hidden">
-                              <img
-                                src={`https://placehold.co/600x400/0F1C15/ffffff?text=${encodeURIComponent(project.title)}`}
-                                alt={project.title}
-                                className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                              />
-                            </div>
-                          </CardContent>
-                        </div>
-                      </DialogTrigger>
-                      <CardFooter className="flex-col gap-4 items-start">
-                        <div className="flex flex-wrap gap-2 w-full">
-                          {project.techStack.slice(0, 3).map((tech, index) => {
-                            const Icon = techIcons[tech] || Code2;
-                            return (
-                              <div
-                                key={index}
-                                className="flex items-center gap-1 px-2 py-1 bg-white/5 text-white/80 border border-white/10 rounded text-xs"
-                              >
-                                <Icon className="h-3 w-3" />
-                                <span>{tech}</span>
-                              </div>
-                            );
-                          })}
-                          {project.techStack.length > 3 && (
-                            <span className="px-2 py-1 bg-white/5 text-white/80 border border-white/10 rounded text-xs">
-                              +{project.techStack.length - 3} more
-                            </span>
-                          )}
-                        </div>
-                        <div className="flex gap-2 w-full">
-                          <Button
-                            variant="outline"
-                            className="flex-1 border-white/20 text-[#f2f0e4] hover:bg-white/5"
-                            onClick={() => window.open(project.demoUrl, "_blank")}
-                          >
-                            Live Demo
-                          </Button>
-                          <Button
-                            variant="outline"
-                            className="flex-1 border-white/20 text-[#f2f0e4] hover:bg-white/5"
-                            onClick={() => window.open(project.repoUrl, "_blank")}
-                          >
-                            GitHub
-                          </Button>
-                        </div>
-                      </CardFooter>
-                      </Card>
-                    </BackgroundGradient>
-                  </TiltCard>
-
-                  <DialogContent className="bg-[#0a120d]/60 backdrop-blur-md border border-[#ffffff]/10 hover:border-[#ffffff]/20 transition-all duration-300 shadow-2xl text-foreground max-w-3xl">
-                    <DialogHeader>
-                      <DialogTitle className="font-serif text-2xl text-[#f2f0e4]">{project.title}</DialogTitle>
-                    </DialogHeader>
-                    
-                    <div className="w-full h-64 bg-muted rounded-md my-4 flex items-center justify-center">
-                      <span className="text-muted-foreground">Project Screenshot</span>
-                    </div>
-
-                    <DialogDescription className="text-foreground space-y-4">
-                      <div>
-                        <h4 className="text-lg font-semibold text-foreground mb-2">The Problem</h4>
-                        <p className="text-muted-foreground leading-relaxed">
-                          {project.problem}
-                        </p>
-                      </div>
-
-                      <div>
-                        <h4 className="text-lg font-semibold text-foreground mb-2">My Solution</h4>
-                        <p className="text-muted-foreground leading-relaxed">
-                          {project.solution}
-                        </p>
-                      </div>
-
-                      <div>
-                        <h4 className="text-lg font-semibold text-foreground mb-2">Tech Stack</h4>
-                        <div className="flex flex-wrap gap-2">
-                          {project.techStack.map((tech, index) => (
-                            <span
-                              key={index}
-                              className="px-3 py-1 bg-white/5 text-white/80 border border-white/10 rounded-full text-sm"
-                            >
-                              {tech}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-                    </DialogDescription>
-
-                    <DialogFooter className="gap-2 sm:gap-0">
-                      <Button
-                        variant="outline"
-                        className="border-white/20 text-[#f2f0e4] hover:bg-white/5"
-                        onClick={() => window.open(project.demoUrl, "_blank")}
-                      >
-                        Live Demo
-                      </Button>
-                      <Button
-                        variant="outline"
-                        className="border-white/20 text-[#f2f0e4] hover:bg-white/5"
-                        onClick={() => window.open(project.repoUrl, "_blank")}
-                      >
-                        GitHub
-                      </Button>
-                    </DialogFooter>
-                  </DialogContent>
-                </Dialog>
-              </motion.div>
-            ))}
+                  <ProjectCard project={project} />
+                </motion.div>
+              ))}
             </AnimatePresence>
           </motion.div>
 
