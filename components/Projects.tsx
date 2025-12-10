@@ -81,6 +81,7 @@ const categories = ["All", "Full Stack", "Frontend", "Backend"];
 
 function ProjectCard({ project }: { project: typeof projects[0] }) {
   const [showAllTech, setShowAllTech] = useState(false);
+  const [dialogOpen, setDialogOpen] = useState(false);
 
   const handleTechToggle = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -95,7 +96,7 @@ function ProjectCard({ project }: { project: typeof projects[0] }) {
   };
 
   return (
-    <Dialog>
+    <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
       <TiltCard>
         <BackgroundGradient
           className="rounded-[--radius] bg-card p-0.5"
@@ -104,24 +105,33 @@ function ProjectCard({ project }: { project: typeof projects[0] }) {
           <Card 
             className="h-full flex flex-col bg-[#0a120d]/60 backdrop-blur-md border border-[#ffffff]/10 hover:border-[#ffffff]/20 transition-all duration-300 shadow-2xl group"
           >
-            <DialogTrigger asChild>
-              <button className="cursor-pointer flex-grow text-left">
-                <CardHeader>
-                  <CardTitle className="font-serif text-2xl text-[#f2f0e4]">{project.title}</CardTitle>
-                  <CardDescription>{project.description}</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="w-full h-48 bg-muted rounded-md overflow-hidden">
-                    <img
-                      src={`https://placehold.co/600x400/0F1C15/ffffff?text=${encodeURIComponent(project.title)}`}
-                      alt={project.title}
-                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                    />
-                  </div>
-                </CardContent>
-              </button>
-            </DialogTrigger>
-            <CardFooter className="flex-col gap-4 items-start pointer-events-auto">
+            <div 
+              className="flex-grow cursor-pointer"
+              onClick={() => setDialogOpen(true)}
+            >
+              <CardHeader>
+                <CardTitle className="font-serif text-2xl text-[#f2f0e4]">{project.title}</CardTitle>
+                <CardDescription>{project.description}</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="w-full h-48 bg-muted rounded-md overflow-hidden">
+                  <img
+                    src={`https://placehold.co/600x400/0F1C15/ffffff?text=${encodeURIComponent(project.title)}`}
+                    alt={project.title}
+                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                  />
+                </div>
+              </CardContent>
+            </div>
+            <CardFooter 
+              className="flex-col gap-4 items-start relative z-50 pointer-events-auto"
+              onMouseDown={(e) => {
+                e.stopPropagation();
+              }}
+              onClick={(e) => {
+                e.stopPropagation();
+              }}
+            >
               <div className="flex flex-wrap gap-2 w-full">
                 {(showAllTech ? project.techStack : project.techStack.slice(0, 3)).map((tech, index) => {
                   const Icon = techIcons[tech] || Code2;
@@ -138,6 +148,10 @@ function ProjectCard({ project }: { project: typeof projects[0] }) {
                 {project.techStack.length > 3 && !showAllTech && (
                   <button
                     type="button"
+                    onMouseDown={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                    }}
                     onClick={(e) => {
                       e.preventDefault();
                       e.stopPropagation();
@@ -151,6 +165,10 @@ function ProjectCard({ project }: { project: typeof projects[0] }) {
                 {showAllTech && project.techStack.length > 3 && (
                   <button
                     type="button"
+                    onMouseDown={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                    }}
                     onClick={(e) => {
                       e.preventDefault();
                       e.stopPropagation();
@@ -162,12 +180,20 @@ function ProjectCard({ project }: { project: typeof projects[0] }) {
                   </button>
                 )}
               </div>
-              <div className="flex gap-2 w-full z-10">
+              <div className="flex gap-2 w-full">
                 <Button
                   type="button"
                   variant="outline"
                   className="flex-1 border-white/20 text-[#f2f0e4] hover:bg-white/5"
-                  onClick={(e) => handleLinkClick(e, project.repoUrl)}
+                  onMouseDown={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                  }}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    handleLinkClick(e, project.repoUrl);
+                  }}
                 >
                   View Project
                 </Button>
@@ -175,7 +201,15 @@ function ProjectCard({ project }: { project: typeof projects[0] }) {
                   type="button"
                   variant="outline"
                   className="flex-1 border-white/20 text-[#f2f0e4] hover:bg-white/5"
-                  onClick={(e) => handleLinkClick(e, project.repoUrl)}
+                  onMouseDown={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                  }}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    handleLinkClick(e, project.repoUrl);
+                  }}
                 >
                   GitHub
                 </Button>
