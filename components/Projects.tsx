@@ -91,8 +91,6 @@ function ProjectCard({ project }: { project: typeof projects[0] }) {
         >
           <Card 
             className="h-full flex flex-col bg-[#0a120d]/60 backdrop-blur-md border border-[#ffffff]/10 hover:border-[#ffffff]/20 transition-all duration-300 shadow-2xl group"
-            whileHover={{ y: -5 }}
-            transition={{ duration: 0.2 }}
           >
             <DialogTrigger asChild>
               <div className="cursor-pointer flex-grow">
