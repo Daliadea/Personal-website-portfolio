@@ -29,26 +29,18 @@ export default function Particles() {
       speedY: number;
       opacity: number;
       baseOpacity: number;
-      pulsePhase: number;
-      pulseSpeed: number;
 
       constructor() {
         this.x = Math.random() * canvas!.width;
         this.y = Math.random() * canvas!.height;
-        this.size = Math.random() * 3 + 0.8; // Larger, more varied sizes for visibility
-        this.speedX = Math.random() * 0.6 - 0.3; // Slightly faster drift
-        this.speedY = Math.random() * 0.6 - 0.3;
-        this.baseOpacity = Math.random() * 0.6 + 0.2; // Brighter base opacity
+        this.size = Math.random() * 2 + 0.5; // Varied sizes
+        this.speedX = Math.random() * 0.5 - 0.25; // Slow drift
+        this.speedY = Math.random() * 0.5 - 0.25;
+        this.baseOpacity = Math.random() * 0.5 + 0.1;
         this.opacity = this.baseOpacity;
-        this.pulsePhase = Math.random() * Math.PI * 2; // Random starting phase for pulsing
-        this.pulseSpeed = Math.random() * 0.02 + 0.01; // Varying pulse speeds
       }
 
       update(mouseX: number, mouseY: number, scrollY: number) {
-        // Natural pulsing animation
-        this.pulsePhase += this.pulseSpeed;
-        const pulseVariation = Math.sin(this.pulsePhase) * 0.3 + 0.7; // Oscillate between 0.4 and 1.0
-        
         // Calculate distance from mouse (accounting for scroll position)
         const dx = mouseX - this.x;
         const dy = (mouseY + scrollY) - this.y;
@@ -60,10 +52,10 @@ export default function Particles() {
           const force = (maxDistance - distance) / maxDistance;
           this.speedX -= (dx / distance) * force * 0.15;
           this.speedY -= (dy / distance) * force * 0.15;
-          this.opacity = Math.min(1.0, (this.baseOpacity + force * 0.3) * pulseVariation);
+          this.opacity = Math.min(0.8, this.opacity + force * 0.2);
         } else {
-          // Apply pulsing to base opacity
-          this.opacity = this.baseOpacity * pulseVariation;
+          // Fade back to base opacity
+          this.opacity = Math.max(this.baseOpacity, this.opacity - 0.01);
         }
 
         // Update position with drift
@@ -83,38 +75,9 @@ export default function Particles() {
 
       draw() {
         if (!ctx) return;
-        
-        // Create glow effect with gradient
-        const gradient = ctx.createRadialGradient(
-          this.x, this.y, 0,
-          this.x, this.y, this.size * 3
-        );
-        
-        // Firefly colors - warm yellow-green glow
-        const glowColor = `rgba(220, 255, 200, ${this.opacity * 0.3})`;
-        const coreColor = `rgba(255, 255, 180, ${this.opacity})`;
-        const brightColor = `rgba(255, 255, 220, ${Math.min(1, this.opacity * 1.2)})`;
-        
-        gradient.addColorStop(0, brightColor);
-        gradient.addColorStop(0.4, coreColor);
-        gradient.addColorStop(1, glowColor);
-        
-        // Draw outer glow
-        ctx.fillStyle = gradient;
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size * 3, 0, Math.PI * 2);
-        ctx.fill();
-        
-        // Draw bright core
-        ctx.fillStyle = coreColor;
+        ctx.fillStyle = `rgba(180, 255, 180, ${this.opacity})`; // Slight firefly tint
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fill();
-        
-        // Draw tiny bright center
-        ctx.fillStyle = brightColor;
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size * 0.4, 0, Math.PI * 2);
         ctx.fill();
       }
     }
