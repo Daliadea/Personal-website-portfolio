@@ -54,6 +54,8 @@ const techIcons: Record<string, any> = {
   "Stripe": Cloud,
   "Socket.io": Zap,
   "TailwindCSS": Layers,
+  "Framer Motion": Zap,
+  "Lucide Icons": Globe2,
   "D3.js": Globe2,
   "Chart.js": Globe2,
   "React DnD": Code2,
@@ -68,6 +70,7 @@ const projects = [
     description:
       "A Java-based discrete event simulation that models a service shop with multiple servers handling customer arrivals, queuing, and service completion using a priority queue-based event system.",
     imageUrl: "/projects/discrete-event-simulator.jpg",
+    imageCaption: "Console output showing real-time event logs with timestamps, customer flow through the queue system, and final performance statistics (average wait times, throughput metrics)",
     demoUrl: "https://github.com/Daliadea/Discrete-Event-Simulator",
     repoUrl: "https://github.com/Daliadea/Discrete-Event-Simulator",
     date: "Feb 2024 - Jun 2024",
@@ -75,6 +78,21 @@ const projects = [
     solution: "Developed an event-driven simulation engine using Java that accurately models service environments with configurable parameters. Implemented a priority queue system for efficient event scheduling, multiple server management with individual queue capacities, and comprehensive statistics tracking. The simulator uses functional programming principles with Java Streams and Suppliers for flexible configuration, providing detailed event logs and performance metrics including average waiting times and service rates.",
     techStack: ["Java", "Data Structures", "Object-Oriented Design", "Functional Programming", "Priority Queues", "Stream API"],
     category: "Backend"
+  },
+  {
+    id: 2,
+    title: "Portfolio Website",
+    description:
+      "A modern, interactive portfolio website built with Next.js 14 featuring smooth animations, custom UI components, and a responsive design to showcase my projects and skills.",
+    imageUrl: "/projects/portfolio-website.jpg",
+    imageCaption: "Interactive portfolio interface showcasing smooth animations, glassmorphic design elements, and responsive layout across different sections",
+    demoUrl: "https://personal-website-portfolio-sandy.vercel.app/",
+    repoUrl: "https://personal-website-portfolio-sandy.vercel.app/",
+    date: "Dec 2025",
+    problem: "Creating a personal portfolio that stands out in a sea of generic templates while maintaining professional aesthetics and optimal performance is challenging. Many portfolios lack personality, have poor mobile experiences, or sacrifice performance for visual effects. Finding the right balance between creativity and usability while showcasing technical skills effectively requires careful design and implementation.",
+    solution: "Built a fully custom portfolio website using Next.js 14 with App Router for optimal performance and SEO. Implemented a variety of custom UI components including animated signature, tilt cards, magnetic buttons, and particle effects using Framer Motion for smooth, performant animations. Created a glassmorphic design system with TailwindCSS for modern aesthetics while maintaining accessibility. Integrated custom cursor effects, spotlight animations, and interactive elements that enhance user engagement without compromising load times. The site features a responsive grid layout, dynamic project filtering, and optimized images for fast loading across all devices.",
+    techStack: ["Next.js", "React", "TypeScript", "TailwindCSS", "Framer Motion", "Lucide Icons"],
+    category: "Frontend"
   },
 ];
 
@@ -223,12 +241,13 @@ function ProjectCard({ project }: { project: typeof projects[0] }) {
             />
           </div>
 
-          <div className="text-center mb-4">
-            <p className="text-xs text-muted-foreground italic">
-              Console output showing real-time event logs with timestamps, customer flow through the queue system, 
-              and final performance statistics (average wait times, throughput metrics)
-            </p>
-          </div>
+          {project.imageCaption && (
+            <div className="text-center mb-4">
+              <p className="text-xs text-muted-foreground italic">
+                {project.imageCaption}
+              </p>
+            </div>
+          )}
 
           <DialogDescription className="text-foreground space-y-4">
             <div>
