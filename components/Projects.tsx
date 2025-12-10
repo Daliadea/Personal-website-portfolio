@@ -66,6 +66,8 @@ const techIcons: Record<string, any> = {
   "C#": Code2,
   "ShaderLab": Layers,
   "HLSL": Code2,
+  "NavMesh": Layers,
+  "AI Systems": Zap,
   "Game Development": Layers,
   "3D Graphics": Globe2,
 };
@@ -103,17 +105,17 @@ const projects = [
   },
   {
     id: 3,
-    title: "Metamorphosis Game",
+    title: "Metamorphosis",
     description:
-      "A Unity-based game project featuring custom shaders, advanced graphics programming, and immersive gameplay mechanics built with C# and Unity Engine.",
+      "A Kafka-inspired horror game where you play as an office worker slowly mutating into a monstrous insect over five days. Navigate social stealth mechanics, manage suspicion levels, and complete daily tasks while desperately hiding your grotesque transformation from family and coworkers.",
     imageUrl: "/projects/metamorphosis-game.jpg",
-    imageCaption: "Gameplay screenshot showcasing custom shader effects, visual transformations, and immersive game mechanics",
-    demoUrl: "https://github.com/Daliadea/Metamorphosis-game",
+    imageCaption: "Gameplay screenshot showing the office environment with suspicion meter, NPC interactions, and the player's gradual transformation into an insect",
+    demoUrl: "https://drive.google.com/drive/folders/1XcHM_xRltvaZQDkb4Nkm7-KjdL8WYlDQ",
     repoUrl: "https://github.com/Daliadea/Metamorphosis-game",
     date: "May 2024 - Jul 2024",
-    problem: "Creating engaging game experiences requires balancing technical performance with visual quality. Many games struggle with optimization, especially when implementing complex shader effects and visual transformations. Game developers often face challenges in creating smooth, performant gameplay while maintaining high-quality graphics and implementing advanced rendering techniques that enhance player immersion.",
-    solution: "Developed a Unity game project focusing on advanced graphics programming and custom shader development. Implemented custom shaders using ShaderLab and HLSL to create unique visual effects and transformations that enhance gameplay. Utilized C# for game logic, state management, and performance optimization. Created efficient rendering pipelines and optimized asset management to ensure smooth gameplay across different hardware configurations. The project demonstrates expertise in 3D game development, shader programming, and Unity Engine architecture, showcasing the ability to create visually stunning and technically sound game experiences.",
-    techStack: ["Unity", "C#", "ShaderLab", "HLSL", "Game Development", "3D Graphics"],
+    problem: "Traditional horror games focus on escaping monsters, but creating a game where the player becomes the monster requires a fundamentally different approach. The challenge lies in shifting horror from external threats to internal transformation—capturing the psychological anxiety of alienation and the physical horror of losing control over one's own body in a social setting. This requires sophisticated AI systems that make NPCs feel like real observers, a dynamic suspicion system that responds to player actions, and visual transformation mechanics that convey gradual bodily decay while maintaining gameplay clarity.",
+    solution: "Developed Metamorphosis, a Unity-based horror game inspired by Kafka's novella that subverts traditional horror tropes. Implemented a sophisticated social stealth system with a dynamic Suspicion Meter that tracks NPC awareness, requiring players to avoid well-lit areas and hide mutations (like scratching chitin skin) when being observed. Created intelligent AI systems using Field-of-View (FOV) detection, head-tracking, and NavMesh-based random wandering behaviors that make NPCs unpredictable and realistic observers. Built time-based office minigames (answering phones, typing emails, cleaning) that become increasingly difficult as the player's body mutates. Utilized custom ShaderLab and HLSL shaders to create visual transformation effects that show the gradual metamorphosis over five in-game days. Implemented C# scripts for game logic, state management, and AI behavior trees. The game successfully captures the unique horror of becoming the monster rather than fleeing from it, focusing on the anxiety of social alienation and physical transformation.",
+    techStack: ["Unity", "C#", "ShaderLab", "HLSL", "NavMesh", "AI Systems", "Game Development", "3D Graphics"],
     category: "Game Development"
   },
 ];
