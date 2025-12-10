@@ -108,7 +108,7 @@ const projects = [
     title: "Metamorphosis",
     description:
       "A Kafka-inspired horror game where you play as an office worker slowly mutating into a monstrous insect over five days. Navigate social stealth mechanics, manage suspicion levels, and complete daily tasks while desperately hiding your grotesque transformation from family and coworkers.",
-    imageUrl: "/projects/metamorphosis-game.jpg",
+    imageUrl: "/projects/metamorphosis-game.png",
     imageCaption: "Gameplay screenshot showing the office environment with suspicion meter, NPC interactions, and the player's gradual transformation into an insect",
     demoUrl: "https://drive.google.com/drive/folders/1XcHM_xRltvaZQDkb4Nkm7-KjdL8WYlDQ",
     repoUrl: "https://github.com/Daliadea/Metamorphosis-game",
