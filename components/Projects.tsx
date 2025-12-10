@@ -87,7 +87,7 @@ const projects = [
     imageUrl: "/projects/portfolio-website.jpg",
     imageCaption: "Interactive portfolio interface showcasing smooth animations, glassmorphic design elements, and responsive layout across different sections",
     demoUrl: "https://personal-website-portfolio-sandy.vercel.app/",
-    repoUrl: "https://personal-website-portfolio-sandy.vercel.app/",
+    repoUrl: "https://github.com/Daliadea/Personal-website-portfolio",
     date: "Dec 2025",
     problem: "Creating a personal portfolio that stands out in a sea of generic templates while maintaining professional aesthetics and optimal performance is challenging. Many portfolios lack personality, have poor mobile experiences, or sacrifice performance for visual effects. Finding the right balance between creativity and usability while showcasing technical skills effectively requires careful design and implementation.",
     solution: "Built a fully custom portfolio website using Next.js 14 with App Router for optimal performance and SEO. Implemented a variety of custom UI components including animated signature, tilt cards, magnetic buttons, and particle effects using Framer Motion for smooth, performant animations. Created a glassmorphic design system with TailwindCSS for modern aesthetics while maintaining accessibility. Integrated custom cursor effects, spotlight animations, and interactive elements that enhance user engagement without compromising load times. The site features a responsive grid layout, dynamic project filtering, and optimized images for fast loading across all devices.",
