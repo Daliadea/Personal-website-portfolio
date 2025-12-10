@@ -20,8 +20,24 @@ import {
   DialogDescription,
   DialogFooter,
 } from "@/components/ui/dialog";
-import { Code2, Database, Cloud, Layers, Zap, Globe2, ChevronDown } from "lucide-react";
+import { Code2, Database, Cloud, Layers, Zap, Globe2, ChevronDown, Github, ExternalLink } from "lucide-react";
 import { TiltCard } from "@/components/ui/tilt-card";
+
+// Helper function to parse date strings and extract end date for sorting
+const parseDate = (dateString: string): Date => {
+  // Extract the end date from formats like "Feb 2024 - Jun 2024" or "Jun 2024"
+  const parts = dateString.split('-').map(part => part.trim());
+  const endDate = parts.length > 1 ? parts[1] : parts[0];
+  
+  // Parse month and year
+  const [month, year] = endDate.split(' ');
+  const monthMap: Record<string, number> = {
+    'Jan': 0, 'Feb': 1, 'Mar': 2, 'Apr': 3, 'May': 4, 'Jun': 5,
+    'Jul': 6, 'Aug': 7, 'Sep': 8, 'Oct': 9, 'Nov': 10, 'Dec': 11
+  };
+  
+  return new Date(parseInt(year), monthMap[month] || 0);
+};
 
 const techIcons: Record<string, any> = {
   "Next.js": Code2,
@@ -54,6 +70,7 @@ const projects = [
     imageUrl: "/projects/discrete-event-simulator.jpg",
     demoUrl: "https://github.com/Daliadea/Discrete-Event-Simulator",
     repoUrl: "https://github.com/Daliadea/Discrete-Event-Simulator",
+    date: "Jan 2024 - Mar 2024",
     problem: "Understanding and optimizing complex queuing systems in real-world scenarios like bank teller lines, restaurant service operations, and customer support centers is challenging. Traditional analytical methods often fail to capture the dynamic nature of customer arrivals, server availability, and queue management, making it difficult to predict system performance and identify bottlenecks.",
     solution: "Developed an event-driven simulation engine using Java that accurately models service environments with configurable parameters. Implemented a priority queue system for efficient event scheduling, multiple server management with individual queue capacities, and comprehensive statistics tracking. The simulator uses functional programming principles with Java Streams and Suppliers for flexible configuration, providing detailed event logs and performance metrics including average waiting times and service rates.",
     techStack: ["Java", "Data Structures", "Object-Oriented Design", "Functional Programming", "Priority Queues", "Stream API"],
@@ -103,8 +120,12 @@ function ProjectCard({ project }: { project: typeof projects[0] }) {
             className="cursor-pointer"
             onClick={() => setDialogOpen(true)}
           >
-            <CardHeader>
-              <CardTitle className="font-serif text-2xl text-[#f2f0e4]">{project.title}</CardTitle>
+            <CardHeader className="relative">
+              {/* Date in top right */}
+              <div className="absolute top-4 right-4 text-xs text-white/40 font-mono">
+                {project.date}
+              </div>
+              <CardTitle className="font-serif text-2xl text-[#f2f0e4] pr-32">{project.title}</CardTitle>
               <CardDescription>{project.description}</CardDescription>
             </CardHeader>
             <CardContent>
@@ -161,22 +182,26 @@ function ProjectCard({ project }: { project: typeof projects[0] }) {
               )}
             </motion.div>
 
-            {/* Action Buttons */}
-            <div className="flex gap-2 w-full">
-              <Button
-                variant="outline"
-                className="flex-1 border-white/20 text-[#f2f0e4] hover:bg-white/5"
-                onClick={handleViewProject}
-              >
-                View Project
-              </Button>
-              <Button
-                variant="outline"
-                className="flex-1 border-white/20 text-[#f2f0e4] hover:bg-white/5"
+            {/* Action Buttons - Bottom Right */}
+            <div className="flex gap-2 w-full justify-end">
+              <motion.button
                 onClick={handleViewGitHub}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="p-2 bg-white/5 text-white/80 border border-white/10 rounded hover:bg-white/10 hover:border-white/20 transition-all"
+                aria-label="View on GitHub"
               >
-                GitHub
-              </Button>
+                <Github className="h-4 w-4" />
+              </motion.button>
+              <motion.button
+                onClick={handleViewProject}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="p-2 bg-white/5 text-white/80 border border-white/10 rounded hover:bg-white/10 hover:border-white/20 transition-all"
+                aria-label="Live Demo"
+              >
+                <ExternalLink className="h-4 w-4" />
+              </motion.button>
             </div>
           </CardFooter>
         </Card>
@@ -242,10 +267,15 @@ export default function Projects() {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [visibleCount, setVisibleCount] = useState(4);
 
-  // Filter projects based on selected category
-  const filteredProjects = selectedCategory === "All" 
+  // Filter and sort projects based on selected category (newest first)
+  const filteredProjects = (selectedCategory === "All" 
     ? projects 
-    : projects.filter(project => project.category === selectedCategory);
+    : projects.filter(project => project.category === selectedCategory))
+    .sort((a, b) => {
+      const dateA = parseDate(a.date);
+      const dateB = parseDate(b.date);
+      return dateB.getTime() - dateA.getTime(); // Descending order (newest first)
+    });
 
   // Slice projects based on visible count
   const displayedProjects = filteredProjects.slice(0, visibleCount);
