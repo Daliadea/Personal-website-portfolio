@@ -106,20 +106,20 @@ export default function Hero() {
             
             {/* Image container with glassmorphism card */}
             <motion.div
-              className="relative border-2 border-white/20 p-2 rounded-2xl shadow-2xl shadow-green-900/50"
+              className="relative border-2 border-white/20 p-3 rounded-3xl shadow-2xl shadow-green-900/50"
               whileHover={{ y: -8 }}
               transition={{ duration: 0.3 }}
             >
               <motion.img
                 src="/profile.jpg"
                 alt="Aiken Lim Wenen"
-                className="relative w-56 h-56 sm:w-64 sm:h-64 lg:w-72 lg:h-72 rounded-xl object-cover hover:scale-105 transition-all duration-500"
+                className="relative w-72 h-72 sm:w-80 sm:h-80 md:w-96 md:h-96 lg:w-[420px] lg:h-[420px] xl:w-[480px] xl:h-[480px] rounded-2xl object-cover hover:scale-105 transition-all duration-500"
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.4 }}
               />
               {/* Decorative corner accent */}
-              <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-gradient-to-br from-primary/30 to-transparent rounded-2xl blur-xl -z-10" />
-              <div className="absolute -top-4 -left-4 w-20 h-20 bg-gradient-to-tr from-primary/20 to-transparent rounded-2xl blur-xl -z-10" />
+              <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-gradient-to-br from-primary/30 to-transparent rounded-3xl blur-2xl -z-10" />
+              <div className="absolute -top-6 -left-6 w-28 h-28 bg-gradient-to-tr from-primary/20 to-transparent rounded-3xl blur-2xl -z-10" />
             </motion.div>
           </motion.div>
         </div>
