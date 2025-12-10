@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import MagneticButton from "@/components/ui/magnetic-button";
 import AnimatedSignature from "@/components/AnimatedSignature";
+import LiveStatus from "@/components/LiveStatus";
 
 export default function Hero() {
   const scrollToSection = (id: string) => {
@@ -80,6 +81,16 @@ export default function Hero() {
                   Contact Me
                 </Button>
               </MagneticButton>
+            </motion.div>
+
+            {/* Live Discord Status */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.8 }}
+              className="pt-6"
+            >
+              <LiveStatus />
             </motion.div>
           </motion.div>
 
