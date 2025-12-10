@@ -215,8 +215,19 @@ function ProjectCard({ project }: { project: typeof projects[0] }) {
             <DialogTitle className="font-serif text-2xl text-[#f2f0e4]">{project.title}</DialogTitle>
           </DialogHeader>
           
-          <div className="w-full h-64 bg-muted rounded-md my-4 flex items-center justify-center">
-            <span className="text-muted-foreground">Project Screenshot</span>
+          <div className="w-full h-64 bg-muted rounded-md my-4 overflow-hidden">
+            <img
+              src={project.imageUrl || `https://placehold.co/800x400/0F1C15/ffffff?text=${encodeURIComponent(project.title)}`}
+              alt={`${project.title} screenshot`}
+              className="w-full h-full object-contain bg-[#0a120d]"
+            />
+          </div>
+
+          <div className="text-center mb-4">
+            <p className="text-xs text-muted-foreground italic">
+              Console output showing real-time event logs with timestamps, customer flow through the queue system, 
+              and final performance statistics (average wait times, throughput metrics)
+            </p>
           </div>
 
           <DialogDescription className="text-foreground space-y-4">
