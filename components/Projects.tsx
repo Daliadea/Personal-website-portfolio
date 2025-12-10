@@ -82,6 +82,18 @@ const categories = ["All", "Full Stack", "Frontend", "Backend"];
 function ProjectCard({ project }: { project: typeof projects[0] }) {
   const [showAllTech, setShowAllTech] = useState(false);
 
+  const handleTechToggle = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setShowAllTech(!showAllTech);
+  };
+
+  const handleLinkClick = (e: React.MouseEvent, url: string) => {
+    e.preventDefault();
+    e.stopPropagation();
+    window.open(url, "_blank", "noopener,noreferrer");
+  };
+
   return (
     <Dialog>
       <TiltCard>
@@ -93,7 +105,7 @@ function ProjectCard({ project }: { project: typeof projects[0] }) {
             className="h-full flex flex-col bg-[#0a120d]/60 backdrop-blur-md border border-[#ffffff]/10 hover:border-[#ffffff]/20 transition-all duration-300 shadow-2xl group"
           >
             <DialogTrigger asChild>
-              <div className="cursor-pointer flex-grow">
+              <button className="cursor-pointer flex-grow text-left">
                 <CardHeader>
                   <CardTitle className="font-serif text-2xl text-[#f2f0e4]">{project.title}</CardTitle>
                   <CardDescription>{project.description}</CardDescription>
@@ -107,9 +119,9 @@ function ProjectCard({ project }: { project: typeof projects[0] }) {
                     />
                   </div>
                 </CardContent>
-              </div>
+              </button>
             </DialogTrigger>
-            <CardFooter className="flex-col gap-4 items-start">
+            <CardFooter className="flex-col gap-4 items-start pointer-events-auto">
               <div className="flex flex-wrap gap-2 w-full">
                 {(showAllTech ? project.techStack : project.techStack.slice(0, 3)).map((tech, index) => {
                   const Icon = techIcons[tech] || Code2;
@@ -125,7 +137,9 @@ function ProjectCard({ project }: { project: typeof projects[0] }) {
                 })}
                 {project.techStack.length > 3 && !showAllTech && (
                   <button
+                    type="button"
                     onClick={(e) => {
+                      e.preventDefault();
                       e.stopPropagation();
                       setShowAllTech(true);
                     }}
@@ -136,7 +150,9 @@ function ProjectCard({ project }: { project: typeof projects[0] }) {
                 )}
                 {showAllTech && project.techStack.length > 3 && (
                   <button
+                    type="button"
                     onClick={(e) => {
+                      e.preventDefault();
                       e.stopPropagation();
                       setShowAllTech(false);
                     }}
@@ -146,24 +162,20 @@ function ProjectCard({ project }: { project: typeof projects[0] }) {
                   </button>
                 )}
               </div>
-              <div className="flex gap-2 w-full">
+              <div className="flex gap-2 w-full z-10">
                 <Button
+                  type="button"
                   variant="outline"
                   className="flex-1 border-white/20 text-[#f2f0e4] hover:bg-white/5"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    window.open(project.repoUrl, "_blank");
-                  }}
+                  onClick={(e) => handleLinkClick(e, project.repoUrl)}
                 >
                   View Project
                 </Button>
                 <Button
+                  type="button"
                   variant="outline"
                   className="flex-1 border-white/20 text-[#f2f0e4] hover:bg-white/5"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    window.open(project.repoUrl, "_blank");
-                  }}
+                  onClick={(e) => handleLinkClick(e, project.repoUrl)}
                 >
                   GitHub
                 </Button>
