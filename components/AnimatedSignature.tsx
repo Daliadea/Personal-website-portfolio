@@ -9,7 +9,7 @@ export default function AnimatedSignature() {
   // Split the path into segments by "M" command (each M starts a new stroke/letter)
   const pathSegments = fullPath.split(/(?=M)/).filter(segment => segment.trim());
 
-  // Animation variant for each stroke
+  // Animation variant for each stroke - optimized for performance
   const pathVariants = (index: number) => ({
     hidden: {
       pathLength: 0,
@@ -20,13 +20,13 @@ export default function AnimatedSignature() {
       opacity: 1,
       transition: {
         pathLength: {
-          duration: 0.4,
+          duration: 0.3, // Reduced duration for better performance
           ease: "easeInOut",
-          delay: index * 0.15, // Each segment animates 0.15s after the previous
+          delay: index * 0.08, // Reduced delay between segments
         },
         opacity: {
           duration: 0.1,
-          delay: index * 0.15,
+          delay: index * 0.08,
         },
       },
     },
@@ -43,7 +43,7 @@ export default function AnimatedSignature() {
         xmlns="http://www.w3.org/2000/svg"
         viewBox="-6.920000076293945 7.360000133514404 208.44000244140625 43.20000076293945"
         className="w-full max-w-[280px] sm:max-w-[380px] h-auto"
-        style={{ overflow: 'visible' }}
+        style={{ overflow: 'visible', willChange: 'transform' }}
       >
         {pathSegments.map((segment, index) => (
           <motion.path
@@ -57,6 +57,7 @@ export default function AnimatedSignature() {
             variants={pathVariants(index)}
             initial="hidden"
             animate="visible"
+            style={{ willChange: 'opacity, stroke-dashoffset' }}
           />
         ))}
       </svg>

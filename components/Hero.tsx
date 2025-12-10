@@ -17,7 +17,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 relative overflow-hidden"
+      className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-20 relative overflow-hidden"
     >
       {/* Subtle background gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-[#0F1C15]/20 via-transparent to-[#0F1C15]/20 pointer-events-none" />
@@ -30,6 +30,7 @@ export default function Hero() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             className="space-y-8 text-left"
+            style={{ willChange: 'transform, opacity' }}
           >
             {/* Animated Signature */}
             <AnimatedSignature />
@@ -38,7 +39,8 @@ export default function Hero() {
               className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-bold text-foreground font-serif leading-tight"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              style={{ willChange: 'transform, opacity' }}
             >
               A Computing Student
               <br />
@@ -49,7 +51,8 @@ export default function Hero() {
               className="text-lg sm:text-xl lg:text-2xl text-muted-foreground max-w-xl leading-relaxed"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              style={{ willChange: 'transform, opacity' }}
             >
               A Computing Student & Software Developer passionate about building
               interactive web experiences.
@@ -58,6 +61,7 @@ export default function Hero() {
             <motion.div
               className="flex flex-col sm:flex-row gap-4 pt-4"
               initial={{ opacity: 0, y: 20 }}
+              style={{ willChange: 'transform, opacity' }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
             >
