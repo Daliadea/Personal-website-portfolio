@@ -55,6 +55,7 @@ const techIcons: Record<string, any> = {
   "Socket.io": Zap,
   "TailwindCSS": Layers,
   "Framer Motion": Zap,
+  "Discord API": Cloud,
   "Lucide Icons": Globe2,
   "D3.js": Globe2,
   "Chart.js": Globe2,
@@ -90,8 +91,8 @@ const projects = [
     repoUrl: "https://github.com/Daliadea/Personal-website-portfolio",
     date: "Dec 2025",
     problem: "Creating a personal portfolio that stands out in a sea of generic templates while maintaining professional aesthetics and optimal performance is challenging. Many portfolios lack personality, have poor mobile experiences, or sacrifice performance for visual effects. Finding the right balance between creativity and usability while showcasing technical skills effectively requires careful design and implementation.",
-    solution: "Built a fully custom portfolio website using Next.js 14 with App Router for optimal performance and SEO. Implemented a variety of custom UI components including animated signature, tilt cards, magnetic buttons, and particle effects using Framer Motion for smooth, performant animations. Created a glassmorphic design system with TailwindCSS for modern aesthetics while maintaining accessibility. Integrated custom cursor effects, spotlight animations, and interactive elements that enhance user engagement without compromising load times. The site features a responsive grid layout, dynamic project filtering, and optimized images for fast loading across all devices.",
-    techStack: ["Next.js", "React", "TypeScript", "TailwindCSS", "Framer Motion", "Lucide Icons"],
+    solution: "Built a fully custom portfolio website using Next.js 14 with App Router for optimal performance and SEO. Implemented a variety of custom UI components including animated signature, tilt cards, magnetic buttons, and particle effects using Framer Motion for smooth, performant animations. Created a glassmorphic design system with TailwindCSS for modern aesthetics while maintaining accessibility. Integrated custom cursor effects, spotlight animations, and interactive elements that enhance user engagement without compromising load times. Added real-time live activity status using Discord API to display current online presence and activities, providing visitors with dynamic, up-to-date information. The site features a responsive grid layout, dynamic project filtering, and optimized images for fast loading across all devices.",
+    techStack: ["Next.js", "React", "TypeScript", "TailwindCSS", "Framer Motion", "Discord API", "Lucide Icons"],
     category: "Frontend"
   },
 ];
