@@ -114,7 +114,7 @@ const projects = [
     problem: "Creating engaging game experiences requires balancing technical performance with visual quality. Many games struggle with optimization, especially when implementing complex shader effects and visual transformations. Game developers often face challenges in creating smooth, performant gameplay while maintaining high-quality graphics and implementing advanced rendering techniques that enhance player immersion.",
     solution: "Developed a Unity game project focusing on advanced graphics programming and custom shader development. Implemented custom shaders using ShaderLab and HLSL to create unique visual effects and transformations that enhance gameplay. Utilized C# for game logic, state management, and performance optimization. Created efficient rendering pipelines and optimized asset management to ensure smooth gameplay across different hardware configurations. The project demonstrates expertise in 3D game development, shader programming, and Unity Engine architecture, showcasing the ability to create visually stunning and technically sound game experiences.",
     techStack: ["Unity", "C#", "ShaderLab", "HLSL", "Game Development", "3D Graphics"],
-    category: "Full Stack"
+    category: "Game Development"
   },
 ];
 
@@ -133,7 +133,7 @@ const item = {
   show: { opacity: 1, y: 0 },
 };
 
-const categories = ["All", "Full Stack", "Frontend", "Backend"];
+const categories = ["All", "Full Stack", "Frontend", "Backend", "Game Development"];
 
 function ProjectCard({ project }: { project: typeof projects[0] }) {
   const [showAllTech, setShowAllTech] = useState(false);
