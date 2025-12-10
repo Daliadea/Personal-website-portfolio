@@ -70,7 +70,7 @@ const projects = [
     imageUrl: "/projects/discrete-event-simulator.jpg",
     demoUrl: "https://github.com/Daliadea/Discrete-Event-Simulator",
     repoUrl: "https://github.com/Daliadea/Discrete-Event-Simulator",
-    date: "Jan 2024 - Mar 2024",
+    date: "Feb 2024 - Jun 2024",
     problem: "Understanding and optimizing complex queuing systems in real-world scenarios like bank teller lines, restaurant service operations, and customer support centers is challenging. Traditional analytical methods often fail to capture the dynamic nature of customer arrivals, server availability, and queue management, making it difficult to predict system performance and identify bottlenecks.",
     solution: "Developed an event-driven simulation engine using Java that accurately models service environments with configurable parameters. Implemented a priority queue system for efficient event scheduling, multiple server management with individual queue capacities, and comprehensive statistics tracking. The simulator uses functional programming principles with Java Streams and Suppliers for flexible configuration, providing detailed event logs and performance metrics including average waiting times and service rates.",
     techStack: ["Java", "Data Structures", "Object-Oriented Design", "Functional Programming", "Priority Queues", "Stream API"],
@@ -114,17 +114,18 @@ function ProjectCard({ project }: { project: typeof projects[0] }) {
   return (
     <>
       <TiltCard>
-        <Card className="h-full flex flex-col bg-[#0a120d]/60 backdrop-blur-md border border-[#ffffff]/10 hover:border-[#ffffff]/20 transition-all duration-300 shadow-2xl">
+        <Card className="h-full flex flex-col bg-[#0a120d]/60 backdrop-blur-md border border-[#ffffff]/10 hover:border-[#ffffff]/20 transition-all duration-300 shadow-2xl relative">
+          {/* Date in top right - Absolute positioning relative to card */}
+          <div className="absolute top-6 right-6 text-xs text-white/40 font-mono z-10 pointer-events-none">
+            {project.date}
+          </div>
+          
           {/* Card Header - Clickable to open dialog */}
           <div 
             className="cursor-pointer"
             onClick={() => setDialogOpen(true)}
           >
-            <CardHeader className="relative">
-              {/* Date in top right */}
-              <div className="absolute top-4 right-4 text-xs text-white/40 font-mono">
-                {project.date}
-              </div>
+            <CardHeader>
               <CardTitle className="font-serif text-2xl text-[#f2f0e4] pr-32">{project.title}</CardTitle>
               <CardDescription>{project.description}</CardDescription>
             </CardHeader>
