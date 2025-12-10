@@ -21,6 +21,7 @@ import {
   DialogFooter,
 } from "@/components/ui/dialog";
 import { Code2, Database, Cloud, Layers, Zap, Globe2, ChevronDown } from "lucide-react";
+import { TiltCard } from "@/components/ui/tilt-card";
 
 const techIcons: Record<string, any> = {
   "Next.js": Code2,
@@ -95,72 +96,74 @@ function ProjectCard({ project }: { project: typeof projects[0] }) {
 
   return (
     <>
-      <Card className="h-full flex flex-col bg-[#0a120d]/60 backdrop-blur-md border border-[#ffffff]/10 hover:border-[#ffffff]/20 transition-all duration-300 shadow-2xl">
-        {/* Card Header - Clickable to open dialog */}
-        <div 
-          className="cursor-pointer"
-          onClick={() => setDialogOpen(true)}
-        >
-          <CardHeader>
-            <CardTitle className="font-serif text-2xl text-[#f2f0e4]">{project.title}</CardTitle>
-            <CardDescription>{project.description}</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <div className="w-full h-48 bg-muted rounded-md overflow-hidden">
-              <img
-                src={`https://placehold.co/600x400/0F1C15/ffffff?text=${encodeURIComponent(project.title)}`}
-                alt={project.title}
-                className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
-              />
-            </div>
-          </CardContent>
-        </div>
+      <TiltCard>
+        <Card className="h-full flex flex-col bg-[#0a120d]/60 backdrop-blur-md border border-[#ffffff]/10 hover:border-[#ffffff]/20 transition-all duration-300 shadow-2xl">
+          {/* Card Header - Clickable to open dialog */}
+          <div 
+            className="cursor-pointer"
+            onClick={() => setDialogOpen(true)}
+          >
+            <CardHeader>
+              <CardTitle className="font-serif text-2xl text-[#f2f0e4]">{project.title}</CardTitle>
+              <CardDescription>{project.description}</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="w-full h-48 bg-muted rounded-md overflow-hidden">
+                <img
+                  src={`https://placehold.co/600x400/0F1C15/ffffff?text=${encodeURIComponent(project.title)}`}
+                  alt={project.title}
+                  className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                />
+              </div>
+            </CardContent>
+          </div>
 
-        {/* Card Footer - NOT clickable for dialog */}
-        <CardFooter className="flex-col gap-4 items-start mt-auto">
-          {/* Tech Stack */}
-          <div className="flex flex-wrap gap-2 w-full">
-            {(showAllTech ? project.techStack : project.techStack.slice(0, 3)).map((tech, index) => {
-              const Icon = techIcons[tech] || Code2;
-              return (
-                <div
-                  key={index}
-                  className="flex items-center gap-1 px-2 py-1 bg-white/5 text-white/80 border border-white/10 rounded text-xs"
+          {/* Card Footer - NOT clickable for dialog */}
+          <CardFooter className="flex-col gap-4 items-start mt-auto">
+            {/* Tech Stack */}
+            <div className="flex flex-wrap gap-2 w-full">
+              {(showAllTech ? project.techStack : project.techStack.slice(0, 3)).map((tech, index) => {
+                const Icon = techIcons[tech] || Code2;
+                return (
+                  <div
+                    key={index}
+                    className="flex items-center gap-1 px-2 py-1 bg-white/5 text-white/80 border border-white/10 rounded text-xs"
+                  >
+                    <Icon className="h-3 w-3" />
+                    <span>{tech}</span>
+                  </div>
+                );
+              })}
+              {project.techStack.length > 3 && (
+                <button
+                  onClick={handleTechToggle}
+                  className="px-2 py-1 bg-white/5 text-white/80 border border-white/10 rounded text-xs hover:bg-white/10 hover:border-white/20 transition-all cursor-pointer"
                 >
-                  <Icon className="h-3 w-3" />
-                  <span>{tech}</span>
-                </div>
-              );
-            })}
-            {project.techStack.length > 3 && (
-              <button
-                onClick={handleTechToggle}
-                className="px-2 py-1 bg-white/5 text-white/80 border border-white/10 rounded text-xs hover:bg-white/10 hover:border-white/20 transition-all cursor-pointer"
-              >
-                {showAllTech ? 'Show less' : `+${project.techStack.length - 3} more`}
-              </button>
-            )}
-          </div>
+                  {showAllTech ? 'Show less' : `+${project.techStack.length - 3} more`}
+                </button>
+              )}
+            </div>
 
-          {/* Action Buttons */}
-          <div className="flex gap-2 w-full">
-            <Button
-              variant="outline"
-              className="flex-1 border-white/20 text-[#f2f0e4] hover:bg-white/5"
-              onClick={handleViewProject}
-            >
-              View Project
-            </Button>
-            <Button
-              variant="outline"
-              className="flex-1 border-white/20 text-[#f2f0e4] hover:bg-white/5"
-              onClick={handleViewGitHub}
-            >
-              GitHub
-            </Button>
-          </div>
-        </CardFooter>
-      </Card>
+            {/* Action Buttons */}
+            <div className="flex gap-2 w-full">
+              <Button
+                variant="outline"
+                className="flex-1 border-white/20 text-[#f2f0e4] hover:bg-white/5"
+                onClick={handleViewProject}
+              >
+                View Project
+              </Button>
+              <Button
+                variant="outline"
+                className="flex-1 border-white/20 text-[#f2f0e4] hover:bg-white/5"
+                onClick={handleViewGitHub}
+              >
+                GitHub
+              </Button>
+            </div>
+          </CardFooter>
+        </Card>
+      </TiltCard>
 
       {/* Dialog for project details */}
       <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
