@@ -99,27 +99,44 @@ export default function Hero() {
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="flex justify-center md:justify-end relative"
+            className="flex justify-center md:justify-end relative w-full"
           >
             {/* Decorative glow effect */}
             <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-primary/10 to-transparent blur-3xl scale-150 opacity-30" />
             
-            {/* Image container with glassmorphism card */}
+            {/* Floating Animation Wrapper */}
             <motion.div
-              className="relative border-2 border-white/20 p-3 rounded-3xl shadow-2xl shadow-green-900/50"
-              whileHover={{ y: -8 }}
-              transition={{ duration: 0.3 }}
+              animate={{ 
+                y: [0, -12, 0],
+              }}
+              transition={{
+                duration: 4,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+              className="relative w-full max-w-[320px] sm:max-w-[360px] md:max-w-[400px] lg:max-w-[440px] xl:max-w-[500px]"
             >
-              <motion.img
-                src="/profile.jpg"
-                alt="Aiken Lim Wenen"
-                className="relative w-72 h-72 sm:w-80 sm:h-80 md:w-96 md:h-96 lg:w-[420px] lg:h-[420px] xl:w-[480px] xl:h-[480px] rounded-2xl object-cover hover:scale-105 transition-all duration-500"
-                whileHover={{ scale: 1.02 }}
-                transition={{ duration: 0.4 }}
-              />
-              {/* Decorative corner accent */}
-              <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-gradient-to-br from-primary/30 to-transparent rounded-3xl blur-2xl -z-10" />
-              <div className="absolute -top-6 -left-6 w-28 h-28 bg-gradient-to-tr from-primary/20 to-transparent rounded-3xl blur-2xl -z-10" />
+              {/* Image container with glassmorphism card */}
+              <motion.div
+                className="relative border-2 border-white/20 p-3 rounded-3xl shadow-2xl shadow-green-900/50"
+                whileHover={{ y: -8 }}
+                transition={{ duration: 0.3 }}
+              >
+                <div className="relative w-full aspect-[4/5] overflow-hidden rounded-2xl">
+                  <motion.img
+                    src="/profile.jpg"
+                    alt="Aiken Lim Wenen"
+                    className="absolute inset-0 w-full h-full object-cover object-[center_20%] hover:scale-105 transition-all duration-500"
+                    whileHover={{ scale: 1.02 }}
+                    transition={{ duration: 0.4 }}
+                  />
+                  {/* Atmospheric Gradient Overlay */}
+                  <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/80 via-black/40 to-transparent pointer-events-none" />
+                </div>
+                {/* Decorative corner accent */}
+                <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-gradient-to-br from-primary/30 to-transparent rounded-3xl blur-2xl -z-10" />
+                <div className="absolute -top-6 -left-6 w-28 h-28 bg-gradient-to-tr from-primary/20 to-transparent rounded-3xl blur-2xl -z-10" />
+              </motion.div>
             </motion.div>
           </motion.div>
         </div>
