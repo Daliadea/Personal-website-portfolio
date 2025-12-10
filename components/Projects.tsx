@@ -124,13 +124,7 @@ function ProjectCard({ project }: { project: typeof projects[0] }) {
               </CardContent>
             </div>
             <CardFooter 
-              className="flex-col gap-4 items-start relative z-50 pointer-events-auto"
-              onMouseDown={(e) => {
-                e.stopPropagation();
-              }}
-              onClick={(e) => {
-                e.stopPropagation();
-              }}
+              className="flex-col gap-4 items-start relative z-50"
             >
               <div className="flex flex-wrap gap-2 w-full">
                 {(showAllTech ? project.techStack : project.techStack.slice(0, 3)).map((tech, index) => {
@@ -151,13 +145,14 @@ function ProjectCard({ project }: { project: typeof projects[0] }) {
                     onMouseDown={(e) => {
                       e.preventDefault();
                       e.stopPropagation();
+                      setShowAllTech(true);
                     }}
                     onClick={(e) => {
                       e.preventDefault();
                       e.stopPropagation();
                       setShowAllTech(true);
                     }}
-                    className="px-2 py-1 bg-white/5 text-white/80 border border-white/10 rounded text-xs hover:bg-white/10 hover:border-white/20 transition-all cursor-pointer"
+                    className="px-2 py-1 bg-white/5 text-white/80 border border-white/10 rounded text-xs hover:bg-white/10 hover:border-white/20 transition-all cursor-pointer relative z-[100]"
                   >
                     +{project.techStack.length - 3} more
                   </button>
@@ -168,26 +163,28 @@ function ProjectCard({ project }: { project: typeof projects[0] }) {
                     onMouseDown={(e) => {
                       e.preventDefault();
                       e.stopPropagation();
+                      setShowAllTech(false);
                     }}
                     onClick={(e) => {
                       e.preventDefault();
                       e.stopPropagation();
                       setShowAllTech(false);
                     }}
-                    className="px-2 py-1 bg-white/5 text-white/80 border border-white/10 rounded text-xs hover:bg-white/10 hover:border-white/20 transition-all cursor-pointer"
+                    className="px-2 py-1 bg-white/5 text-white/80 border border-white/10 rounded text-xs hover:bg-white/10 hover:border-white/20 transition-all cursor-pointer relative z-[100]"
                   >
                     Show less
                   </button>
                 )}
               </div>
-              <div className="flex gap-2 w-full">
+              <div className="flex gap-2 w-full relative z-[100]">
                 <Button
                   type="button"
                   variant="outline"
-                  className="flex-1 border-white/20 text-[#f2f0e4] hover:bg-white/5"
+                  className="flex-1 border-white/20 text-[#f2f0e4] hover:bg-white/5 relative z-[100]"
                   onMouseDown={(e) => {
                     e.preventDefault();
                     e.stopPropagation();
+                    handleLinkClick(e, project.repoUrl);
                   }}
                   onClick={(e) => {
                     e.preventDefault();
@@ -200,10 +197,11 @@ function ProjectCard({ project }: { project: typeof projects[0] }) {
                 <Button
                   type="button"
                   variant="outline"
-                  className="flex-1 border-white/20 text-[#f2f0e4] hover:bg-white/5"
+                  className="flex-1 border-white/20 text-[#f2f0e4] hover:bg-white/5 relative z-[100]"
                   onMouseDown={(e) => {
                     e.preventDefault();
                     e.stopPropagation();
+                    handleLinkClick(e, project.repoUrl);
                   }}
                   onClick={(e) => {
                     e.preventDefault();
