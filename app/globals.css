@@ -93,37 +93,3 @@ p, span, div {
   color: #a1a1aa; /* Muted grey/green for body text */
 }
 
-/* Accent Color Utilities */
-.text-accent-cyan {
-  color: #06b6d4;
-}
-
-.bg-accent-cyan {
-  background-color: #06b6d4;
-}
-
-.border-accent-cyan {
-  border-color: #06b6d4;
-}
-
-.hover\:text-accent-cyan:hover {
-  color: #06b6d4;
-}
-
-.hover\:bg-accent-cyan:hover {
-  background-color: #06b6d4;
-}
-
-.hover\:border-accent-cyan:hover {
-  border-color: #06b6d4;
-}
-
-/* Glow effect for accent elements */
-.glow-accent-cyan {
-  box-shadow: 0 0 15px rgba(6, 182, 212, 0.3);
-}
-
-.hover\:glow-accent-cyan:hover {
-  box-shadow: 0 0 20px rgba(6, 182, 212, 0.5);
-}
-

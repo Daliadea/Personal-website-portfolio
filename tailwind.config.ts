@@ -47,12 +47,6 @@ const config: Config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        // Tech-focused accent color
-        "accent-cyan": {
-          DEFAULT: "#06b6d4", // Electric cyan
-          light: "#22d3ee",
-          dark: "#0891b2",
-        },
       },
       borderRadius: {
         lg: "var(--radius)",

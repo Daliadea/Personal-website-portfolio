@@ -36,38 +36,6 @@ export default function Contact() {
           <p className="text-muted-foreground text-lg relative z-10">
             Let&apos;s connect and discuss how we can work together!
           </p>
-          
-          {/* Primary CTA Button */}
-          <MagneticButton className="w-full sm:w-auto relative z-10">
-            <Button
-              size="lg"
-              onClick={() => window.open("mailto:aikenmhw@gmail.com?subject=Project Inquiry", "_blank")}
-              className="w-full sm:w-auto bg-accent-cyan hover:bg-accent-cyan/90 text-white font-bold px-8 py-6 text-lg shadow-[0_0_20px_rgba(6,182,212,0.4)] hover:shadow-[0_0_30px_rgba(6,182,212,0.6)] transition-all duration-300 border-0"
-            >
-              <svg
-                className="w-6 h-6 mr-2"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M13 10V3L4 14h7v7l9-11h-7z"
-                />
-              </svg>
-              Start a Project
-            </Button>
-          </MagneticButton>
-          
-          {/* Divider */}
-          <div className="flex items-center gap-4 w-full max-w-md relative z-10">
-            <div className="flex-1 h-px bg-white/10"></div>
-            <span className="text-white/40 text-sm uppercase tracking-wider">or connect via</span>
-            <div className="flex-1 h-px bg-white/10"></div>
-          </div>
-          
           <div className="flex flex-col sm:flex-row gap-4 justify-center relative z-10">
             <MagneticButton className="w-full sm:w-auto">
               <Button
@@ -79,7 +47,7 @@ export default function Contact() {
                     "_blank"
                   )
                 }
-                className="w-full border-accent-cyan/30 bg-accent-cyan/5 hover:bg-accent-cyan/15 hover:border-accent-cyan/50 text-white hover:text-white transition-all duration-300"
+                className="w-full border-white/20 hover:bg-white/10 text-white hover:text-white transition-all duration-300"
               >
                 <svg
                   className="w-5 h-5 mr-2"
@@ -98,7 +66,7 @@ export default function Contact() {
                 onClick={() =>
                   window.open("mailto:aikenmhw@gmail.com")
                 }
-                className="w-full border-accent-cyan/30 bg-accent-cyan/5 hover:bg-accent-cyan/15 hover:border-accent-cyan/50 text-white hover:text-white transition-all duration-300"
+                className="w-full border-white/20 hover:bg-white/10 text-white hover:text-white transition-all duration-300"
               >
                 <svg
                   className="w-5 h-5 mr-2"
@@ -123,7 +91,7 @@ export default function Contact() {
                 onClick={() =>
                   window.open("https://github.com/Daliadea", "_blank")
                 }
-                className="w-full border-accent-cyan/30 bg-accent-cyan/5 hover:bg-accent-cyan/15 hover:border-accent-cyan/50 text-white hover:text-white transition-all duration-300"
+                className="w-full border-white/20 hover:bg-white/10 text-white hover:text-white transition-all duration-300"
               >
                 <svg
                   className="w-5 h-5 mr-2"

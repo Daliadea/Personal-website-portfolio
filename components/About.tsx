@@ -52,8 +52,8 @@ export default function About() {
                   </div>
                 }
                 header={
-                  <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-lg bg-gradient-to-br from-cyan-900/20 to-cyan-700/20 items-center justify-center">
-                    <UserCircle className="w-16 h-16 text-accent-cyan" />
+                  <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-lg bg-gradient-to-br from-blue-900/20 to-blue-700/20 items-center justify-center">
+                    <UserCircle className="w-16 h-16 text-blue-400" />
                   </div>
                 }
                 className="md:col-span-2"
@@ -66,22 +66,22 @@ export default function About() {
                 description={
                   <div className="space-y-2">
                     <div className="flex flex-wrap gap-2 mt-2">
-                      <span className="px-3 py-1.5 bg-accent-cyan/10 text-white/90 rounded text-sm font-semibold border border-accent-cyan/30 hover:border-accent-cyan/50 hover:bg-accent-cyan/15 transition-all duration-200">React</span>
-                      <span className="px-3 py-1.5 bg-accent-cyan/10 text-white/90 rounded text-sm font-semibold border border-accent-cyan/30 hover:border-accent-cyan/50 hover:bg-accent-cyan/15 transition-all duration-200">Next.js</span>
-                      <span className="px-3 py-1.5 bg-accent-cyan/10 text-white/90 rounded text-sm font-semibold border border-accent-cyan/30 hover:border-accent-cyan/50 hover:bg-accent-cyan/15 transition-all duration-200">TypeScript</span>
-                      <span className="px-3 py-1.5 bg-accent-cyan/10 text-white/90 rounded text-sm font-semibold border border-accent-cyan/30 hover:border-accent-cyan/50 hover:bg-accent-cyan/15 transition-all duration-200">Node.js</span>
-                      <span className="px-3 py-1.5 bg-accent-cyan/10 text-white/90 rounded text-sm font-semibold border border-accent-cyan/30 hover:border-accent-cyan/50 hover:bg-accent-cyan/15 transition-all duration-200">TailwindCSS</span>
-                      <span className="px-3 py-1.5 bg-accent-cyan/10 text-white/90 rounded text-sm font-semibold border border-accent-cyan/30 hover:border-accent-cyan/50 hover:bg-accent-cyan/15 transition-all duration-200">Python</span>
-                      <span className="px-3 py-1.5 bg-accent-cyan/10 text-white/90 rounded text-sm font-semibold border border-accent-cyan/30 hover:border-accent-cyan/50 hover:bg-accent-cyan/15 transition-all duration-200">Java</span>
-                      <span className="px-3 py-1.5 bg-accent-cyan/10 text-white/90 rounded text-sm font-semibold border border-accent-cyan/30 hover:border-accent-cyan/50 hover:bg-accent-cyan/15 transition-all duration-200">Django</span>
-                      <span className="px-3 py-1.5 bg-accent-cyan/10 text-white/90 rounded text-sm font-semibold border border-accent-cyan/30 hover:border-accent-cyan/50 hover:bg-accent-cyan/15 transition-all duration-200">Unity</span>
-                      <span className="px-3 py-1.5 bg-accent-cyan/10 text-white/90 rounded text-sm font-semibold border border-accent-cyan/30 hover:border-accent-cyan/50 hover:bg-accent-cyan/15 transition-all duration-200">C#</span>
+                      <span className="px-2 py-1 bg-[#0F1C15]/60 text-foreground rounded text-xs font-medium border border-white/10">React</span>
+                      <span className="px-2 py-1 bg-[#0F1C15]/60 text-foreground rounded text-xs font-medium border border-white/10">Next.js</span>
+                      <span className="px-2 py-1 bg-[#0F1C15]/60 text-foreground rounded text-xs font-medium border border-white/10">TypeScript</span>
+                      <span className="px-2 py-1 bg-[#0F1C15]/60 text-foreground rounded text-xs font-medium border border-white/10">Node.js</span>
+                      <span className="px-2 py-1 bg-[#0F1C15]/60 text-foreground rounded text-xs font-medium border border-white/10">TailwindCSS</span>
+                      <span className="px-2 py-1 bg-[#0F1C15]/60 text-foreground rounded text-xs font-medium border border-white/10">Python</span>
+                      <span className="px-2 py-1 bg-[#0F1C15]/60 text-foreground rounded text-xs font-medium border border-white/10">Java</span>
+                      <span className="px-2 py-1 bg-[#0F1C15]/60 text-foreground rounded text-xs font-medium border border-white/10">Django</span>
+                      <span className="px-2 py-1 bg-[#0F1C15]/60 text-foreground rounded text-xs font-medium border border-white/10">Unity</span>
+                      <span className="px-2 py-1 bg-[#0F1C15]/60 text-foreground rounded text-xs font-medium border border-white/10">C#</span>
                     </div>
                   </div>
                 }
                 header={
-                  <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-lg bg-gradient-to-br from-cyan-900/20 to-cyan-700/20 items-center justify-center">
-                    <Code2 className="w-16 h-16 text-accent-cyan" />
+                  <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-lg bg-gradient-to-br from-green-900/20 to-green-700/20 items-center justify-center">
+                    <Code2 className="w-16 h-16 text-green-400" />
                   </div>
                 }
                 className="md:col-span-1"
@@ -93,8 +93,8 @@ export default function About() {
                 title="Open Source Contributor"
                 description="I believe in giving back to the community. I actively contribute to open-source projects and maintain several repositories on GitHub. Check out my work and feel free to collaborate!"
                 header={
-                  <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-lg bg-gradient-to-br from-cyan-900/20 to-cyan-700/20 items-center justify-center">
-                    <Github className="w-16 h-16 text-accent-cyan" />
+                  <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-lg bg-gradient-to-br from-purple-900/20 to-purple-700/20 items-center justify-center">
+                    <Github className="w-16 h-16 text-purple-400" />
                   </div>
                 }
                 icon={
@@ -127,8 +127,8 @@ export default function About() {
                   </div>
                 }
                 header={
-                  <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-lg bg-gradient-to-br from-cyan-900/20 to-cyan-700/20 items-center justify-center">
-                    <BookOpen className="w-16 h-16 text-accent-cyan" />
+                  <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-lg bg-gradient-to-br from-yellow-900/20 to-yellow-700/20 items-center justify-center">
+                    <BookOpen className="w-16 h-16 text-yellow-400" />
                   </div>
                 }
                 className="md:col-span-2"
