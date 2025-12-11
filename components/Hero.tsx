@@ -54,8 +54,8 @@ export default function Hero() {
               transition={{ duration: 0.6, delay: 0.2 }}
               style={{ willChange: 'transform, opacity' }}
             >
-              A Computing Student & Software Developer passionate about building 
-              innovative solutions across full-stack applications, game development, and AI-powered systems.
+              Building innovative solutions across full-stack development, 
+              game design, and AI-powered systems.
             </motion.p>
 
             <motion.div
