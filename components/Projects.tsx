@@ -80,6 +80,9 @@ const techIcons: Record<string, any> = {
   "Google Apps Script": Code2,
   "Google Sheets API": Database,
   "JavaScript": Code2,
+  "Django": Layers,
+  "SQLite": Database,
+  "AI Recommendation Systems": Zap,
   "Workflow Automation": Zap,
 };
 
@@ -143,6 +146,21 @@ const projects = [
     problem: "Healthcare departments face critical delays when medical staff need to identify the correct radiologist for urgent scan requests. With over 80 radiologists and staff members across different specialties (CT, MRI, Ultrasound) and patient types (inpatient, outpatient, emergency), manually searching through rosters and making multiple calls wastes valuable time in time-sensitive medical situations. The Department of Diagnostic Radiology needed an automated system that could instantly route requests to the on-duty specialist based on scan modality, patient location, time of day, and current staff schedules updated daily in Google Sheets.",
     solution: "Developed an intelligent Telegram chatbot using Google Apps Script that integrates with the department's Google Sheets roster system. Implemented a sophisticated decision tree with over 20 conversation nodes that guide users through scan type selection (CT/MRI/US), patient location (inpatient/outpatient/emergency), and specific imaging categories (Neuro MRI, Musculoskeletal MRI, Body MRI). Built a dynamic staff lookup system that automatically retrieves the on-duty radiologist from Google Sheets based on the current date and scan type, mapping 80+ staff members by their department codes. The chatbot handles office hours (Mon-Fri 8:00AM-5:30PM, Sat 8:00AM-1:30PM) and after-hours routing differently, automatically directing to on-call radiologists (91139692) when needed. Integrated scan preparation protocols (fasting requirements, IV plug specifications) and pre-hydration regimes based on eGFR levels. Used Telegram's webhook API for real-time responses and Google Apps Script Properties Service for stateful conversation management. The solution received official commendation for reducing average request routing time and improving emergency response efficiency.",
     techStack: ["Google Apps Script", "Telegram Bot API", "Google Sheets API", "JavaScript", "Workflow Automation"],
+    category: "Full Stack"
+  },
+  {
+    id: 5,
+    title: "AuroraMart",
+    description:
+      "Co-developed an AI-enhanced e-commerce platform featuring a dual-interface system (Admin & Customer). Implemented 'Decision Tree' logic for personalized user onboarding and 'Association Rule Mining' for smart product recommendations (e.g., 'Frequently Bought Together').",
+    imageUrl: "/projects/auroramart.jpg",
+    imageCaption: "E-commerce platform interface showing AI-powered product recommendations and dual admin/customer dashboard",
+    demoUrl: "",
+    repoUrl: "https://github.com/Path-yang/IS2108-Pair-Project",
+    date: "Aug 2025 - Dec 2025",
+    problem: "Traditional e-commerce platforms lack intelligent personalization, forcing users to manually browse through extensive product catalogs without guidance. Retailers struggle to understand customer preferences and optimize product discovery, leading to poor user experience and lower conversion rates. There is a need for automated systems that can predict user preferences during onboarding and provide intelligent product recommendations based on purchasing patterns, while also providing staff with efficient catalog management tools.",
+    solution: "Co-developed AuroraMart, an AI-enhanced e-commerce platform built with Django featuring a dual-interface system for both administrators and customers. Implemented a Decision Tree machine learning model for personalized user onboarding that predicts preferred product categories based on user input during registration. Developed Association Rule Mining algorithms to generate smart product recommendations (e.g., 'Frequently Bought Together') that analyze purchasing patterns and suggest complementary items. Built a comprehensive admin interface with staff authentication, product catalog management (CRUD operations, soft delete, bulk CSV import), low-stock monitoring, and category taxonomy management. Created a customer-facing storefront with AI-assisted onboarding, advanced product browsing (search, filters, stock indicators), product detail pages with recommendation engine, session-based shopping cart with real-time stock validation, and a guided checkout process with inventory management. Utilized SQLite for data persistence and integrated pretrained joblib models for recommendation generation. The platform successfully demonstrates the integration of machine learning into web applications, providing both intelligent user experiences and efficient backend management.",
+    techStack: ["Python", "Django", "JavaScript", "AI Recommendation Systems", "SQLite"],
     category: "Full Stack"
   },
 ];
@@ -425,7 +443,7 @@ export default function Projects() {
             <h2 className="text-4xl sm:text-5xl font-bold mb-4 text-foreground font-serif">My Work</h2>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
               Here are some of my recent projects that showcase my skills and
-              experience in web development.
+              experience.
             </p>
           </div>
 
