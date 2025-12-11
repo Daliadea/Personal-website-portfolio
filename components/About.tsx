@@ -78,7 +78,11 @@ export default function About() {
                     </div>
                   </div>
                 }
-                header={<AnimatedGrid />}
+                header={
+                  <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-lg bg-[#0F1C15]/40 items-center justify-center border border-white/5">
+                    <Code2 className="h-12 w-12 text-foreground" />
+                  </div>
+                }
                 className="md:col-span-1"
               />
             </TiltCard>
