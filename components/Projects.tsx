@@ -20,7 +20,7 @@ import {
   DialogDescription,
   DialogFooter,
 } from "@/components/ui/dialog";
-import { Code2, Database, Cloud, Layers, Zap, Globe2, ChevronDown, Github, ExternalLink, FileText } from "lucide-react";
+import { Code2, Database, Cloud, Layers, Zap, Globe2, ChevronDown, Github, ExternalLink, FileText, Bot, Server, Gamepad2, ShoppingBag, LayoutDashboard, Store } from "lucide-react";
 import { TiltCard } from "@/components/ui/tilt-card";
 
 // Helper function to parse date strings and extract end date for sorting
@@ -89,6 +89,7 @@ const techIcons: Record<string, any> = {
 const projects = [
   {
     id: 1,
+    icon: Server,
     title: "Discrete Event Simulator",
     description:
       "A Java-based discrete event simulation that models a service shop with multiple servers handling customer arrivals, queuing, and service completion using a priority queue-based event system.",
@@ -104,6 +105,7 @@ const projects = [
   },
   {
     id: 2,
+    icon: LayoutDashboard,
     title: "Portfolio Website",
     description:
       "A modern, interactive portfolio website built with Next.js 14 featuring smooth animations, custom UI components, and a responsive design to showcase my projects and skills.",
@@ -119,6 +121,7 @@ const projects = [
   },
   {
     id: 3,
+    icon: Gamepad2,
     title: "Metamorphosis",
     description:
       "A Kafka-inspired horror game where you play as an office worker slowly mutating into a monstrous insect over five days. Navigate social stealth mechanics, manage suspicion levels, and complete daily tasks while desperately hiding your grotesque transformation from family and coworkers.",
@@ -134,6 +137,7 @@ const projects = [
   },
   {
     id: 4,
+    icon: Bot,
     title: "NUH Radiology Chatbot",
     description:
       "An intelligent Telegram chatbot for NUH's Department of Diagnostic Radiology that automates staff routing for scan requests across multiple modalities (CT, MRI, US) and patient types, integrating with Google Sheets for real-time staff scheduling and reducing response times for urgent medical imaging requests.",
@@ -150,6 +154,7 @@ const projects = [
   },
   {
     id: 5,
+    icon: Store,
     title: "AuroraMart",
     description:
       "Co-developed an AI-enhanced e-commerce platform featuring a dual-interface system (Admin & Customer). Implemented 'Decision Tree' logic for personalized user onboarding and 'Association Rule Mining' for smart product recommendations (e.g., 'Frequently Bought Together').",
@@ -223,12 +228,16 @@ function ProjectCard({ project }: { project: typeof projects[0] }) {
               <CardDescription>{project.description}</CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="w-full h-48 bg-muted rounded-md overflow-hidden">
+              <div className="w-full h-48 bg-muted rounded-md overflow-hidden relative">
                 <img
-                  src={`https://placehold.co/600x400/0F1C15/ffffff?text=${encodeURIComponent(project.title)}`}
+                  src={project.imageUrl || `https://placehold.co/600x400/0F1C15/ffffff?text=${encodeURIComponent(project.title)}`}
                   alt={project.title}
                   className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
                 />
+                {/* Project Icon Overlay */}
+                <div className="absolute top-3 left-3 p-2 bg-black/50 backdrop-blur-sm rounded-lg border border-white/10">
+                  <project.icon className="h-5 w-5 text-white" />
+                </div>
               </div>
             </CardContent>
           </div>
