@@ -4,32 +4,15 @@ import { motion } from "framer-motion";
 import { BentoGrid, BentoGridItem } from "@/components/ui/bento-grid";
 import { 
   Code2, 
+  Rocket, 
   Github, 
   BookOpen,
-  UserCircle,
-  Server,
-  Database,
-  Terminal,
-  Cpu,
-  Globe,
-  FileCode2,
-  Gamepad2,
-  Palette
+  UserCircle
 } from "lucide-react";
+import { Globe } from "@/components/ui/magic-globe";
+import { AnimatedGrid } from "@/components/ui/magic-grid";
+import { SparklesPreview } from "@/components/ui/aceternity-sparkles";
 import { TiltCard } from "@/components/ui/tilt-card";
-
-const SKILLS = [
-  { name: "React", icon: Code2 },
-  { name: "Next.js", icon: Globe },
-  { name: "TypeScript", icon: FileCode2 },
-  { name: "Node.js", icon: Server },
-  { name: "Python", icon: Terminal },
-  { name: "Django", icon: Database },
-  { name: "Unity", icon: Gamepad2 },
-  { name: "TailwindCSS", icon: Palette },
-  { name: "Java", icon: Cpu },
-  { name: "C#", icon: Code2 },
-];
 
 export default function About() {
   return (
@@ -54,14 +37,14 @@ export default function About() {
           <BentoGrid className="max-w-6xl mx-auto">
             <TiltCard className="md:col-span-2">
               <BentoGridItem
-                title={<span className="font-serif">Who I Am</span>}
+                title="Who I Am"
                 description={
                   <div className="space-y-2">
-                    <p className="leading-relaxed text-slate-300">
+                    <p>
                       I&apos;m a passionate computing student and software developer with diverse experience 
                       across full-stack development, game development, and AI-powered applications.
                     </p>
-                    <p className="leading-relaxed text-slate-300">
+                    <p>
                       My journey in software development started with a curiosity about how systems work, 
                       and has evolved into building everything from healthcare automation tools to 
                       AI-enhanced e-commerce platforms and immersive game experiences.
@@ -69,9 +52,8 @@ export default function About() {
                   </div>
                 }
                 header={
-                  <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-lg bg-gradient-to-br from-emerald-500/10 to-emerald-400/5 items-center justify-center relative overflow-hidden">
-                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(16,185,129,0.1),transparent_70%)]"></div>
-                    <UserCircle className="w-16 h-16 text-emerald-400 relative z-10" />
+                  <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-lg bg-gradient-to-br from-blue-900/20 to-blue-700/20 items-center justify-center">
+                    <UserCircle className="w-16 h-16 text-blue-400" />
                   </div>
                 }
                 className="md:col-span-2"
@@ -80,29 +62,26 @@ export default function About() {
 
             <TiltCard className="md:col-span-1">
               <BentoGridItem
-                title={<span className="font-serif">Core Skills</span>}
+                title="Core Skills"
                 description={
                   <div className="space-y-2">
                     <div className="flex flex-wrap gap-2 mt-2">
-                      {SKILLS.map((skill) => {
-                        const IconComponent = skill.icon;
-                        return (
-                          <div
-                            key={skill.name}
-                            className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 hover:border-emerald-500/50 transition-colors"
-                          >
-                            <IconComponent className="w-4 h-4 text-emerald-400" />
-                            <span className="text-sm font-medium text-white/80">{skill.name}</span>
-                          </div>
-                        );
-                      })}
+                      <span className="px-2 py-1 bg-[#0F1C15]/60 text-foreground rounded text-xs font-medium border border-white/10">React</span>
+                      <span className="px-2 py-1 bg-[#0F1C15]/60 text-foreground rounded text-xs font-medium border border-white/10">Next.js</span>
+                      <span className="px-2 py-1 bg-[#0F1C15]/60 text-foreground rounded text-xs font-medium border border-white/10">TypeScript</span>
+                      <span className="px-2 py-1 bg-[#0F1C15]/60 text-foreground rounded text-xs font-medium border border-white/10">Node.js</span>
+                      <span className="px-2 py-1 bg-[#0F1C15]/60 text-foreground rounded text-xs font-medium border border-white/10">TailwindCSS</span>
+                      <span className="px-2 py-1 bg-[#0F1C15]/60 text-foreground rounded text-xs font-medium border border-white/10">Python</span>
+                      <span className="px-2 py-1 bg-[#0F1C15]/60 text-foreground rounded text-xs font-medium border border-white/10">Java</span>
+                      <span className="px-2 py-1 bg-[#0F1C15]/60 text-foreground rounded text-xs font-medium border border-white/10">Django</span>
+                      <span className="px-2 py-1 bg-[#0F1C15]/60 text-foreground rounded text-xs font-medium border border-white/10">Unity</span>
+                      <span className="px-2 py-1 bg-[#0F1C15]/60 text-foreground rounded text-xs font-medium border border-white/10">C#</span>
                     </div>
                   </div>
                 }
                 header={
-                  <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-lg bg-gradient-to-br from-emerald-500/10 to-emerald-400/5 items-center justify-center relative overflow-hidden">
-                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(16,185,129,0.1),transparent_70%)]"></div>
-                    <Code2 className="w-16 h-16 text-emerald-400 relative z-10" />
+                  <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-lg bg-gradient-to-br from-green-900/20 to-green-700/20 items-center justify-center">
+                    <Code2 className="w-16 h-16 text-green-400" />
                   </div>
                 }
                 className="md:col-span-1"
@@ -111,16 +90,11 @@ export default function About() {
 
             <TiltCard className="md:col-span-1">
               <BentoGridItem
-                title={<span className="font-serif">Open Source Contributor</span>}
-                description={
-                  <p className="leading-relaxed text-slate-300">
-                    I believe in giving back to the community. I actively contribute to open-source projects and maintain several repositories on GitHub. Check out my work and feel free to collaborate!
-                  </p>
-                }
+                title="Open Source Contributor"
+                description="I believe in giving back to the community. I actively contribute to open-source projects and maintain several repositories on GitHub. Check out my work and feel free to collaborate!"
                 header={
-                  <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-lg bg-gradient-to-br from-emerald-500/10 to-emerald-400/5 items-center justify-center relative overflow-hidden">
-                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(16,185,129,0.1),transparent_70%)]"></div>
-                    <Github className="w-16 h-16 text-emerald-400 relative z-10" />
+                  <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-lg bg-gradient-to-br from-purple-900/20 to-purple-700/20 items-center justify-center">
+                    <Github className="w-16 h-16 text-purple-400" />
                   </div>
                 }
                 icon={
@@ -128,7 +102,7 @@ export default function About() {
                     href="https://github.com/Daliadea" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="text-emerald-400 hover:text-emerald-300 text-xs underline mt-2 inline-block transition-colors"
+                    className="text-foreground hover:text-muted-foreground text-xs underline mt-2 inline-block"
                   >
                     Visit my GitHub →
                   </a>
@@ -139,23 +113,22 @@ export default function About() {
 
             <TiltCard className="md:col-span-2">
               <BentoGridItem
-                title={<span className="font-serif">Continuous Learner</span>}
+                title="Continuous Learner"
                 description={
                   <div className="space-y-2">
-                    <p className="leading-relaxed text-slate-300">
+                    <p>
                       When I&apos;m not coding, you can find me learning about the latest 
                       development trends, exploring new technologies, or working on side 
                       projects that challenge my skills.
                     </p>
-                    <p className="text-slate-400 text-xs mt-2">
+                    <p className="text-muted-foreground text-xs mt-2">
                       Currently learning: AI/ML, Web3, and Advanced System Design
                     </p>
                   </div>
                 }
                 header={
-                  <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-lg bg-gradient-to-br from-emerald-500/10 to-emerald-400/5 items-center justify-center relative overflow-hidden">
-                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(16,185,129,0.1),transparent_70%)]"></div>
-                    <BookOpen className="w-16 h-16 text-emerald-400 relative z-10" />
+                  <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-lg bg-gradient-to-br from-yellow-900/20 to-yellow-700/20 items-center justify-center">
+                    <BookOpen className="w-16 h-16 text-yellow-400" />
                   </div>
                 }
                 className="md:col-span-2"
