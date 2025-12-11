@@ -51,8 +51,20 @@ export default function About() {
                   </div>
                 }
                 header={
-                  <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-lg bg-[#0F1C15]/40 items-center justify-center border border-white/5">
-                    <Rocket className="h-12 w-12 text-foreground" />
+                  <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-lg bg-[#0F1C15]/40 items-center justify-center border border-white/5 overflow-hidden relative">
+                    <motion.div
+                      animate={{
+                        y: [0, -10, 0],
+                        rotate: [-5, 5, -5],
+                      }}
+                      transition={{
+                        duration: 3,
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                      }}
+                    >
+                      <Rocket className="h-12 w-12 text-foreground" />
+                    </motion.div>
                   </div>
                 }
                 className="md:col-span-2"
@@ -79,8 +91,25 @@ export default function About() {
                   </div>
                 }
                 header={
-                  <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-lg bg-[#0F1C15]/40 items-center justify-center border border-white/5">
-                    <Code2 className="h-12 w-12 text-foreground" />
+                  <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-lg bg-[#0F1C15]/40 items-center justify-center border border-white/5 overflow-hidden relative">
+                    <motion.div
+                      animate={{
+                        scale: [1, 1.1, 1],
+                        rotate: [0, 360],
+                      }}
+                      transition={{
+                        duration: 4,
+                        repeat: Infinity,
+                        ease: "linear",
+                        rotate: {
+                          duration: 8,
+                          repeat: Infinity,
+                          ease: "linear"
+                        }
+                      }}
+                    >
+                      <Code2 className="h-12 w-12 text-foreground" />
+                    </motion.div>
                   </div>
                 }
                 className="md:col-span-1"
@@ -122,8 +151,20 @@ export default function About() {
                   </div>
                 }
                 header={
-                  <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-lg bg-[#0F1C15]/40 items-center justify-center border border-white/5">
-                    <BookOpen className="h-12 w-12 text-foreground" />
+                  <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-lg bg-[#0F1C15]/40 items-center justify-center border border-white/5 overflow-hidden relative">
+                    <motion.div
+                      animate={{
+                        rotateY: [0, 20, 0, -20, 0],
+                        scale: [1, 1.05, 1],
+                      }}
+                      transition={{
+                        duration: 4,
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                      }}
+                    >
+                      <BookOpen className="h-12 w-12 text-foreground" />
+                    </motion.div>
                   </div>
                 }
                 className="md:col-span-2"
