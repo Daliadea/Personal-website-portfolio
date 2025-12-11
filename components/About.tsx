@@ -4,10 +4,10 @@ import { motion } from "framer-motion";
 import { BentoGrid } from "@/components/ui/bento-grid";
 import { TiltCard } from "@/components/ui/tilt-card";
 import { 
-  Code2, 
+  Code, 
   Github, 
   BookOpen,
-  UserCircle
+  User
 } from "lucide-react";
 
 // Card component with full effects and stable colors
@@ -122,7 +122,7 @@ export default function About() {
                   </p>
                 </div>
               }
-              icon={UserCircle}
+              icon={User}
               iconColor="#60a5fa"
               gradientFrom="rgba(30, 64, 175, 0.2)"
               gradientTo="rgba(37, 99, 235, 0.2)"
@@ -133,7 +133,7 @@ export default function About() {
             <AboutCard
               title="Core Skills"
               description={null}
-              icon={Code2}
+              icon={Code}
               iconColor="#4ade80"
               gradientFrom="rgba(22, 101, 52, 0.2)"
               gradientTo="rgba(21, 128, 61, 0.2)"
