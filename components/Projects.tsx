@@ -87,7 +87,7 @@ const projects = [
       "A Java-based discrete event simulation that models a service shop with multiple servers handling customer arrivals, queuing, and service completion using a priority queue-based event system.",
     imageUrl: "/projects/discrete-event-simulator.jpg",
     imageCaption: "Console output showing real-time event logs with timestamps, customer flow through the queue system, and final performance statistics (average wait times, throughput metrics)",
-    demoUrl: "https://github.com/Daliadea/Discrete-Event-Simulator",
+    demoUrl: "",
     repoUrl: "https://github.com/Daliadea/Discrete-Event-Simulator",
     date: "Feb 2024 - Jun 2024",
     problem: "Understanding and optimizing complex queuing systems in real-world scenarios like bank teller lines, restaurant service operations, and customer support centers is challenging. Traditional analytical methods often fail to capture the dynamic nature of customer arrivals, server availability, and queue management, making it difficult to predict system performance and identify bottlenecks.",
@@ -132,7 +132,7 @@ const projects = [
       "Developed a chatbot prototype for the Department of Diagnostic Radiology to streamline workflow processes. Received official commendation for technical expertise and innovation.",
     imageUrl: "/projects/nuh-radiology-chatbot.jpg",
     imageCaption: "Chatbot interface for NUH Radiology Department workflow automation",
-    demoUrl: "#",
+    demoUrl: "",
     repoUrl: "",
     pdfUrl: "/assets/NUH_Letter.pdf",
     date: "Feb 2025 - Present",
@@ -256,7 +256,7 @@ function ProjectCard({ project }: { project: typeof projects[0] }) {
 
             {/* Action Buttons - Bottom Right */}
             <div className="flex gap-2 w-full justify-end">
-              {project.pdfUrl ? (
+              {project.pdfUrl && (
                 <motion.button
                   onClick={handleViewPDF}
                   whileHover={{ scale: 1.05 }}
@@ -266,7 +266,8 @@ function ProjectCard({ project }: { project: typeof projects[0] }) {
                 >
                   <FileText className="h-4 w-4" />
                 </motion.button>
-              ) : (
+              )}
+              {project.repoUrl && project.repoUrl !== "#" && (
                 <motion.button
                   onClick={handleViewGitHub}
                   whileHover={{ scale: 1.05 }}
@@ -277,15 +278,17 @@ function ProjectCard({ project }: { project: typeof projects[0] }) {
                   <Github className="h-4 w-4" />
                 </motion.button>
               )}
-              <motion.button
-                onClick={handleViewProject}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="p-2 bg-white/5 text-white/80 border border-white/10 rounded hover:bg-white/10 hover:border-white/20 transition-all"
-                aria-label="Live Demo"
-              >
-                <ExternalLink className="h-4 w-4" />
-              </motion.button>
+              {project.demoUrl && project.demoUrl !== "#" && (
+                <motion.button
+                  onClick={handleViewProject}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="p-2 bg-white/5 text-white/80 border border-white/10 rounded hover:bg-white/10 hover:border-white/20 transition-all"
+                  aria-label="Live Demo"
+                >
+                  <ExternalLink className="h-4 w-4" />
+                </motion.button>
+              )}
             </div>
           </CardFooter>
         </Card>
@@ -345,7 +348,7 @@ function ProjectCard({ project }: { project: typeof projects[0] }) {
           </DialogDescription>
 
           <DialogFooter className="gap-2 sm:gap-0">
-            {project.pdfUrl ? (
+            {project.pdfUrl && (
               <Button
                 variant="outline"
                 className="border-white/20 text-[#f2f0e4] hover:bg-white/5"
@@ -353,13 +356,23 @@ function ProjectCard({ project }: { project: typeof projects[0] }) {
               >
                 View PDF
               </Button>
-            ) : (
+            )}
+            {project.repoUrl && project.repoUrl !== "#" && (
               <Button
                 variant="outline"
                 className="border-white/20 text-[#f2f0e4] hover:bg-white/5"
                 onClick={handleViewGitHub}
               >
                 View on GitHub
+              </Button>
+            )}
+            {project.demoUrl && project.demoUrl !== "#" && (
+              <Button
+                variant="outline"
+                className="border-white/20 text-[#f2f0e4] hover:bg-white/5"
+                onClick={handleViewProject}
+              >
+                View Live Demo
               </Button>
             )}
           </DialogFooter>
