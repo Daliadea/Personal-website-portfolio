@@ -53,7 +53,7 @@ export default function About() {
                 }
                 header={
                   <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-lg bg-gradient-to-br from-blue-900/20 to-blue-700/20 items-center justify-center">
-                    <UserCircle className="w-16 h-16 text-blue-400" />
+                    <UserCircle className="w-16 h-16 text-blue-400 transition-none" />
                   </div>
                 }
                 className="md:col-span-2"
@@ -81,7 +81,7 @@ export default function About() {
                 }
                 header={
                   <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-lg bg-gradient-to-br from-green-900/20 to-green-700/20 items-center justify-center">
-                    <Code2 className="w-16 h-16 text-green-400" />
+                    <Code2 className="w-16 h-16 text-green-400 transition-none" />
                   </div>
                 }
                 className="md:col-span-1"
@@ -94,7 +94,7 @@ export default function About() {
                 description="I believe in giving back to the community. I actively contribute to open-source projects and maintain several repositories on GitHub. Check out my work and feel free to collaborate!"
                 header={
                   <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-lg bg-gradient-to-br from-purple-900/20 to-purple-700/20 items-center justify-center">
-                    <Github className="w-16 h-16 text-purple-400" />
+                    <Github className="w-16 h-16 text-purple-400 transition-none" />
                   </div>
                 }
                 icon={
@@ -128,7 +128,7 @@ export default function About() {
                 }
                 header={
                   <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-lg bg-gradient-to-br from-yellow-900/20 to-yellow-700/20 items-center justify-center">
-                    <BookOpen className="w-16 h-16 text-yellow-400" />
+                    <BookOpen className="w-16 h-16 text-yellow-400 transition-none" />
                   </div>
                 }
                 className="md:col-span-2"
