@@ -9,7 +9,7 @@ import {
   UserCircle
 } from "lucide-react";
 
-// Minimal card component - no transitions, no effects
+// Card component with effects but stable icon colors
 const AboutCard = ({
   title,
   description,
@@ -30,10 +30,15 @@ const AboutCard = ({
   children?: React.ReactNode;
 }) => {
   return (
-    <div
-      className={`row-span-1 rounded-lg shadow-2xl p-4 bg-[#0a120d]/60 backdrop-blur-md border border-[#ffffff]/10 flex flex-col space-y-4 h-full ${className}`}
+    <motion.div
+      className={`row-span-1 rounded-lg group/bento hover:shadow-xl transition-[shadow,border,transform] duration-300 shadow-2xl p-4 bg-[#0a120d]/60 backdrop-blur-md border border-[#ffffff]/10 hover:border-[#ffffff]/20 flex flex-col space-y-4 h-full ${className}`}
+      whileHover={{ scale: 1.03 }}
+      transition={{ duration: 0.2 }}
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
     >
-      {/* Header with icon - no transitions */}
+      {/* Header with icon - colors locked with inline styles */}
       <div 
         className="flex flex-1 w-full h-full min-h-[6rem] rounded-lg items-center justify-center"
         style={{
@@ -50,8 +55,8 @@ const AboutCard = ({
         />
       </div>
 
-      {/* Content */}
-      <div>
+      {/* Content with hover effect */}
+      <div className="group-hover/bento:translate-x-2 transition-transform duration-200">
         <div className="font-serif font-bold text-foreground mb-2 mt-2">
           {title}
         </div>
@@ -60,7 +65,7 @@ const AboutCard = ({
         </div>
         {children}
       </div>
-    </div>
+    </motion.div>
   );
 };
 
