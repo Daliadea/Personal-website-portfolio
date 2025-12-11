@@ -42,7 +42,7 @@ export function TiltCard({ children, className }: { children: React.ReactNode; c
         rotateX,
         transformStyle: "preserve-3d",
       }}
-      className={cn("relative w-full h-full rounded-xl transition-all duration-200 ease-linear", className)}
+      className={cn("relative w-full h-full rounded-xl transition-[transform,box-shadow] duration-200 ease-linear", className)}
     >
       <div
         style={{
