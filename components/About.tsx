@@ -51,8 +51,10 @@ export default function About() {
                   </div>
                 }
                 header={
-                  <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-lg bg-[#0F1C15]/40 items-center justify-center border border-white/5 overflow-hidden relative">
+                  <div className="relative">
+                    <AnimatedGrid />
                     <motion.div
+                      className="absolute inset-0 flex items-center justify-center"
                       animate={{
                         y: [0, -10, 0],
                         rotate: [-5, 5, -5],
@@ -91,8 +93,10 @@ export default function About() {
                   </div>
                 }
                 header={
-                  <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-lg bg-[#0F1C15]/40 items-center justify-center border border-white/5 overflow-hidden relative">
+                  <div className="relative">
+                    <AnimatedGrid />
                     <motion.div
+                      className="absolute inset-0 flex items-center justify-center"
                       animate={{
                         scale: [1, 1.1, 1],
                         rotate: [0, 360],
@@ -151,8 +155,10 @@ export default function About() {
                   </div>
                 }
                 header={
-                  <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-lg bg-[#0F1C15]/40 items-center justify-center border border-white/5 overflow-hidden relative">
+                  <div className="relative">
+                    <AnimatedGrid />
                     <motion.div
+                      className="absolute inset-0 flex items-center justify-center"
                       animate={{
                         rotateY: [0, 20, 0, -20, 0],
                         scale: [1, 1.05, 1],

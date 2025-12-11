@@ -37,8 +37,8 @@ export function AnimatedGrid({ techs }: AnimatedGridProps) {
     const animate = () => {
       ctx.clearRect(0, 0, width, height);
 
-      // Draw grid lines
-      ctx.strokeStyle = "rgba(59, 130, 246, 0.1)";
+      // Draw grid lines - dark theme
+      ctx.strokeStyle = "rgba(255, 255, 255, 0.05)";
       ctx.lineWidth = 1;
 
       // Vertical lines
@@ -57,11 +57,11 @@ export function AnimatedGrid({ techs }: AnimatedGridProps) {
         ctx.stroke();
       }
 
-      // Draw and animate dots
+      // Draw and animate dots - dark theme
       dots.forEach((dot) => {
         ctx.beginPath();
         ctx.arc(dot.x, dot.y, 2, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(59, 130, 246, ${dot.opacity})`;
+        ctx.fillStyle = `rgba(255, 255, 255, ${dot.opacity * 0.4})`;
         ctx.fill();
 
         // Animate opacity
@@ -82,7 +82,7 @@ export function AnimatedGrid({ techs }: AnimatedGridProps) {
 
   return (
     <motion.div
-      className="flex flex-1 w-full h-full min-h-[6rem] rounded-lg bg-gradient-to-br from-blue-500 to-cyan-500 items-center justify-center relative overflow-hidden"
+      className="flex flex-1 w-full h-full min-h-[6rem] rounded-lg bg-[#0F1C15]/40 items-center justify-center relative overflow-hidden border border-white/5"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
