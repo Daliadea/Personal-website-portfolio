@@ -50,25 +50,7 @@ export default function About() {
                     </p>
                   </div>
                 }
-                header={
-                  <div className="relative">
-                    <AnimatedGrid />
-                    <motion.div
-                      className="absolute inset-0 flex items-center justify-center"
-                      animate={{
-                        y: [0, -10, 0],
-                        rotate: [-5, 5, -5],
-                      }}
-                      transition={{
-                        duration: 3,
-                        repeat: Infinity,
-                        ease: "easeInOut"
-                      }}
-                    >
-                      <Rocket className="h-12 w-12 text-foreground" />
-                    </motion.div>
-                  </div>
-                }
+                header={<Globe />}
                 className="md:col-span-2"
               />
             </TiltCard>
@@ -92,30 +74,7 @@ export default function About() {
                     </div>
                   </div>
                 }
-                header={
-                  <div className="relative">
-                    <AnimatedGrid />
-                    <motion.div
-                      className="absolute inset-0 flex items-center justify-center"
-                      animate={{
-                        scale: [1, 1.1, 1],
-                        rotate: [0, 360],
-                      }}
-                      transition={{
-                        duration: 4,
-                        repeat: Infinity,
-                        ease: "linear",
-                        rotate: {
-                          duration: 8,
-                          repeat: Infinity,
-                          ease: "linear"
-                        }
-                      }}
-                    >
-                      <Code2 className="h-12 w-12 text-foreground" />
-                    </motion.div>
-                  </div>
-                }
+                header={<Globe />}
                 className="md:col-span-1"
               />
             </TiltCard>
@@ -154,25 +113,7 @@ export default function About() {
                     </p>
                   </div>
                 }
-                header={
-                  <div className="relative">
-                    <AnimatedGrid />
-                    <motion.div
-                      className="absolute inset-0 flex items-center justify-center"
-                      animate={{
-                        rotateY: [0, 20, 0, -20, 0],
-                        scale: [1, 1.05, 1],
-                      }}
-                      transition={{
-                        duration: 4,
-                        repeat: Infinity,
-                        ease: "easeInOut"
-                      }}
-                    >
-                      <BookOpen className="h-12 w-12 text-foreground" />
-                    </motion.div>
-                  </div>
-                }
+                header={<Globe />}
                 className="md:col-span-2"
               />
             </TiltCard>
