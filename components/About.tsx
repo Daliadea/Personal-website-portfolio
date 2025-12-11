@@ -124,8 +124,8 @@ export default function About() {
               }
               icon={UserCircle}
               iconColor="#60a5fa"
-              gradientFrom="rgba(30, 58, 138, 0.2)"
-              gradientTo="rgba(29, 78, 216, 0.2)"
+              gradientFrom="rgba(30, 64, 175, 0.2)"
+              gradientTo="rgba(37, 99, 235, 0.2)"
               className="md:col-span-2"
             />
 
@@ -135,7 +135,7 @@ export default function About() {
               description={null}
               icon={Code2}
               iconColor="#4ade80"
-              gradientFrom="rgba(20, 83, 45, 0.2)"
+              gradientFrom="rgba(22, 101, 52, 0.2)"
               gradientTo="rgba(21, 128, 61, 0.2)"
               className="md:col-span-1"
             >
@@ -157,7 +157,7 @@ export default function About() {
               description="I believe in giving back to the community. I actively contribute to open-source projects and maintain several repositories on GitHub. Check out my work and feel free to collaborate!"
               icon={Github}
               iconColor="#c084fc"
-              gradientFrom="rgba(88, 28, 135, 0.2)"
+              gradientFrom="rgba(107, 33, 168, 0.2)"
               gradientTo="rgba(126, 34, 206, 0.2)"
               className="md:col-span-1"
             >
@@ -188,7 +188,7 @@ export default function About() {
               }
               icon={BookOpen}
               iconColor="#facc15"
-              gradientFrom="rgba(113, 63, 18, 0.2)"
+              gradientFrom="rgba(133, 77, 14, 0.2)"
               gradientTo="rgba(161, 98, 7, 0.2)"
               className="md:col-span-2"
             />
