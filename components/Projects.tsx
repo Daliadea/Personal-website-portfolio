@@ -212,9 +212,9 @@ function ProjectCard({ project }: { project: typeof projects[0] }) {
   return (
     <>
       <TiltCard>
-        <Card className="h-full flex flex-col bg-[#0a120d]/60 backdrop-blur-md border border-[#ffffff]/10 hover:border-[#ffffff]/20 transition-all duration-300 shadow-2xl relative">
+        <Card className="h-full flex flex-col bg-[#0a120d]/60 backdrop-blur-md border border-[#ffffff]/10 hover:border-accent-cyan/40 hover:shadow-[0_0_25px_rgba(6,182,212,0.3)] transition-all duration-300 shadow-2xl relative group">
           {/* Date in top right - Absolute positioning relative to card */}
-          <div className="absolute top-6 right-6 text-xs text-white/40 font-mono z-10 pointer-events-none">
+          <div className="absolute top-6 right-6 text-sm font-semibold text-accent-cyan/80 font-mono z-10 pointer-events-none group-hover:text-accent-cyan transition-colors duration-300">
             {project.date}
           </div>
           
