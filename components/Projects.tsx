@@ -76,6 +76,10 @@ const techIcons: Record<string, any> = {
   "Game Development": Layers,
   "3D Graphics": Globe2,
   "Telegram API": Cloud,
+  "Telegram Bot API": Cloud,
+  "Google Apps Script": Code2,
+  "Google Sheets API": Database,
+  "JavaScript": Code2,
   "Workflow Automation": Zap,
 };
 
@@ -129,16 +133,16 @@ const projects = [
     id: 4,
     title: "NUH Radiology Chatbot",
     description:
-      "Developed a chatbot prototype for the Department of Diagnostic Radiology to streamline workflow processes. Received official commendation for technical expertise and innovation.",
+      "An intelligent Telegram chatbot for NUH's Department of Diagnostic Radiology that automates staff routing for scan requests across multiple modalities (CT, MRI, US) and patient types, integrating with Google Sheets for real-time staff scheduling and reducing response times for urgent medical imaging requests.",
     imageUrl: "/projects/nuh-radiology-chatbot.jpg",
-    imageCaption: "Chatbot interface for NUH Radiology Department workflow automation",
+    imageCaption: "Telegram chatbot interface showing interactive decision tree for radiology scan requests with automated staff routing",
     demoUrl: "",
     repoUrl: "",
-    pdfUrl: "/assets/NUH_Letter.pdf",
+    pdfUrl: "/LOA Aiken.pdf",
     date: "Feb 2025 - Present",
-    problem: "Healthcare departments face significant challenges in managing workflow processes efficiently, especially in diagnostic radiology where timely communication and task management are critical. Manual processes can lead to delays, miscommunication, and increased administrative burden on staff. There is a need for automated solutions that can streamline workflows while maintaining accuracy and compliance with healthcare standards.",
-    solution: "Developed a chatbot prototype for the Department of Diagnostic Radiology at NUH to automate and streamline workflow processes. Built using Python with Telegram API integration to create an intuitive interface for staff interactions. Implemented workflow automation features that reduce manual tasks and improve response times. The solution received official commendation for technical expertise and innovation, demonstrating the ability to create practical, impactful solutions for healthcare environments. The chatbot successfully addresses real-world workflow challenges while maintaining the reliability and security standards required in medical settings.",
-    techStack: ["Python", "Telegram API", "Workflow Automation"],
+    problem: "Healthcare departments face critical delays when medical staff need to identify the correct radiologist for urgent scan requests. With over 80 radiologists and staff members across different specialties (CT, MRI, Ultrasound) and patient types (inpatient, outpatient, emergency), manually searching through rosters and making multiple calls wastes valuable time in time-sensitive medical situations. The Department of Diagnostic Radiology needed an automated system that could instantly route requests to the on-duty specialist based on scan modality, patient location, time of day, and current staff schedules updated daily in Google Sheets.",
+    solution: "Developed an intelligent Telegram chatbot using Google Apps Script that integrates with the department's Google Sheets roster system. Implemented a sophisticated decision tree with over 20 conversation nodes that guide users through scan type selection (CT/MRI/US), patient location (inpatient/outpatient/emergency), and specific imaging categories (Neuro MRI, Musculoskeletal MRI, Body MRI). Built a dynamic staff lookup system that automatically retrieves the on-duty radiologist from Google Sheets based on the current date and scan type, mapping 80+ staff members by their department codes. The chatbot handles office hours (Mon-Fri 8:00AM-5:30PM, Sat 8:00AM-1:30PM) and after-hours routing differently, automatically directing to on-call radiologists (91139692) when needed. Integrated scan preparation protocols (fasting requirements, IV plug specifications) and pre-hydration regimes based on eGFR levels. Used Telegram's webhook API for real-time responses and Google Apps Script Properties Service for stateful conversation management. The solution received official commendation for reducing average request routing time and improving emergency response efficiency.",
+    techStack: ["Google Apps Script", "Telegram Bot API", "Google Sheets API", "JavaScript", "Workflow Automation"],
     category: "Full Stack"
   },
 ];
