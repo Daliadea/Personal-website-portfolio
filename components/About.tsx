@@ -40,14 +40,13 @@ export default function About() {
                 description={
                   <div className="space-y-2">
                     <p>
-                      I&apos;m a passionate computing student and software developer with a keen
-                      interest in creating beautiful, functional, and user-friendly web
-                      applications.
+                      I&apos;m a passionate computing student and software developer with diverse experience 
+                      across full-stack development, game development, and AI-powered applications.
                     </p>
                     <p>
-                      My journey in software development started with a
-                      curiosity about how things work on the web, and has evolved into a
-                      deep passion for building digital experiences that make a difference.
+                      My journey in software development started with a curiosity about how systems work, 
+                      and has evolved into building everything from healthcare automation tools to 
+                      AI-enhanced e-commerce platforms and immersive game experiences.
                     </p>
                   </div>
                 }
@@ -72,6 +71,10 @@ export default function About() {
                       <span className="px-2 py-1 bg-[#0F1C15]/60 text-foreground rounded text-xs font-medium border border-white/10">Node.js</span>
                       <span className="px-2 py-1 bg-[#0F1C15]/60 text-foreground rounded text-xs font-medium border border-white/10">TailwindCSS</span>
                       <span className="px-2 py-1 bg-[#0F1C15]/60 text-foreground rounded text-xs font-medium border border-white/10">Python</span>
+                      <span className="px-2 py-1 bg-[#0F1C15]/60 text-foreground rounded text-xs font-medium border border-white/10">Java</span>
+                      <span className="px-2 py-1 bg-[#0F1C15]/60 text-foreground rounded text-xs font-medium border border-white/10">Django</span>
+                      <span className="px-2 py-1 bg-[#0F1C15]/60 text-foreground rounded text-xs font-medium border border-white/10">Unity</span>
+                      <span className="px-2 py-1 bg-[#0F1C15]/60 text-foreground rounded text-xs font-medium border border-white/10">C#</span>
                     </div>
                   </div>
                 }
@@ -87,7 +90,7 @@ export default function About() {
                 header={<Globe />}
                 icon={
                   <a 
-                    href="https://github.com/yourusername" 
+                    href="https://github.com/Daliadea" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="text-foreground hover:text-muted-foreground text-xs underline mt-2 inline-block"
@@ -100,31 +103,27 @@ export default function About() {
             </TiltCard>
 
             <TiltCard className="md:col-span-2">
-              <div className="md:col-span-2">
-                <SparklesPreview>
-                  <BentoGridItem
-                    title="Continuous Learner"
-                    description={
-                      <div className="space-y-2">
-                        <p>
-                          When I&apos;m not coding, you can find me learning about the latest web
-                          development trends, exploring new technologies, or working on side
-                          projects that challenge my skills.
-                        </p>
-                        <p className="text-muted-foreground text-xs mt-2">
-                          Currently learning: AI/ML, Web3, and Advanced System Design
-                        </p>
-                      </div>
-                    }
-                    header={
-                      <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-lg bg-[#0F1C15]/40 items-center justify-center border border-white/5">
-                        <BookOpen className="h-12 w-12 text-foreground" />
-                      </div>
-                    }
-                    className="md:col-span-2"
-                  />
-                </SparklesPreview>
-              </div>
+              <BentoGridItem
+                title="Continuous Learner"
+                description={
+                  <div className="space-y-2">
+                    <p>
+                      When I&apos;m not coding, you can find me learning about the latest 
+                      development trends, exploring new technologies, or working on side 
+                      projects that challenge my skills.
+                    </p>
+                    <p className="text-muted-foreground text-xs mt-2">
+                      Currently learning: AI/ML, Web3, and Advanced System Design
+                    </p>
+                  </div>
+                }
+                header={
+                  <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-lg bg-[#0F1C15]/40 items-center justify-center border border-white/5">
+                    <BookOpen className="h-12 w-12 text-foreground" />
+                  </div>
+                }
+                className="md:col-span-2"
+              />
             </TiltCard>
           </BentoGrid>
         </motion.div>
