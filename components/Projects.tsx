@@ -109,8 +109,8 @@ const projects = [
     title: "Portfolio Website",
     description:
       "A modern, interactive portfolio website built with Next.js 14 featuring smooth animations, custom UI components, and a responsive design to showcase my projects and skills.",
-    imageUrl: "/projects/portfolio-website.jpg",
-    imageCaption: "Interactive portfolio interface showcasing smooth animations, glassmorphic design elements, and responsive layout across different sections",
+    imageUrl: "",
+    imageCaption: "",
     demoUrl: "https://personal-website-portfolio-sandy.vercel.app/",
     repoUrl: "https://github.com/Daliadea/Personal-website-portfolio",
     date: "Dec 2025",
@@ -227,19 +227,21 @@ function ProjectCard({ project }: { project: typeof projects[0] }) {
               <CardTitle className="font-serif text-2xl text-[#f2f0e4] pr-32">{project.title}</CardTitle>
               <CardDescription>{project.description}</CardDescription>
             </CardHeader>
-            <CardContent>
-              <div className="w-full h-48 bg-muted rounded-md overflow-hidden relative">
-                <img
-                  src={project.imageUrl || `https://placehold.co/600x400/0F1C15/ffffff?text=${encodeURIComponent(project.title)}`}
-                  alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
-                />
-                {/* Project Icon Overlay */}
-                <div className="absolute top-3 left-3 p-2 bg-black/50 backdrop-blur-sm rounded-lg border border-white/10">
-                  <project.icon className="h-5 w-5 text-white" />
+            {project.imageUrl && (
+              <CardContent>
+                <div className="w-full h-48 bg-muted rounded-md overflow-hidden relative">
+                  <img
+                    src={project.imageUrl || `https://placehold.co/600x400/0F1C15/ffffff?text=${encodeURIComponent(project.title)}`}
+                    alt={project.title}
+                    className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                  />
+                  {/* Project Icon Overlay */}
+                  <div className="absolute top-3 left-3 p-2 bg-black/50 backdrop-blur-sm rounded-lg border border-white/10">
+                    <project.icon className="h-5 w-5 text-white" />
+                  </div>
                 </div>
-              </div>
-            </CardContent>
+              </CardContent>
+            )}
           </div>
 
           {/* Card Footer - NOT clickable for dialog */}
@@ -332,20 +334,24 @@ function ProjectCard({ project }: { project: typeof projects[0] }) {
             <DialogTitle className="font-serif text-2xl text-[#f2f0e4]">{project.title}</DialogTitle>
           </DialogHeader>
           
-          <div className="w-full h-64 bg-muted rounded-md my-4 overflow-hidden">
-            <img
-              src={project.imageUrl || `https://placehold.co/800x400/0F1C15/ffffff?text=${encodeURIComponent(project.title)}`}
-              alt={`${project.title} screenshot`}
-              className="w-full h-full object-contain bg-[#0a120d]"
-            />
-          </div>
+          {project.imageUrl && (
+            <>
+              <div className="w-full h-64 bg-muted rounded-md my-4 overflow-hidden">
+                <img
+                  src={project.imageUrl || `https://placehold.co/800x400/0F1C15/ffffff?text=${encodeURIComponent(project.title)}`}
+                  alt={`${project.title} screenshot`}
+                  className="w-full h-full object-contain bg-[#0a120d]"
+                />
+              </div>
 
-          {project.imageCaption && (
-            <div className="text-center mb-4">
-              <p className="text-xs text-muted-foreground italic">
-                {project.imageCaption}
-              </p>
-            </div>
+              {project.imageCaption && (
+                <div className="text-center mb-4">
+                  <p className="text-xs text-muted-foreground italic">
+                    {project.imageCaption}
+                  </p>
+                </div>
+              )}
+            </>
           )}
 
           <DialogDescription className="text-foreground space-y-4">
