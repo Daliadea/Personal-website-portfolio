@@ -20,7 +20,7 @@ import {
   DialogDescription,
   DialogFooter,
 } from "@/components/ui/dialog";
-import { Code2, Database, Cloud, Layers, Zap, Globe2, ChevronDown, Github, ExternalLink, FileText, Bot, Server, Gamepad2, ShoppingBag, LayoutDashboard, Store, Film } from "lucide-react";
+import { Code2, Database, Cloud, Layers, Zap, Globe2, ChevronDown, Github, ExternalLink, FileText, Bot, Server, Gamepad2, ShoppingBag, LayoutDashboard, Store, Film, Music } from "lucide-react";
 import { TiltCard } from "@/components/ui/tilt-card";
 
 // Helper function to parse date strings and extract end date for sorting
@@ -90,6 +90,8 @@ const techIcons: Record<string, any> = {
   "Vite": Zap,
   "EJS": Code2,
   "JWT": Cloud,
+  "HTML": Code2,
+  "CSS": Layers,
 };
 
 const projects = [
@@ -211,6 +213,25 @@ const projects = [
       "Built a monorepo-style system with an Express + EJS admin portal for staff (dashboards, live seat map, scheduling, customer and booking management) and a React + Vite customer app for browsing, JWT-backed login, the booking flow, and QR code tickets. Shared REST APIs on Node.js with MongoDB for movies, users, bookings, and reporting.",
     techStack: ["React", "Vite", "Express", "EJS", "MongoDB", "Node.js", "JavaScript", "JWT"],
     category: "Full Stack"
+  },
+  {
+    id: 8,
+    icon: Music,
+    title: "Scale Degree & Chord Extension Flashcards",
+    description:
+      "A browser-based drill app for scale degrees and chord extensions—built because existing online tools did not offer the practice modes and fine-grained settings I wanted for my own musicianship.",
+    imageUrl: "/projects/scale-degree-flashcards.png",
+    imageCaption:
+      "Settings modal over Practice / 60s Challenge: pick chromatic roots and which extensions to test (3rds through 13ths), with session stats and glass-style UI.",
+    demoUrl: "https://musichelper-swart.vercel.app",
+    repoUrl: "https://github.com/Daliadea/Scale-Degree-Quiz-WebApp",
+    date: "Mar 2026",
+    problem:
+      "Most web-based ear-training and theory drills are either too generic or too locked down: I could not combine the exact root notes, chord extensions, timed challenge flow, and on-keyboard answering I use in my own practice. I needed a tool shaped around how I study, not a one-size-fits-all quiz.",
+    solution:
+      "Shipped a static HTML, CSS, and JavaScript app with Practice mode, a 60s Challenge, configurable roots and extensions (3rds through altered 9s/11s/13s), optional sound, light/dark theme, and results review—so I can drill exactly what I am working on and track accuracy over time.",
+    techStack: ["JavaScript", "HTML", "CSS"],
+    category: "Frontend"
   },
 ];
 
