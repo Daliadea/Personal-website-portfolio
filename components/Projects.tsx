@@ -20,7 +20,7 @@ import {
   DialogDescription,
   DialogFooter,
 } from "@/components/ui/dialog";
-import { Code2, Database, Cloud, Layers, Zap, Globe2, ChevronDown, Github, ExternalLink, FileText, Bot, Server, Gamepad2, ShoppingBag, LayoutDashboard, Store } from "lucide-react";
+import { Code2, Database, Cloud, Layers, Zap, Globe2, ChevronDown, Github, ExternalLink, FileText, Bot, Server, Gamepad2, ShoppingBag, LayoutDashboard, Store, Film } from "lucide-react";
 import { TiltCard } from "@/components/ui/tilt-card";
 
 // Helper function to parse date strings and extract end date for sorting
@@ -87,6 +87,9 @@ const techIcons: Record<string, any> = {
   "Supabase": Database,
   "Gemini": Bot,
   "Hugging Face": Cloud,
+  "Vite": Zap,
+  "EJS": Code2,
+  "JWT": Cloud,
 };
 
 const projects = [
@@ -188,6 +191,25 @@ const projects = [
     solution:
       "Built StyleStack with Next.js and Supabase to unify social outfit posting, auth, storage, and data workflows in a single platform. Added AI-assisted tagging with Gemini, integrated virtual try-on flows powered by IDM-VTON/Hugging Face APIs, and structured backend logic through Next.js route handlers to support scalable product and affiliate experiences.",
     techStack: ["Next.js", "TypeScript", "Supabase", "Gemini", "Hugging Face", "TailwindCSS"],
+    category: "Full Stack"
+  },
+  {
+    id: 7,
+    icon: Film,
+    title: "Fullstack Cinema System",
+    description:
+      "CineVillage: a paired admin portal and customer web app for movie listings, live seat maps, bookings, QR tickets, and revenue insights — MongoDB-backed with JWT auth.",
+    imageUrl: "/projects/cinevillage-client.png",
+    imageCaption:
+      "Client-facing CineVillage home (React + Vite): dark-theme landing hero, live booking badge, Book Tickets / Browse Movies CTAs, and booking status strip.",
+    demoUrl: "",
+    repoUrl: "https://github.com/Daliadea/Cinema-Internal-Admin-Portal",
+    date: "Mar 2026 - Apr 2026",
+    problem:
+      "Cinemas need both a reliable internal tool for halls, screenings, and live seat control and a smooth public experience for discovering films, choosing seats, and receiving tickets — without long queues or fragmented spreadsheets.",
+    solution:
+      "Built a monorepo-style system with an Express + EJS admin portal for staff (dashboards, live seat map, scheduling, customer and booking management) and a React + Vite customer app for browsing, JWT-backed login, the booking flow, and QR code tickets. Shared REST APIs on Node.js with MongoDB for movies, users, bookings, and reporting.",
+    techStack: ["React", "Vite", "Express", "EJS", "MongoDB", "Node.js", "JavaScript", "JWT"],
     category: "Full Stack"
   },
 ];
