@@ -84,6 +84,9 @@ const techIcons: Record<string, any> = {
   "SQLite": Database,
   "AI Recommendation Systems": Zap,
   "Workflow Automation": Zap,
+  "Supabase": Database,
+  "Gemini": Bot,
+  "Hugging Face": Cloud,
 };
 
 const projects = [
@@ -166,6 +169,24 @@ const projects = [
     problem: "Traditional e-commerce platforms lack intelligent personalization, forcing users to manually browse through extensive product catalogs without guidance. Retailers struggle to understand customer preferences and optimize product discovery, leading to poor user experience and lower conversion rates. There is a need for automated systems that can predict user preferences during onboarding and provide intelligent product recommendations based on purchasing patterns, while also providing staff with efficient catalog management tools.",
     solution: "Co-developed AuroraMart, an AI-enhanced e-commerce platform built with Django featuring a dual-interface system for both administrators and customers. Implemented a Decision Tree machine learning model for personalized user onboarding that predicts preferred product categories based on user input during registration. Developed Association Rule Mining algorithms to generate smart product recommendations (e.g., 'Frequently Bought Together') that analyze purchasing patterns and suggest complementary items. Built a comprehensive admin interface with staff authentication, product catalog management (CRUD operations, soft delete, bulk CSV import), low-stock monitoring, and category taxonomy management. Created a customer-facing storefront with AI-assisted onboarding, advanced product browsing (search, filters, stock indicators), product detail pages with recommendation engine, session-based shopping cart with real-time stock validation, and a guided checkout process with inventory management. Utilized SQLite for data persistence and integrated pretrained joblib models for recommendation generation. The platform successfully demonstrates the integration of machine learning into web applications, providing both intelligent user experiences and efficient backend management.",
     techStack: ["Python", "Django", "JavaScript", "AI Recommendation Systems", "SQLite"],
+    category: "Full Stack"
+  },
+  {
+    id: 6,
+    icon: ShoppingBag,
+    title: "StyleStack",
+    description:
+      "A full-stack social fashion app for outfit posts, AI-powered tagging, virtual try-on workflows, and affiliate-ready commerce flows.",
+    imageUrl: "",
+    imageCaption: "",
+    demoUrl: "https://style-stack-lilac.vercel.app",
+    repoUrl: "https://github.com/Daliadea/StyleStack",
+    date: "Apr 2026",
+    problem:
+      "Fashion communities often split content sharing, fit visualization, and shopping into separate tools. That fragmented experience makes it hard for users to discover outfits, try them on virtually, and convert inspiration into purchase decisions in one place.",
+    solution:
+      "Built StyleStack with Next.js and Supabase to unify social outfit posting, auth, storage, and data workflows in a single platform. Added AI-assisted tagging with Gemini, integrated virtual try-on flows powered by IDM-VTON/Hugging Face APIs, and structured backend logic through Next.js route handlers to support scalable product and affiliate experiences.",
+    techStack: ["Next.js", "TypeScript", "Supabase", "Gemini", "Hugging Face", "TailwindCSS"],
     category: "Full Stack"
   },
 ];
