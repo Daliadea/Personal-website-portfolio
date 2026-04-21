@@ -177,11 +177,12 @@ const projects = [
     title: "StyleStack",
     description:
       "A full-stack social fashion app for outfit posts, AI-powered tagging, virtual try-on workflows, and affiliate-ready commerce flows.",
-    imageUrl: "",
-    imageCaption: "",
+    imageUrl: "/projects/stylestack.png",
+    imageCaption:
+      "StyleStack landing page: hero with Gemini AI + IDM-VTON messaging, primary CTAs, community stats, and a horizontal gallery of real outfit posts with try-on counts.",
     demoUrl: "https://style-stack-lilac.vercel.app",
     repoUrl: "https://github.com/Daliadea/StyleStack",
-    date: "Apr 2026",
+    date: "Mar 2026 - Apr 2026",
     problem:
       "Fashion communities often split content sharing, fit visualization, and shopping into separate tools. That fragmented experience makes it hard for users to discover outfits, try them on virtually, and convert inspiration into purchase decisions in one place.",
     solution:
